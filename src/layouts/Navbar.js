@@ -11,7 +11,7 @@ const Navbar = () => {
             <Container maxW="container.xl">
                 <Flex justifyContent="space-between" alignItems="center">
                     <Box as="a" href="/">
-                        <Image h={'30px'} src={Logo} />
+                        <Image height={'30px'} src={Logo} />
                     </Box>
                     <IconButton
                         ref={btnRef}
@@ -31,8 +31,8 @@ const Navbar = () => {
                             <DrawerCloseButton />
                             <DrawerHeader>Tomy Maritano</DrawerHeader>
                             <DrawerBody>
-                                <Link href="/Bio" mb={4} display="block">Bio</Link>
-                                <Link href="/Work" mb={4} display="block">Work</Link>
+                                <Link href="/" mb={4} display="block">Bio</Link>
+                                <Link href="/ProjectsPage" mb={4} display="block">Work</Link>
                                 <Link href="/Experience" display="block">Experience</Link>
                             </DrawerBody>
                         </DrawerContent>

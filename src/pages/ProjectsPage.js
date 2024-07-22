@@ -1,12 +1,18 @@
-import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import React from "react";
+import {
+  Box, Container
+} from "@chakra-ui/react";
+import Github from "../components/Github";
 
 const ProjectsPage = () => {
-    return (
-        <Box p={4}>
-            <Text fontSize="2xl">Explora Nuestros Proyectos</Text>
-        </Box>
-    );
+
+  return (
+    <Box>
+        <Container mt={20} maxW={'container.xl'}>
+            <Github />
+        </Container>
+    </Box>
+  );
 };
 
 export default ProjectsPage;
