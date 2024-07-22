@@ -4,7 +4,7 @@ import React from 'react';
 
 const Skills = () => {
     return (
-        <Box width={'40%'} border={'1px solid'} borderColor={'gray.900'} borderRadius={'md'} px={5} py={8}>
+        <Box width={{base: '100%', md: '40%'}} border={'1px solid'} borderColor={'gray.900'} borderRadius={'md'} px={5} py={8}>
             <Box mb={10}>
                 <Text fontSize="2xl" color="black" fontWeight={'600'}>designer.</Text>
                 <Text fontSize="2xl" color="black" fontWeight={'600'}>developer.</Text>

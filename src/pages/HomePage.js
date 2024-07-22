@@ -10,7 +10,7 @@ import Education from './Education';
 const HomePage = () => {
     return (
         <Box>
-        <Container maxW={'container.xl'} my={32}>
+        <Container maxW={'container.xl'} my={{base: 5, md: 32}}>
                 <MainHero />
                 <Spacer h={20} />
                 <Skills />

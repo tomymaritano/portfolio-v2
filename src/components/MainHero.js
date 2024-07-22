@@ -5,7 +5,7 @@ import MarqueeText from './MarqueeText';
 
 const MainHero = () => {
     return (
-        <Box display={'flex'} flexDir={{ base: 'column', md: 'row' }} alignItems={'start'} justifyContent={'space-between'}>
+        <Box display={'flex'} flexDir={{ base: 'column', md: 'row' }} alignItems={{base: 'center', md: 'start'}} justifyContent={'space-between'}>
             <Box textAlign={{ base: 'center', md: 'start' }}><Divider border={'2px'} borderColor={'customGreen'} w={'40px'} />
                 <MarqueeText />
                 <Heading color={'customGreen'} size={'2xl'}>Don't you?</Heading>
