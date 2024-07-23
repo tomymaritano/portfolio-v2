@@ -7,7 +7,7 @@ import {
     Link
 } from "@chakra-ui/react";
 import Image1 from '../assets/Bmockup.png'
-import VideoComponent from "./VideoComponent";
+import Image2 from '../assets/giftest.gif'
 
 
 const Projects = () => {
@@ -52,7 +52,7 @@ const Projects = () => {
                         <Heading fontFamily={'monospace'} as="h1" size="2xl" mb={4} fontWeight={'400'} color={'white'}>02</Heading>
                     </Box>
                     <Box maxW={'container.xl'} display={'flex'} flexDir={{ base: "column", md: "row-reverse" }}>
-                        {/* <Image borderRadius={'lg'} w={{ base: "100%", md: "75%" }} src={Image1} /> */} <VideoComponent />
+                        <Image borderRadius={'lg'} w={{ base: "100%", md: "75%" }} src={Image2} /> 
                         <VStack mt={3} justifyContent={'flex-end'} mx={2} border={'1px solid'} spacing={2} align={'start'} flex="1" bg={'transparent'} borderRadius={'lg'} p={5}>
                             <Text fontSize={'sm'}>PROJECT</Text>
                             <Text>Investors Dashboard</Text>
