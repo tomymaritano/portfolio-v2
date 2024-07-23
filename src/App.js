@@ -9,14 +9,15 @@ import ProjectsPage from './pages/ProjectsPage';
 const App = () => {
     return (
         <ChakraProvider theme={theme}>
-            <Router>
-                <Layout>
+            <Layout>
+                <Router>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/work" element={<ProjectsPage />} />
                     </Routes>
-                </Layout>
-            </Router>
+
+                </Router>
+            </Layout>
         </ChakraProvider>
     );
 };
