@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Spacer } from '@chakra-ui/react';
-import MainHero from '../components/MainHero';
-import Skills from '../components/Skills';
+import MainHero from '../MainHero';
+import Skills from '../Skills';
 import CollabsPage from './CollabsPage';
 import Aptitudes from './Aptitudes';
 import Experience from './Experiences';

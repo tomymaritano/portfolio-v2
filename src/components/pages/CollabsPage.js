@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Divider, Flex, Heading, Text } from '@chakra-ui/react';
-import Logos from '../components/Logos'
+import Logos from '../Logos'
 
 const CollabsPage = () => {
     return (

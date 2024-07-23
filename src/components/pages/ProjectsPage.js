@@ -4,8 +4,8 @@ import {
   Heading,
   Divider
 } from "@chakra-ui/react";
-import Github from "../components/Github";
-import Projects from "../components/Projects";
+import Github from "../Github";
+import Projects from "../Projects";
 
 
 const ProjectsPage = () => {
