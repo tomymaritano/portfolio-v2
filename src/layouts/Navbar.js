@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Container, Flex, IconButton, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Link, Image, useDisclosure } from '@chakra-ui/react';
+import { Box, Container, Link as ChakraLink, Flex, IconButton, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Link, Image, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import { Link as ReactRouterLink } from 'react-router-dom';
+
 import Logo from '../assets/logot.png'
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,8 +33,8 @@ const Navbar = () => {
                             <DrawerCloseButton />
                             <DrawerHeader>Tomy Maritano</DrawerHeader>
                             <DrawerBody>
-                                <Link href="/" mb={4} display="block">Bio</Link>
-                                <Link href="/work" mb={4} display="block">Work</Link>
+                                <ChakraLink as={ReactRouterLink} to="/" mb={4} display="block">Bio</ChakraLink>
+                                <ChakraLink as={ReactRouterLink} to="/work" mb={4} display="block">Work</ChakraLink>
                             </DrawerBody>
                         </DrawerContent>
                     </Drawer>
