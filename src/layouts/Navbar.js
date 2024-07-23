@@ -31,8 +31,8 @@ const Navbar = () => {
                             <DrawerCloseButton />
                             <DrawerHeader>Tomy Maritano</DrawerHeader>
                             <DrawerBody>
-                                <Link to="/" mb={4} display="block">Bio</Link>
-                                <Link to="/work" mb={4} display="block">Work</Link>
+                                <Link href="/" mb={4} display="block">Bio</Link>
+                                <Link href="/work" mb={4} display="block">Work</Link>
                             </DrawerBody>
                         </DrawerContent>
                     </Drawer>

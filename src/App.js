@@ -1,7 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route,  } from 'react-router-dom';
-import Layout from './layouts/Layout';
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
+import Layout from './layouts/Layout';
+
 import theme from './theme';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
@@ -10,15 +10,15 @@ const App = () => {
     return (
         <ChakraProvider theme={theme}>
             <Router>
-            <Layout>
-                
+                <Layout>
+
                     <Routes>
-                        <Route path="/home" element={<HomePage />} />
-                        <Route path="/" element={<ProjectsPage />} />
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/work" element={<ProjectsPage />} />
                     </Routes>
-</Layout>
-                </Router>
-            
+                </Layout>
+            </Router>
+
         </ChakraProvider>
     );
 };
