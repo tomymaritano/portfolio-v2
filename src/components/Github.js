@@ -35,13 +35,14 @@ const Github = () => {
   );
 
   return (
-    <Box borderRadius={'xl'} bg={'customGray'}>
+    <Box borderRadius={'xl'} bg={'customBackground'}>
       <Container color={'white'} maxW={'container.xl'} py={32}>
+        <Heading size={'4xl'} fontWeight={'600'} color={'customGray'}>(selected) work</Heading>
+          <Divider borderColor={'customGray'} my={3} />
+          <Text color={'customGray'} mb={2}>
+            The nature of most my work is confidential. But please reach out—I would be happy to tell their story.
+          </Text>
         <Divider my={10} />
-     <Heading size={'2xl'} fontWeight={'500'} color={'customBackground'} pb={4}>
-          Coding
-        </Heading>
-
         <HStack justifyContent="space-between" alignItems="center">
           <HStack>
             <Text>Forks</Text>

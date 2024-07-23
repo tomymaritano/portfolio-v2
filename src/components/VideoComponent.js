@@ -14,7 +14,7 @@ const VideoComponent = () => {
 
   return (
     <div>
-      <Lottie options={defaultOptions} height={600} width={1000} />
+      <Lottie options={defaultOptions} height={600} width={'100%'} />
     </div>
   );
 };
