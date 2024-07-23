@@ -3,8 +3,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Layout from './layouts/Layout';
 
 import theme from './theme';
-import HomePage from './pages/HomePage';
-import ProjectsPage from './pages/ProjectsPage';
+
+import routes from './Routes';
 
 const App = () => {
     return (
@@ -12,12 +12,10 @@ const App = () => {
             <Router>
                 <Layout>
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/work" element={<ProjectsPage />} />
+                        {routes} {/* Utiliza el componente de rutas aquí */}
                     </Routes>
                 </Layout>
             </Router>
-
         </ChakraProvider>
     );
 };

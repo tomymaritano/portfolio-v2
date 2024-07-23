@@ -1,21 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import ProjectsPage from "./pages/ProjectsPage";
+// src/routes.js
+import React from 'react';
+import { Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProjectsPage from './pages/ProjectsPage';
 
+const routes = (
+  <>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/work" element={<ProjectsPage />} />
+    {/* Puedes agregar más rutas aquí */}
+  </>
+);
 
-
-
-const Routes = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/work" component={ProjectsPage} />
-
-      </Routes>
-    </Router>
-  );
-};
-
-export default Routes;
+export default routes;
