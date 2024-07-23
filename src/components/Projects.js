@@ -100,6 +100,7 @@ const Projects = () => {
                     <Box display={'flex'} justifyContent={'space-between'}>
                         <Heading fontFamily={'monospace'} as="h1" size="lg" mb={4} fontWeight={'400'} color={'white'}>DolarGaucho, Foundation</Heading>
                         <Heading fontFamily={'monospace'} as="h1" size="2xl" mb={4} fontWeight={'400'} color={'white'}>04</Heading>
+                        <Link href="www.dolargaucho.com.ar">View</Link>
                     </Box>
                 </Box>                         <Divider my={30} />
                  <Box>
