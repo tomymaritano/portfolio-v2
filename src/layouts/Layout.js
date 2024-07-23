@@ -1,13 +1,14 @@
+// Layout.js
 import React from 'react';
+import { Box } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Box } from '@chakra-ui/react';
 
 const Layout = ({ children }) => {
     return (
-        <Box minH="100vh" display="flex" flexDirection="column">
+        <Box minHeight="100vh" display="flex" flexDirection="column">
             <Navbar />
-            <Box flex="1" bg="transparent">
+            <Box flex="1" p="4">
                 {children}
             </Box>
             <Footer />
