@@ -19,8 +19,6 @@ const ProjectsPage = () => {
             The nature of most my work is confidential. But please reach out—I would be happy to tell their story.
           </Text>
       </Container>
-      <Box>
-      </Box>
       <Projects />
       <Github />
     </Box>
