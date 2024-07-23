@@ -33,7 +33,6 @@ const Navbar = () => {
                             <DrawerBody>
                                 <Link href="/" mb={4} display="block">Bio</Link>
                                 <Link href="/ProjectsPage" mb={4} display="block">Work</Link>
-                                <Link href="/Experience" display="block">Experience</Link>
                             </DrawerBody>
                         </DrawerContent>
                     </Drawer>
