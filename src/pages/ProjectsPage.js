@@ -32,9 +32,9 @@ const ProjectsPage = () => {
           </div>
           <div>
             <Flex direction={'column'} alignItems={'center'}>
-              <Text fontSize={'2xl'} as={'b'}>Project 2</Text>
-              <Text fontSize={'lg'}>Description of Project 2</Text>
-              <Link href="http://www.example.com" >View Project</Link>
+              <Text fontSize={'2xl'} as={'b'}>Unicoin Website</Text>
+              <Text fontSize={'lg'}>Crypto Token</Text>
+              <Link href="http://www.unicoin.com" >View Project</Link>
               <VideoComponent2 />
             </Flex>
           </div>
