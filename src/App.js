@@ -11,7 +11,6 @@ const App = () => {
         <ChakraProvider theme={theme}>
             <Router>
                 <Layout>
-
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/work" element={<ProjectsPage />} />
