@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Link as ChakraLink, Flex, IconButton, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Link, Image, useDisclosure } from '@chakra-ui/react';
+import { Box, Container, Link as ChakraLink, Flex, IconButton, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Image, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { Link as ReactRouterLink } from 'react-router-dom';
 

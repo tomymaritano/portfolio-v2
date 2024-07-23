@@ -8,6 +8,7 @@ const routes = (
   <>
     <Route path="/" element={<HomePage />} />
     <Route path="/work" element={<ProjectsPage />} />
+     {/* <Route path="*" element={<NoMatchPage />} />  Maneja cualquier ruta no definida */}
     {/* Puedes agregar más rutas aquí */}
   </>
 );
