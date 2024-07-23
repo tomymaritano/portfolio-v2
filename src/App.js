@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter , Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import Layout from './layouts/Layout';
 
@@ -9,14 +9,14 @@ import ProjectsPage from './pages/ProjectsPage';
 const App = () => {
     return (
         <ChakraProvider theme={theme}>
-            <Router>
+            <BrowserRouter>
                 <Layout>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/work" element={<ProjectsPage />} />
                     </Routes>
                 </Layout>
-            </Router>
+            </BrowserRouter>
 
         </ChakraProvider>
     );
