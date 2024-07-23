@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  Box, Container, Flex, Text, Image,
+  Box, Container, Flex, Text,
   Button
 } from "@chakra-ui/react";
 import Github from "../components/Github";
 import VideoComponent from "../components/VideoComponent";
-import Image1 from "../assets/ipad.png"
 import VideoComponent2 from "../components/VideoComponent2";
 
 
