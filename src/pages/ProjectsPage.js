@@ -1,70 +1,38 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { Box, Container, Flex, Text, Heading, Link } from '@chakra-ui/react';
-import VideoComponent from '../components/VideoComponent';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import VideoComponent2 from '../components/VideoComponent2';
+import React from "react";
+import {
+  Box, Container, Flex, Text, Image,
+  Button
+} from "@chakra-ui/react";
+import Github from "../components/Github";
+import VideoComponent from "../components/VideoComponent";
+import Image1 from "../assets/ipad.png"
+import VideoComponent2 from "../components/VideoComponent2";
+
 
 const ProjectsPage = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  };
 
   return (
     <Box>
       <Container maxW={'container.xl'} my={{ base: 5, md: 32 }}>
-        <Heading size={'2xl'} fontWeight={'500'} mb={10}>Some works</Heading>
-        <Slider {...settings}>
-          <div>
-            <Flex direction={'column'} alignItems={'center'}>
-              <Text fontSize={'2xl'} as={'b'}>Unicoin Dashboard</Text>
-              <Text fontSize={'lg'}>Investor's platform</Text>
-              <Link href="http://www.unicoin.com" >View Project</Link>
-              <VideoComponent />
-            </Flex>
-          </div>
-          <div>
-            <Flex direction={'column'} alignItems={'center'}>
-              <Text fontSize={'2xl'} as={'b'}>Unicoin Website</Text>
-              <Text fontSize={'lg'}>Crypto Token</Text>
-              <Link href="http://www.unicoin.com" >View Project</Link>
-              <VideoComponent2 />
-            </Flex>
-          </div>
-          {/* Replicate above div for more projects */}
-        </Slider>
+        <Flex display={'flex'} direction={'column'} gap={2}>
+          <Box bg={'customGray'} color={'customBackground'} p={4} borderRadius={'lg'}>
+            <Text fontSize={'2xl'} as={'b'}>Unicoin Dashboard</Text>
+            <Text fontSize={'lg'} pb={10}>Investors Platform</Text>
+            <VideoComponent />
+            <Button>View Project</Button>
+          </Box>
+          <Box bg={'customGray'} color={'customBackground'} p={4} borderRadius={'lg'}>
+            <Text fontSize={'2xl'} as={'b'}>Unicorn Hunters</Text>
+            <Text fontSize={'lg'} pb={10}>TV Show</Text>
+            <VideoComponent2 />
+            <Button>View Project</Button>
+          </Box>
+        </Flex>
+
       </Container>
+      <Github />
     </Box>
   );
 };
-
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    />
-  );
-}
 
 export default ProjectsPage;
