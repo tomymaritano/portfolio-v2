@@ -34,7 +34,7 @@ const Navbar = () => {
                             <DrawerHeader>Tomy Maritano</DrawerHeader>
                             <DrawerBody>
                                 <ChakraLink as={ReactRouterLink} to="/" mb={4} display="block">Bio</ChakraLink>
-                                <ChakraLink as={ReactRouterLink} to="/work" mb={4} display="block">Work</ChakraLink>
+                                <ChakraLink as={ReactRouterLink} to="/Work" mb={4} display="block">Work</ChakraLink>
                             </DrawerBody>
                         </DrawerContent>
                     </Drawer>
