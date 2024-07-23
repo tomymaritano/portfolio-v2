@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
-  Box, Heading, Tag, Wrap, WrapItem, Text, SimpleGrid, Select, HStack, Switch
+  Box, Heading, Tag, Wrap, WrapItem, Text, SimpleGrid, Select, HStack, Switch, Container,
+  Divider
 } from "@chakra-ui/react";
 
 const Github = () => {
@@ -34,64 +35,66 @@ const Github = () => {
   );
 
   return (
-<Box>
-<Heading pt={40} size="lg" as="h2" pb={4}>
-        Projects
-      </Heading>
+    <Box borderRadius={'xl'} bg={'customGray'}>
+      <Container color={'white'} maxW={'container.xl'} py={32}>
+        <Divider my={10} />
+     <Heading size={'2xl'} fontWeight={'500'} color={'customBackground'} pb={4}>
+          Coding
+        </Heading>
 
-      <HStack justifyContent="space-between" alignItems="center">
-        <HStack>
-          <Text>Forks</Text>
-          <Switch
+        <HStack justifyContent="space-between" alignItems="center">
+          <HStack>
+            <Text>Forks</Text>
+            <Switch
+              colorScheme="gray"
+              id="fork-switch"
+              isChecked={showForks}
+              onChange={handleShowForksChange}
+            />
+          </HStack>
+
+          <Select
+            onChange={handleTechChange}
+            size="sm"
             colorScheme="teal"
-            id="fork-switch"
-            isChecked={showForks}
-            onChange={handleShowForksChange}
-          />
+            borderRadius="md"
+            w="30%"
+          >
+            {allTechnologies.map(tech => (
+              <option key={tech} value={tech}>{tech}</option>
+            ))}
+          </Select>
         </HStack>
 
-        <Select
-          onChange={handleTechChange}
-          size="sm"
-          colorScheme="teal"
-          borderRadius="md"
-          w="30%"
-        >
-          {allTechnologies.map(tech => (
-            <option key={tech} value={tech}>{tech}</option>
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={5} mt={4}>
+          {filteredProjects.map((project, index) => (
+            <Box
+              key={index}
+              borderWidth="1px"
+              borderRadius="md"
+              p={4}
+              _hover={{ bg: "customGreen", borderColor: 'customGreen', color: 'customGray', transform: "translateY(-2px)", boxShadow: "lg" }}
+            >
+              <Heading size="sm" pb={2}>
+                <a href={project.html_url} target="_blank" rel="noopener noreferrer">
+                  {project.name}
+                </a>
+              </Heading>
+              <Text fontSize="sm">{project.description}</Text>
+              <Wrap mt={2}>
+                {project.technologies.map((tech, techIndex) => (
+                  <WrapItem key={techIndex}>
+                    <Tag size="sm" bg="customBeige">
+                      {tech}
+                    </Tag>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Box>
           ))}
-        </Select>
-      </HStack>
-
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={5} mt={4}>
-        {filteredProjects.map((project, index) => (
-          <Box
-            key={index}
-            borderWidth="1px"
-            borderRadius="md"
-            p={4}
-            _hover={{ bg: "gray.50", transform: "translateY(-2px)", boxShadow: "lg" }}
-          >
-            <Heading size="sm" pb={2}>
-              <a href={project.html_url} target="_blank" rel="noopener noreferrer">
-                {project.name}
-              </a>
-            </Heading>
-            <Text fontSize="sm">{project.description}</Text>
-            <Wrap mt={2}>
-              {project.technologies.map((tech, techIndex) => (
-                <WrapItem key={techIndex}>
-                  <Tag size="sm" bg="customBeige">
-                    {tech}
-                  </Tag>
-                </WrapItem>
-              ))}
-            </Wrap>
-          </Box>
-        ))}
-      </SimpleGrid>
-</Box>
-
+        </SimpleGrid>
+      </Container>
+    </Box>
 
   );
 };

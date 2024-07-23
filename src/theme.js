@@ -12,7 +12,7 @@ const theme = extendTheme({
     }
   },
     colors: {
-    customGreen: '#bafcab', // Nombre clave del color personalizado
+    customGreen: '#bafaab', // Nombre clave del color personalizado
     customBeige: '#d1ccb8',
     customGray: '#232323',
     customBackground: '#9B9BAA',
