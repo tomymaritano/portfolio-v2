@@ -20,8 +20,8 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects }: ProjectsProps) {
-  // Show only featured projects (first 3)
-  const featuredProjects = projects.slice(0, 3);
+  // Show only featured projects (first 2)
+  const featuredProjects = projects.slice(0, 2);
 
   return (
     <section className={styles.projects} id="projects">
@@ -45,7 +45,7 @@ export function Projects({ projects }: ProjectsProps) {
           ))}
         </div>
 
-        {projects.length > 3 && (
+        {projects.length > 2 && (
           <motion.div
             className={styles.viewAll}
             initial={{ opacity: 0 }}
