@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BentoGrid } from "./BentoGrid";
 import styles from "./About.module.css";
 
 const techStack = [
@@ -15,74 +14,91 @@ const techStack = [
   { name: "Framer", category: "design" },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
 };
 
 export function About() {
   return (
     <section className={styles.about} id="about">
-      <motion.div
-        className={styles.container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <motion.span className={styles.label} variants={itemVariants}>
+      <div className={styles.container}>
+        <motion.span
+          className={styles.label}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUp}
+        >
           About
         </motion.span>
 
-        <motion.div className={styles.content} variants={itemVariants}>
-          <p className={styles.bio}>
+        <div className={styles.content}>
+          <motion.p
+            className={styles.bio}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUp}
+          >
             Product Engineer with 7+ years building digital products across
             <strong> Argentina</strong>, <strong>Denmark</strong>, <strong>Andorra</strong>,
             and <strong>the US</strong>. I&apos;ve led UX teams, managed products, and shipped
             code in fintech, e-commerce, and operations.
-          </p>
+          </motion.p>
 
-          <p className={styles.bio}>
+          <motion.p
+            className={styles.bio}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUp}
+          >
             I work best in the ambiguous space between &quot;idea&quot; and &quot;shipped product&quot;.
             I design interfaces, write code, and make decisions when there&apos;s no playbook.
-          </p>
+          </motion.p>
 
-          <p className={styles.bioMuted}>
+          <motion.p
+            className={styles.bioMuted}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeUp}
+          >
             Currently building tools that help people navigate complex financial systems.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
-        <motion.div className={styles.bentoWrapper} variants={itemVariants}>
-          <BentoGrid />
-        </motion.div>
-
-        <motion.div className={styles.stack} variants={itemVariants}>
+        <motion.div
+          className={styles.stack}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUp}
+        >
           <span className={styles.stackLabel}>Tech I use</span>
           <div className={styles.stackGrid}>
-            {techStack.map((tech) => (
+            {techStack.map((tech, index) => (
               <motion.span
                 key={tech.name}
                 className={styles.techBadge}
                 data-category={tech.category}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
               >
                 {tech.name}
               </motion.span>
             ))}
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

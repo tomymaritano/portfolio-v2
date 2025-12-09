@@ -14,9 +14,10 @@ interface Post {
 
 interface BlogSearchProps {
   posts: Post[];
+  onSearchChange?: (hasResults: boolean, results: Post[]) => void;
 }
 
-export function BlogSearch({ posts }: BlogSearchProps) {
+export function BlogSearch({ posts, onSearchChange }: BlogSearchProps) {
   const [query, setQuery] = useState("");
 
   const fuse = useMemo(
@@ -30,9 +31,11 @@ export function BlogSearch({ posts }: BlogSearchProps) {
   );
 
   const results = useMemo(() => {
-    if (!query.trim()) return posts;
+    if (!query.trim()) return [];
     return fuse.search(query).map((result) => result.item);
-  }, [query, fuse, posts]);
+  }, [query, fuse]);
+
+  const isSearching = query.trim().length > 0;
 
   return (
     <div className={styles.container}>
@@ -70,35 +73,39 @@ export function BlogSearch({ posts }: BlogSearchProps) {
         )}
       </div>
 
-      {query && (
-        <div className={styles.results}>
-          {results.length === 0 ? (
-            <p className={styles.noResults}>No posts found for "{query}"</p>
-          ) : (
-            <p className={styles.count}>
-              {results.length} {results.length === 1 ? "post" : "posts"} found
-            </p>
-          )}
-        </div>
-      )}
-
-      <div className={styles.posts}>
-        {results.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.post}>
-            <h3 className={styles.postTitle}>{post.title}</h3>
-            <p className={styles.postDescription}>{post.description}</p>
-            {post.tags.length > 0 && (
-              <div className={styles.tags}>
-                {post.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
+      {isSearching && (
+        <>
+          <div className={styles.results}>
+            {results.length === 0 ? (
+              <p className={styles.noResults}>No posts found for &quot;{query}&quot;</p>
+            ) : (
+              <p className={styles.count}>
+                {results.length} {results.length === 1 ? "post" : "posts"} found
+              </p>
             )}
-          </Link>
-        ))}
-      </div>
+          </div>
+
+          {results.length > 0 && (
+            <div className={styles.posts}>
+              {results.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.post}>
+                  <h3 className={styles.postTitle}>{post.title}</h3>
+                  <p className={styles.postDescription}>{post.description}</p>
+                  {post.tags.length > 0 && (
+                    <div className={styles.tags}>
+                      {post.tags.map((tag) => (
+                        <span key={tag} className={styles.tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </Link>
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
