@@ -1,48 +1,114 @@
 ---
 slug: lego-store
-name: Lego Store
-tagline: E-commerce demo for building block collectibles
-status: learning
+name: LEGO Store Template
+tagline: Production-ready e-commerce template for marketplace sales
+status: live
 topics:
   - e-commerce
+  - template
   - next-js
-  - vercel
-complexity: beginner
+complexity: advanced
 image: /images/projects/lego-store.png
 links:
   demo: https://lego-store-b94rn1d0s-indiehacklab.vercel.app/
 ---
 
-## The Project
+## The Product
 
-A demo e-commerce application for LEGO products, built as a learning project to explore modern e-commerce patterns and deployment workflows.
+A complete, production-ready e-commerce template built to sell on marketplaces like Gumroad, Lemon Squeezy, or ThemeForest. Uses LEGO as the demo theme, but 100% customizable for any niche.
+
+**Target price:** $49-99 USD (Standard vs Extended with support)
 
 ## My Role
 
-**Developer** — Built the complete application:
+**Creator & Developer** — Built the entire template:
 
-- **Frontend Development** — Product catalog and cart functionality
-- **UI/UX** — Clean shopping experience for collectibles
-- **Deployment** — Vercel hosting and CI/CD setup
+- **Product Strategy** — Designed for marketplace sales
+- **Architecture** — Scalable, customizable e-commerce foundation
+- **Development** — Full implementation with 48+ tests
+- **Documentation** — Ready for buyers to customize
+
+## Features
+
+| Category | Functionality |
+|----------|---------------|
+| **E-commerce** | Catalog, cart, wishlist, comparator, checkout, search |
+| **UX/UI** | Dark mode, animations, responsive, skeletons, toasts |
+| **SEO** | Dynamic meta tags, Open Graph, 100% score |
+| **Testing** | 48 unit tests, E2E with Playwright, Storybook |
+| **i18n** | Spanish + English included |
 
 ## Technical Stack
 
 | Layer | Technology |
 |-------|------------|
-| Framework | Next.js |
-| Hosting | Vercel |
-| Styling | Modern CSS |
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript (strict mode) |
+| Styling | Tailwind CSS + Design Tokens |
+| State | Zustand |
+| Animations | Framer Motion |
+| Forms | React Hook Form + Zod |
+| Testing | Vitest + Playwright + Storybook |
 
-## Purpose
+## Lighthouse Scores
 
-This project served as a hands-on exploration of:
+| Performance | Accessibility | Best Practices | SEO |
+|-------------|---------------|----------------|-----|
+| 87 | 79 | 96 | **100** |
 
-1. **E-commerce Fundamentals** — Product listings, cart state, checkout flows
-2. **Next.js Patterns** — Server components, routing, data fetching
-3. **Vercel Deployment** — Preview deployments, edge functions
+## Project Structure
+
+```
+src/
+├── app/           # Pages (home, cart, checkout, item, search...)
+├── components/    # Reusable UI + product components
+├── stores/        # Zustand (cart, wishlist, theme, reviews...)
+├── lib/           # Utils, API layer, validations
+├── hooks/         # Custom hooks (debounce, hydration, infinite scroll)
+└── i18n/          # ES/EN translations
+```
+
+## Key Decisions
+
+### Zustand over Redux
+
+**Decision:** Zustand for state management.
+
+**Reasoning:**
+- Simpler API, less boilerplate
+- Better TypeScript integration
+- Smaller bundle size
+- Perfect for e-commerce state (cart, wishlist, theme)
+
+### Design Tokens
+
+**Decision:** Custom design token system over raw Tailwind.
+
+**Reasoning:**
+- Easy theming for buyers
+- Consistent spacing, colors, typography
+- One config file to customize entire look
+
+### Comprehensive Testing
+
+**Decision:** 48+ unit tests + E2E + Storybook.
+
+**Reasoning:**
+- Buyers expect quality
+- Tests document expected behavior
+- Storybook serves as component documentation
+
+## What Makes It Sellable
+
+1. **Complete** — Not a starter, a finished product
+2. **Tested** — 48+ tests prove reliability
+3. **Documented** — Buyers can customize easily
+4. **Performant** — Lighthouse 100 SEO, 87+ performance
+5. **Modern Stack** — Next.js 14, TypeScript, latest practices
 
 ## What I Learned
 
-- **E-commerce state management** — Cart persistence and synchronization challenges
-- **Product catalog design** — Filtering, sorting, and search UX patterns
-- **Deployment workflows** — Vercel's preview deployments for rapid iteration
+- **Templates are products** — Quality bar is higher than personal projects
+- **Testing sells** — Buyers trust tested code
+- **Documentation is UX** — How easily can someone customize this?
+- **Lighthouse matters** — Scores are marketing material
