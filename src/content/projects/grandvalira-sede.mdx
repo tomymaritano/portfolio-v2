@@ -1,0 +1,126 @@
+---
+slug: grandvalira-sede
+name: Grandvalira Sede
+tagline: Internal employee directory platform with role-based access control
+status: live
+topics:
+  - intranet
+  - fullstack
+  - rbac
+complexity: advanced
+image: /images/projects/grandvalira-sede.png
+links: {}
+---
+
+## The Problem
+
+Managing employee information across an organization requires secure access controls. Different roles need different permissions: regular employees browse, moderators edit, admins manage the system.
+
+## My Role
+
+**Fullstack Developer** — Built the complete platform:
+
+- **Architecture Design** — Structured the RBAC system and API layer
+- **Frontend Development** — Next.js App Router with React 19
+- **Backend Development** — Express API with Prisma ORM
+- **Auth System** — Custom JWT implementation with embedded roles
+- **Testing** — Comprehensive test coverage frontend and backend
+
+## The Solution
+
+A secure internal platform for employee directory management:
+
+1. **Employee Directory** — Searchable, filterable employee profiles
+2. **Role-Based Access** — USER, MODERATOR, ADMIN permission levels
+3. **Custom Auth** — JWT tokens with embedded role claims
+4. **CRUD Operations** — Create, read, update, delete based on permissions
+5. **Security First** — CORS control, JWT verification, RBAC enforcement
+
+## Technical Architecture
+
+### Frontend
+
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js App Router |
+| UI | React 19 + Tailwind CSS |
+| Testing | Vitest + React Testing Library |
+
+### Backend
+
+| Layer | Technology |
+|-------|------------|
+| Runtime | Node.js |
+| Framework | Express |
+| ORM | Prisma |
+| Database | PostgreSQL |
+| Testing | Jest + Supertest |
+
+### Security
+
+| Feature | Implementation |
+|---------|---------------|
+| Authentication | Custom JWT |
+| Authorization | RBAC (Role-Based Access Control) |
+| API Security | CORS control |
+| Token Verification | Middleware-based JWT validation |
+
+## Role System
+
+```
+USER        → Read access to directory
+MODERATOR   → Read + Edit employee profiles
+ADMIN       → Full access + User management
+```
+
+## Key Decisions
+
+### Custom JWT vs Auth Library
+
+**Decision:** Built custom JWT auth instead of using NextAuth or similar.
+
+**Reasoning:**
+- Full control over token structure
+- Roles embedded directly in token payload
+- Simpler integration with Express backend
+- No external dependencies for critical security layer
+
+### Prisma for ORM
+
+**Decision:** Prisma over raw SQL or other ORMs.
+
+**Reasoning:**
+- Type-safe database queries
+- Easy migrations and schema management
+- Great developer experience with auto-completion
+- Works seamlessly with PostgreSQL
+
+### Separate Frontend/Backend
+
+**Decision:** Next.js frontend + Express backend instead of Next.js API routes.
+
+**Reasoning:**
+- Clear separation of concerns
+- Backend can be deployed/scaled independently
+- Express provides more flexibility for middleware and auth
+- Easier to test each layer in isolation
+
+## Testing Strategy
+
+**Frontend:**
+- Component tests with React Testing Library
+- Unit tests with Vitest
+- Focus on user interactions and accessibility
+
+**Backend:**
+- API integration tests with Supertest
+- Unit tests with Jest
+- Auth flow verification
+- RBAC permission tests
+
+## What I Learned
+
+- **RBAC requires careful planning** — Permission hierarchies need to be defined upfront; retrofitting is painful
+- **JWT trade-offs** — Stateless auth is convenient but token revocation requires additional infrastructure
+- **Test both layers** — Frontend and backend tests catch different categories of bugs
+- **React 19 improvements** — New features simplify data fetching and state management patterns
