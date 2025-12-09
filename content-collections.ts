@@ -9,6 +9,7 @@ const projectSchema = z.object({
   status: z.enum(["live", "archived", "learning"]),
   topics: z.array(z.string()),
   complexity: z.enum(["foundational", "intermediate", "advanced"]),
+  image: z.string().optional(),
 });
 
 const postSchema = z.object({

@@ -11,6 +11,8 @@ interface Project {
   tagline: string;
   status: "live" | "archived" | "learning";
   topics: string[];
+  complexity: "foundational" | "intermediate" | "advanced";
+  image?: string;
 }
 
 interface ProjectsProps {
@@ -18,8 +20,8 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects }: ProjectsProps) {
-  // Show only featured projects (first 4)
-  const featuredProjects = projects.slice(0, 4);
+  // Show only featured projects (first 3)
+  const featuredProjects = projects.slice(0, 3);
 
   return (
     <section className={styles.projects} id="projects">
@@ -39,11 +41,11 @@ export function Projects({ projects }: ProjectsProps) {
 
         <div className={styles.grid}>
           {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+            <ProjectCard key={project.slug} project={project} priority={index === 0} />
           ))}
         </div>
 
-        {projects.length > 4 && (
+        {projects.length > 3 && (
           <motion.div
             className={styles.viewAll}
             initial={{ opacity: 0 }}
