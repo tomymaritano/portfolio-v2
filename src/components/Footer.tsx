@@ -45,7 +45,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Navigate</h4>
+            <span className={styles.columnTitle}>Navigate</span>
             <ul className={styles.list}>
               {footerLinks.navigation.map((link) => (
                 <li key={link.href}>
@@ -59,7 +59,7 @@ export function Footer() {
 
           {/* More */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>More</h4>
+            <span className={styles.columnTitle}>More</span>
             <ul className={styles.list}>
               {footerLinks.more.map((link) => (
                 <li key={link.href}>
@@ -73,7 +73,7 @@ export function Footer() {
 
           {/* Social */}
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Connect</h4>
+            <span className={styles.columnTitle}>Connect</span>
             <ul className={styles.list}>
               {footerLinks.social.map((link) => (
                 <li key={link.href}>

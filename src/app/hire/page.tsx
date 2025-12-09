@@ -1,4 +1,5 @@
 import { PageLayout, PageHeader } from "@/components/PageLayout";
+import { siteConfig } from "@/config/site";
 import styles from "./page.module.css";
 
 interface Reason {
@@ -83,13 +84,13 @@ export default function HirePage() {
         </p>
         <div className={styles.ctaLinks}>
           <a
-            href="mailto:hello@example.com"
+            href={`mailto:${siteConfig.email}`}
             className={styles.primaryCta}
           >
             Get in touch
           </a>
           <a
-            href="https://linkedin.com"
+            href={siteConfig.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondaryCta}
@@ -97,7 +98,7 @@ export default function HirePage() {
             LinkedIn
           </a>
           <a
-            href="https://github.com"
+            href={siteConfig.social.github}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondaryCta}

@@ -153,3 +153,104 @@ export const easings = {
   easeOutQuart: [0.25, 1, 0.5, 1],
   easeInOutQuint: [0.83, 0, 0.17, 1],
 } as const;
+
+// Slide up and fade
+export const slideUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+// Reveal from below with rotation
+export const revealRotate: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    rotate: 3,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+// Pulse animation for emphasis
+export const pulse: Variants = {
+  rest: { scale: 1 },
+  hover: {
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut",
+    },
+  },
+};
+
+// Shimmer effect for loading states
+export const shimmer: Variants = {
+  animate: {
+    backgroundPosition: ["200% 0", "-200% 0"],
+    transition: {
+      duration: 1.5,
+      ease: "linear",
+      repeat: Infinity,
+    },
+  },
+};
+
+// Bouncy entrance
+export const bouncyEntrance: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 15,
+    },
+  },
+};
+
+// Text reveal character by character
+export const textRevealContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.03,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+export const textRevealChar: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};

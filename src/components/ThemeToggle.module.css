@@ -1,7 +1,7 @@
 .toggle {
   position: fixed;
   top: var(--space-4);
-  right: var(--space-4);
+  right: calc(var(--space-6) + 48px);
   z-index: 100;
   width: 40px;
   height: 40px;
@@ -15,6 +15,12 @@
   align-items: center;
   justify-content: center;
   transition: background 150ms ease, border-color 150ms ease;
+}
+
+@media (min-width: 769px) {
+  .toggle {
+    right: var(--space-6);
+  }
 }
 
 .toggle:hover {

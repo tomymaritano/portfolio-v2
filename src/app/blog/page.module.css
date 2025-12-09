@@ -74,6 +74,13 @@
   color: var(--accent);
 }
 
+.empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--space-12) 0;
+  font-size: 0.9375rem;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .main {

@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { CommandPalette } from "@/components/CommandPalette";
-import { NowPlaying } from "@/components/NowPlaying";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { CursorEffect } from "@/components/CursorEffect";
-import { EasterEggs } from "@/components/EasterEggs";
 import { I18nProvider } from "@/lib/i18n/context";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
+
+// Dynamic imports for non-critical components (code splitting)
+const CommandPalette = dynamic(() => import("@/components/CommandPalette").then(mod => mod.CommandPalette));
+const NowPlaying = dynamic(() => import("@/components/NowPlaying").then(mod => mod.NowPlaying));
+const CursorEffect = dynamic(() => import("@/components/CursorEffect").then(mod => mod.CursorEffect));
+const EasterEggs = dynamic(() => import("@/components/EasterEggs").then(mod => mod.EasterEggs));
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.meta.domain),
@@ -77,6 +80,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

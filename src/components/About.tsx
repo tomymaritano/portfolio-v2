@@ -66,7 +66,7 @@ export function About() {
   return (
     <section ref={containerRef} className={styles.about} id="about">
       <div className={styles.container}>
-        <motion.span
+        <motion.h2
           className={styles.label}
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +74,7 @@ export function About() {
           transition={{ duration: 0.5 }}
         >
           About
-        </motion.span>
+        </motion.h2>
 
         <div className={styles.content}>
           <ScrollParagraph

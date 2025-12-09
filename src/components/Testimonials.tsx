@@ -23,7 +23,7 @@ export function Testimonials() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className={styles.label}>What others say</span>
+        <h2 className={styles.label}>What others say</h2>
 
         <div className={styles.testimonials}>
           {testimonials.map((testimonial, index) => (

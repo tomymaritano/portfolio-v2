@@ -16,14 +16,14 @@ export const siteConfig = {
   location: "Buenos Aires, Argentina",
 
   // Contact
-  email: "tomas@maritano.dev",
-  calendly: "https://calendly.com/tomasmaritano/intro",
+  email: "tomymaritano@gmail.com",
+  calendly: "https://calendly.com/tomymaritano/intro",
 
   // Social Links
   social: {
-    github: "https://github.com/tomasmaritano",
-    linkedin: "https://linkedin.com/in/tomasmaritano",
-    twitter: "https://x.com/tomasmaritano",
+    github: "https://github.com/tomymaritano",
+    linkedin: "https://linkedin.com/in/tomymaritano",
+    twitter: "https://x.com/tomymaritano",
   },
 
   // Site Meta
@@ -50,7 +50,7 @@ export const siteConfig = {
 
   // Hero Section
   hero: {
-    photo: "/images/profile.jpg",
+    photo: "/images/profile.png",
     badge: "Available for work",
     ctas: {
       primary: {
@@ -77,9 +77,9 @@ export const siteConfig = {
   footer: {
     copyright: "All rights reserved.",
     links: [
-      { label: "GitHub", href: "https://github.com/tomasmaritano" },
-      { label: "LinkedIn", href: "https://linkedin.com/in/tomasmaritano" },
-      { label: "Twitter", href: "https://x.com/tomasmaritano" },
+      { label: "GitHub", href: "https://github.com/tomymaritano" },
+      { label: "LinkedIn", href: "https://linkedin.com/in/tomymaritano" },
+      { label: "Twitter", href: "https://x.com/tomymaritano" },
     ],
   },
 } as const;

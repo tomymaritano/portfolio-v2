@@ -1,49 +1,93 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import styles from "./Experience.module.css";
 import experienceData from "../content/experience.json";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 },
+const jobVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+    filter: "blur(4px)"
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: "easeOut" }
+  },
+};
+
+const dotVariants: Variants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 300, damping: 20 }
+  },
+};
+
+const lineVariants: Variants = {
+  hidden: { scaleY: 0, opacity: 0 },
+  visible: {
+    scaleY: 1,
+    opacity: 1,
+    transition: { duration: 0.4, delay: 0.2, ease: "easeOut" }
+  },
+};
+
+const highlightsContainerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } }
+};
+
+const highlightVariants: Variants = {
+  hidden: { opacity: 0, y: -8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2, ease: "easeOut" }
+  }
 };
 
 export function Experience() {
   return (
     <section className={styles.experience} id="experience">
-      <motion.div
-        className={styles.container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <motion.span className={styles.label} variants={itemVariants}>
+      <div className={styles.container}>
+        <motion.h2
+          className={styles.label}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={headerVariants}
+        >
           Experience
-        </motion.span>
+        </motion.h2>
 
         <div className={styles.timeline}>
           {experienceData.map((job, index) => (
             <motion.article
               key={`${job.company}-${job.period}`}
               className={styles.job}
-              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              variants={jobVariants}
+              transition={{ delay: index * 0.1 }}
             >
               <div className={styles.timelineMarker}>
-                <div className={styles.dot} />
+                <motion.div className={styles.dot} variants={dotVariants} />
                 {index < experienceData.length - 1 && (
-                  <div className={styles.line} />
+                  <motion.div className={styles.line} variants={lineVariants} style={{ originY: 0 }} />
                 )}
               </div>
 
@@ -65,18 +109,18 @@ export function Experience() {
                   )}
                 </div>
 
-                <ul className={styles.highlights}>
+                <motion.ul className={styles.highlights} variants={highlightsContainerVariants}>
                   {job.highlights.map((highlight, hIndex) => (
-                    <li key={hIndex} className={styles.highlight}>
+                    <motion.li key={hIndex} className={styles.highlight} variants={highlightVariants}>
                       {highlight}
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </div>
             </motion.article>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

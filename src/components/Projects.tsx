@@ -33,7 +33,7 @@ export function Projects({ projects }: ProjectsProps) {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <span className={styles.label}>Featured Work</span>
+          <h2 className={styles.label}>Featured Work</h2>
           <p className={styles.description}>
             Projects I&apos;ve built from concept to production
           </p>
@@ -41,7 +41,7 @@ export function Projects({ projects }: ProjectsProps) {
 
         <div className={styles.grid}>
           {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} priority={index === 0} />
+            <ProjectCard key={project.slug} project={project} priority={index === 0} index={index} />
           ))}
         </div>
 
