@@ -17,49 +17,92 @@
   z-index: 0;
 }
 
+/* Message Bubbles - iMessage Style */
 .messageBubble {
   position: absolute;
-  padding: var(--space-2) var(--space-4);
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 450;
+  white-space: nowrap;
+  border-radius: 18px;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Sent messages - Blue (right aligned in real iMessage) */
+.sent {
+  background: #007AFF;
+  color: white;
+  box-shadow: 0 2px 12px rgba(0, 122, 255, 0.25);
+}
+
+/* Bubble tail for sent */
+.sent::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  background: #007AFF;
+  border-bottom-left-radius: 16px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+/* Received messages - Gray */
+.received {
+  background: var(--surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+/* Bubble tail for received */
+.received::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 12px;
+  height: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
+  border-top: none;
+  border-right: none;
+  border-bottom-right-radius: 16px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
-/* Message positions */
-.topleft {
-  top: 15%;
-  left: 8%;
-}
+/* Message positions - 20 positions spread around hero */
+/* Top row */
+.pos1 { top: 8%; left: 3%; }
+.pos2 { top: 5%; left: 18%; }
+.pos3 { top: 10%; right: 22%; }
+.pos4 { top: 6%; right: 4%; }
 
-.topright {
-  top: 20%;
-  right: 10%;
-}
+/* Upper middle */
+.pos5 { top: 22%; left: 5%; }
+.pos6 { top: 25%; right: 6%; }
+.pos7 { top: 32%; left: 2%; }
+.pos8 { top: 35%; right: 3%; }
 
-.middleleft {
-  top: 45%;
-  left: 5%;
-}
+/* Middle */
+.pos9 { top: 45%; left: 4%; }
+.pos10 { top: 48%; right: 5%; }
+.pos11 { top: 55%; left: 6%; }
+.pos12 { top: 52%; right: 4%; }
 
-.middleright {
-  top: 50%;
-  right: 6%;
-}
+/* Lower middle */
+.pos13 { top: 65%; left: 3%; }
+.pos14 { top: 68%; right: 6%; }
+.pos15 { top: 75%; left: 5%; }
+.pos16 { top: 72%; right: 3%; }
 
-.bottomleft {
-  bottom: 25%;
-  left: 12%;
-}
-
-.bottomright {
-  bottom: 20%;
-  right: 8%;
-}
+/* Bottom row */
+.pos17 { bottom: 18%; left: 4%; }
+.pos18 { bottom: 15%; right: 5%; }
+.pos19 { bottom: 8%; left: 6%; }
+.pos20 { bottom: 5%; right: 4%; }
 
 @media (max-width: 768px) {
   .floatingMessages {
