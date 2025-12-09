@@ -48,6 +48,8 @@
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.03em;
+  min-width: 95px; /* Fixed width to prevent layout shift during typing animation */
+  display: inline-block;
 }
 
 .logoDot {
