@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { getInitials } from "@/lib/utils";
 import styles from "./Footer.module.css";
 
 const footerLinks = {
@@ -35,8 +34,12 @@ export function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoIcon}>{getInitials(siteConfig.name)}</span>
-              <span className={styles.logoText}>{siteConfig.name}</span>
+              <span className={styles.logoText}>
+                <span className={styles.glitchText} data-text={siteConfig.firstName.toLowerCase()}>
+                  {siteConfig.firstName.toLowerCase()}
+                </span>
+                <span className={styles.logoDot}>.</span>
+              </span>
             </Link>
             <p className={styles.tagline}>
               {siteConfig.role} building digital products from 0 to 1.

@@ -47,29 +47,86 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
   color: var(--text);
   margin-bottom: var(--space-4);
+  transition: opacity 0.2s;
 }
 
-.logoIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: white;
+.logo:hover {
+  opacity: 0.7;
 }
 
 .logoText {
-  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
+  position: relative;
+}
+
+.logoDot {
+  color: var(--accent);
+}
+
+/* Glitch Effect */
+.glitchText {
+  position: relative;
+  display: inline-block;
+}
+
+.logo:hover .glitchText {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.glitchText::before,
+.glitchText::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.logo:hover .glitchText::before {
+  animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  color: var(--accent);
+  z-index: -1;
+}
+
+.logo:hover .glitchText::after {
+  animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  color: var(--cyan);
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-1 {
+  0% { opacity: 0; transform: translate(0); }
+  20% { opacity: 0.8; transform: translate(2px, -1px); }
+  40% { opacity: 0.8; transform: translate(-2px, 1px); }
+  60% { opacity: 0.8; transform: translate(1px, -2px); }
+  80% { opacity: 0.8; transform: translate(-1px, 2px); }
+  100% { opacity: 0; transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+  0% { opacity: 0; transform: translate(0); }
+  20% { opacity: 0.8; transform: translate(-2px, 1px); }
+  40% { opacity: 0.8; transform: translate(2px, -1px); }
+  60% { opacity: 0.8; transform: translate(-1px, 2px); }
+  80% { opacity: 0.8; transform: translate(1px, -2px); }
+  100% { opacity: 0; transform: translate(0); }
 }
 
 .tagline {
