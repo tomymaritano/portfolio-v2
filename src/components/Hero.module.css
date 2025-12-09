@@ -24,24 +24,11 @@
 
 .photoRing {
   position: absolute;
-  inset: -8px;
+  inset: -4px;
   border-radius: var(--radius-full);
-  background: conic-gradient(
-    from 0deg,
-    var(--accent),
-    var(--cyan),
-    var(--accent)
-  );
-  animation: spin 4s linear infinite;
-  opacity: 0.6;
-}
-
-.photoRing::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  border-radius: var(--radius-full);
-  background: var(--bg);
+  border: 2px dashed var(--accent);
+  opacity: 0.4;
+  animation: spin 20s linear infinite;
 }
 
 @keyframes spin {
@@ -56,13 +43,18 @@
   height: 120px;
   border-radius: var(--radius-full);
   object-fit: cover;
-  border: 2px solid var(--bg);
+  border: 1px solid var(--border);
   z-index: 1;
+  transition: border-color 200ms ease;
+}
+
+.photoWrapper:hover .photo {
+  border-color: var(--accent);
 }
 
 .photoWrapper:hover .photoRing {
-  opacity: 1;
-  animation-duration: 2s;
+  opacity: 0.8;
+  animation-duration: 8s;
 }
 
 /* Intro */
