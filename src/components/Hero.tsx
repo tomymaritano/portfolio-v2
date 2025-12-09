@@ -23,15 +23,21 @@ export function Hero() {
       <motion.div
         className={styles.content}
         style={{ y, opacity }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
       >
+        {/* Photo with animated ring */}
         <motion.div
           className={styles.photoWrapper}
-          whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 0.2
+          }}
+          whileHover={{ scale: 1.05 }}
         >
+          <div className={styles.photoRing} />
           <Image
             src={siteConfig.hero.photo}
             alt={siteConfig.name}
@@ -43,51 +49,68 @@ export function Hero() {
         </motion.div>
 
         <div className={styles.intro}>
-          <h1 className={styles.name}>
-            <TextReveal text={siteConfig.name} delay={0.2} />
-          </h1>
-
-          <motion.p
-            className={styles.role}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+          <motion.h1
+            className={styles.name}
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
           >
-            {siteConfig.role}
-          </motion.p>
+            {siteConfig.name}
+          </motion.h1>
+
+          <motion.div
+            className={styles.roleWrapper}
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+          >
+            <span className={styles.role}>{siteConfig.role}</span>
+            <motion.span
+              className={styles.roleLine}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1.1, duration: 0.4 }}
+            />
+          </motion.div>
 
           <motion.p
             className={styles.tagline}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
           >
             {siteConfig.tagline}
             <br />
-            <span className={styles.taglineAccent}>
+            <motion.span
+              className={styles.taglineAccent}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3, duration: 0.5 }}
+            >
               {siteConfig.taglineAccent}
-            </span>
+            </motion.span>
           </motion.p>
 
           <motion.div
             className={styles.ctas}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
+            transition={{ delay: 1.4, duration: 0.5 }}
           >
             <motion.a
               href={siteConfig.hero.ctas.primary.href}
               className={styles.ctaPrimary}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05, x: 5 }}
+              whileTap={{ scale: 0.95 }}
             >
               {siteConfig.hero.ctas.primary.label}
+              <span className={styles.ctaArrow}>→</span>
             </motion.a>
             <motion.a
               href={siteConfig.hero.ctas.secondary.href}
               className={styles.ctaSecondary}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {siteConfig.hero.ctas.secondary.label}
             </motion.a>
