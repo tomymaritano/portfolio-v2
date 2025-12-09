@@ -1,0 +1,139 @@
+/* Sections */
+.section {
+  margin-bottom: var(--space-10);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+/* Focus */
+.focusText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* List Items */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: border-color 150ms ease;
+}
+
+.listItem:hover {
+  border-color: var(--border-hover);
+}
+
+.itemName {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.itemDescription {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Reading Card */
+.readingCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.readingCard:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
+.bookTitle {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.bookAuthor {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Location */
+.locationText {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Footer */
+.footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.updated {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin: 0;
+}
+
+.updated time {
+  color: var(--text-muted);
+}
+
+.aboutNow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.aboutNow:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
