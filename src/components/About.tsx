@@ -66,15 +66,15 @@ export function About() {
   return (
     <section ref={containerRef} className={styles.about} id="about">
       <div className={styles.container}>
-        <motion.h2
+        <motion.span
           className={styles.label}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           About
-        </motion.h2>
+        </motion.span>
 
         <div className={styles.content}>
           <ScrollParagraph
@@ -98,10 +98,10 @@ export function About() {
 
         <motion.div
           className={styles.stack}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className={styles.stackLabel}>Tech I use</span>
           <div className={styles.stackGrid}>
@@ -110,17 +110,19 @@ export function About() {
                 key={tech.name}
                 className={styles.techBadge}
                 data-category={tech.category}
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: -30, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{
-                  delay: index * 0.06,
+                  delay: index * 0.08,
                   duration: 0.4,
-                  type: "spring" as const,
+                  type: "spring",
                   stiffness: 200,
+                  damping: 15,
                 }}
                 whileHover={{
-                  scale: 1.08,
+                  scale: 1.1,
+                  y: -4,
                   backgroundColor: "var(--accent-muted)",
                 }}
               >

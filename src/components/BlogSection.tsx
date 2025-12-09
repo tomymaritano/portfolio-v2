@@ -21,28 +21,42 @@ export function BlogSection({ posts }: BlogSectionProps) {
 
   return (
     <section className={styles.section} id="blog">
-      <motion.div
-        className={styles.container}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className={styles.header}>
+      <div className={styles.container}>
+        <motion.header
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <span className={styles.label}>Blog</span>
-          <h2 className={styles.title}>Recent thoughts</h2>
-        </div>
+          <p className={styles.title}>Recent thoughts</p>
+        </motion.header>
 
         <div className={styles.posts}>
           {latestPosts.map((post, index) => (
             <motion.article
               key={post.slug}
               className={styles.post}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ x: 4 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+                filter: "blur(4px)"
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                filter: "blur(0px)"
+              }}
+              whileHover={{ x: 8, scale: 1.02 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{
+                delay: index * 0.12,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
             >
               <Link href={`/blog/${post.slug}`} className={styles.postLink}>
                 <time className={styles.date}>
@@ -67,7 +81,7 @@ export function BlogSection({ posts }: BlogSectionProps) {
             View all posts →
           </Link>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

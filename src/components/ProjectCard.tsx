@@ -24,13 +24,25 @@ interface ProjectCardProps {
 export function ProjectCard({ project, priority = false, index = 0 }: ProjectCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      initial={{
+        opacity: 0,
+        scale: 0.8,
+        rotate: index % 2 === 0 ? -5 : 5,
+        filter: "blur(8px)"
+      }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+        rotate: 0,
+        filter: "blur(0px)"
+      }}
+      viewport={{ once: false, amount: 0.3 }}
       transition={{
-        duration: 0.5,
+        duration: 0.6,
         delay: index * 0.15,
-        ease: [0.22, 1, 0.36, 1]
+        type: "spring",
+        stiffness: 100,
+        damping: 15
       }}
     >
       <Link href={`/projects/${project.slug}`} className={styles.card}>

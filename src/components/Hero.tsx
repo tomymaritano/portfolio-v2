@@ -29,28 +29,16 @@ export function Hero() {
       >
         <motion.div
           className={styles.photoWrapper}
-          whileHover={{ scale: 1.05, rotate: 2 }}
+          whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <Image
             src={siteConfig.hero.photo}
             alt={siteConfig.name}
-            width={160}
-            height={160}
+            width={120}
+            height={120}
             className={styles.photo}
             priority
-          />
-          <motion.div
-            className={styles.photoGlow}
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "easeInOut",
-            }}
           />
         </motion.div>
 

@@ -1,31 +1,23 @@
 .toggle {
-  position: fixed;
-  top: var(--space-4);
-  right: calc(var(--space-6) + 48px);
-  z-index: 100;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 1.25rem;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 150ms ease, border-color 150ms ease;
-}
-
-@media (min-width: 769px) {
-  .toggle {
-    right: var(--space-6);
-  }
+  transition: all 200ms ease;
+  flex-shrink: 0;
 }
 
 .toggle:hover {
-  background: var(--surface-hover);
+  background: var(--surface);
   border-color: var(--border-hover);
+  color: var(--text-secondary);
 }
 
 .toggle:focus-visible {

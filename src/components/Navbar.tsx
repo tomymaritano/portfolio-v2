@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/lib/i18n/context";
 import { siteConfig } from "@/config/site";
-import { getInitials } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Navbar.module.css";
 
@@ -52,8 +51,10 @@ export function Navbar() {
         <nav className={styles.nav}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>{getInitials(siteConfig.name)}</span>
-            <span className={styles.logoText}>{siteConfig.name}</span>
+            <span className={styles.logoText}>
+              {siteConfig.firstName.toLowerCase()}
+              <span className={styles.logoDot}>.</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

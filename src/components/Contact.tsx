@@ -7,20 +7,36 @@ import styles from "./Contact.module.css";
 export function Contact() {
   return (
     <section className={styles.contact} id="contact">
-      <motion.div
-        className={styles.container}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-      >
-        <span className={styles.label}>Contact</span>
+      <div className={styles.container}>
+        <motion.span
+          className={styles.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          Contact
+        </motion.span>
 
-        <h2 className={styles.title}>{siteConfig.contact.title}</h2>
+        <motion.h2
+          className={styles.title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+        >
+          {siteConfig.contact.title}
+        </motion.h2>
 
-        <p className={styles.description}>
+        <motion.p
+          className={styles.description}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+        >
           {siteConfig.contact.description}
-        </p>
+        </motion.p>
 
         <div className={styles.actions}>
           <motion.a
@@ -79,7 +95,7 @@ export function Contact() {
             </motion.a>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

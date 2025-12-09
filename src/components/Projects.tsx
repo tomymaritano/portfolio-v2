@@ -26,18 +26,18 @@ export function Projects({ projects }: ProjectsProps) {
   return (
     <section className={styles.projects} id="projects">
       <div className={styles.container}>
-        <motion.div
+        <motion.header
           className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <h2 className={styles.label}>Featured Work</h2>
+          <span className={styles.label}>Featured Work</span>
           <p className={styles.description}>
             Projects I&apos;ve built from concept to production
           </p>
-        </motion.div>
+        </motion.header>
 
         <div className={styles.grid}>
           {featuredProjects.map((project, index) => (
