@@ -5,7 +5,6 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { I18nProvider } from "@/lib/i18n/context";
@@ -98,7 +97,6 @@ export default function RootLayout({
         <ThemeProvider>
           <I18nProvider>
             <Navbar />
-            <ThemeToggle />
             <CommandPalette />
             <main style={{ paddingTop: "80px" }}>{children}</main>
             <Footer />

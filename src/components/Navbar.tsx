@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/lib/i18n/context";
 import { siteConfig } from "@/config/site";
 import { getInitials } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Navbar.module.css";
 
 const navItems = [
@@ -79,6 +80,9 @@ export function Navbar() {
 
           {/* Actions */}
           <div className={styles.actions}>
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Language Switcher */}
             <button
               className={styles.langButton}
