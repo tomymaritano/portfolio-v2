@@ -1,0 +1,165 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+  transition: all 200ms ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+}
+
+/* Screenshot */
+.screenshot {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg-subtle) 100%);
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  opacity: 0.5;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.content {
+  padding: var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status[data-status="live"] {
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.status[data-status="archived"] {
+  background: rgba(113, 113, 122, 0.15);
+  color: var(--text-muted);
+}
+
+.status[data-status="learning"] {
+  background: var(--cyan-muted);
+  color: var(--cyan);
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.topic {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-subtle);
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* Arrow */
+.arrow {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 200ms ease;
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.arrow span {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Make card position relative for arrow */
+.card {
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .content {
+    padding: var(--space-3);
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .placeholderIcon {
+    font-size: 2rem;
+  }
+}

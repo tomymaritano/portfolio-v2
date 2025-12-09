@@ -1,0 +1,48 @@
+---
+slug: threejs-sanity-integration
+title: "How I Finally Cracked the Code on Three.js + Sanity CMS Integration"
+description: "After countless late nights and way too much coffee, I figured out how to seamlessly blend 3D web experiences with headless CMS magic."
+date: "2025-07-04"
+image: "/images/threejs.jpg"
+tags: ["Three.js", "Sanity", "3D", "Web Development"]
+published: true
+---
+
+Three.js is powerful. Sanity CMS is flexible. But getting them to play nice together? That took some figuring out.
+
+## The Challenge
+
+I wanted to build a 3D portfolio where the content was editable through a CMS. The issues:
+
+1. Three.js scenes are imperative
+2. Sanity data is async
+3. React re-renders break 3D contexts
+4. Performance was a nightmare
+
+## The Solution
+
+After many failed attempts, here's what worked:
+
+### 1. Separate Concerns
+
+Keep Three.js in its own component, completely isolated from CMS updates. Use refs and imperative updates instead of React state.
+
+### 2. Preload Everything
+
+Before mounting the 3D scene, fetch ALL Sanity data. No async loading inside the canvas.
+
+### 3. Use @react-three/fiber Wisely
+
+The `useFrame` hook is your friend. But be careful with dependencies - stale closures will haunt you.
+
+### 4. Memoize Aggressively
+
+Every component touching Three.js should be wrapped in `React.memo`. Every callback should use `useCallback`.
+
+## Key Learnings
+
+- 3D and CMS can coexist, but require careful architecture
+- Performance testing is crucial from day one
+- Sometimes the "elegant" solution is more complex than needed
+
+The result? A beautiful, editable 3D experience that loads fast and stays smooth.

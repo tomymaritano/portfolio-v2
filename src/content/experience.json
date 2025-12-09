@@ -1,0 +1,78 @@
+[
+  {
+    "company": "Unicoin",
+    "role": "Product Manager & UX Lead",
+    "location": "Miami, US (Remote)",
+    "period": "2022 - Present",
+    "duration": "2.5+ years",
+    "type": "full-time",
+    "highlights": [
+      "Led product strategy for cryptocurrency investment platform",
+      "Managed UX team designing crypto-native experiences",
+      "Shipped compliance-first features for SEC requirements"
+    ]
+  },
+  {
+    "company": "Valere Realms",
+    "role": "Product Manager",
+    "location": "Remote",
+    "period": "2023",
+    "duration": "6 months",
+    "type": "freelance",
+    "highlights": [
+      "Defined product roadmap for Web3 gaming platform",
+      "Coordinated between dev team and stakeholders"
+    ]
+  },
+  {
+    "company": "Unicorn Hunters",
+    "role": "UX Manager",
+    "location": "Miami, US (Remote)",
+    "period": "2021 - 2022",
+    "duration": "1 year",
+    "type": "full-time",
+    "highlights": [
+      "Built and led UX design team from scratch",
+      "Designed investor-facing product interfaces"
+    ]
+  },
+  {
+    "company": "Grandvalira SAETDE",
+    "role": "UX Engineer",
+    "location": "Andorra",
+    "period": "2019 - 2021",
+    "duration": "2 years",
+    "type": "full-time",
+    "highlights": [
+      "Redesigned booking experience for ski resort",
+      "Implemented design system across digital products",
+      "Reduced booking abandonment by 35%"
+    ]
+  },
+  {
+    "company": "Wolt",
+    "role": "Operations Team Lead",
+    "location": "Copenhagen, Denmark",
+    "period": "2018 - 2019",
+    "duration": "1 year",
+    "type": "full-time",
+    "highlights": [
+      "Led operations expansion in new markets",
+      "Built internal tools for courier management",
+      "Scaled team from 5 to 25 people"
+    ]
+  },
+  {
+    "company": "Su Web Express",
+    "role": "UX Developer",
+    "location": "Córdoba, Argentina",
+    "period": "2016 - 2018",
+    "duration": "2 years",
+    "type": "full-time",
+    "highlights": [
+      "First professional role in tech",
+      "Full-stack development with UX focus",
+      "Built e-commerce solutions for SMBs"
+    ]
+  }
+]

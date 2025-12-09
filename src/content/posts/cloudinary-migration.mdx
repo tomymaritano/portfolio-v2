@@ -1,0 +1,69 @@
+---
+slug: cloudinary-migration
+title: "Migrating Images to Cloudinary: How I Reduced My Repo Size by 99.7%"
+description: "Why I ditched local images and migrated everything to Cloudinary CDN in Next.js: less bloat, more speed, and a way more professional workflow."
+date: "2025-07-03"
+image: "/images/cloudinary.jpg"
+tags: ["Cloudinary", "Next.js", "Performance", "DevOps"]
+published: true
+---
+
+My git repo was 450MB. After migrating images to Cloudinary, it dropped to 1.2MB. Here's how.
+
+## The Problem
+
+Storing images in your repo seems convenient until:
+- Git clone takes forever
+- CI/CD pipelines slow down
+- No automatic optimization
+- Version control for binary files is messy
+
+## Why Cloudinary?
+
+- Automatic format optimization (WebP, AVIF)
+- On-the-fly resizing
+- Global CDN
+- Generous free tier
+- Excellent Next.js integration
+
+## The Migration Process
+
+### Step 1: Upload Everything
+
+Used their bulk upload tool to move all images to Cloudinary.
+
+### Step 2: Update Next.js Config
+
+```js
+// next.config.js
+images: {
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'res.cloudinary.com',
+    },
+  ],
+}
+```
+
+### Step 3: Create a Helper
+
+```ts
+export function getCloudinaryUrl(path: string, options?: ImageOptions) {
+  const base = 'https://res.cloudinary.com/your-cloud/image/upload';
+  const transforms = buildTransforms(options);
+  return `${base}/${transforms}/${path}`;
+}
+```
+
+### Step 4: Replace All Images
+
+Search and replace. Took about an hour.
+
+## Results
+
+- **Repo size**: 450MB → 1.2MB
+- **Build time**: 3min → 45sec
+- **Page load**: 2.4s → 0.8s (with automatic WebP)
+
+Worth every minute of the migration.

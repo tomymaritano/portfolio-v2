@@ -1,0 +1,55 @@
+---
+id: time-pressure-mvp
+constraint: time_pressure
+context: Need to ship a product feature in 2 weeks with unclear requirements
+decision: Build the smallest thing that answers the real question
+---
+
+## The Situation
+
+Stakeholders want a feature. The deadline is aggressive. Requirements keep shifting. You could build it "right" in 6 weeks, or ship something in 2.
+
+## Options Considered
+
+### Option A: Push back on timeline
+**Pros:** Build it properly
+**Cons:** Lose momentum, stakeholders lose trust, might miss market window
+
+### Option B: Commit and cut scope aggressively
+**Pros:** Ship fast, learn fast
+**Cons:** Technical debt, might build wrong thing
+
+### Option C: Build a throwaway prototype first
+**Pros:** Validate before investing
+**Cons:** "Prototypes" become production, double work
+
+## The Decision
+
+**Option B, but with a twist.**
+
+Don't just cut scope—identify the one question this feature needs to answer. Build only what answers that question. Everything else is v2.
+
+## The Framework
+
+Ask: "If this feature succeeds, what will we know that we don't know now?"
+
+That question reveals the core value. Build to that. Cut everything else.
+
+## Example
+
+**Request:** "Build a dashboard with user analytics"
+**Real question:** "Are users actually using the new onboarding flow?"
+**MVP:** A single number showing completion rate. No dashboard. Just the answer.
+
+## Consequences
+
+- Shipped in 1 week instead of 2
+- Learned the onboarding flow was broken at step 3
+- Never built the full dashboard (didn't need it)
+- Some stakeholders initially disappointed, then grateful
+
+## Lessons
+
+1. **Features are hypotheses.** Treat them that way.
+2. **The simplest thing that works is often simpler than you think.**
+3. **Disappointment now beats wasted effort later.**

@@ -1,0 +1,61 @@
+---
+id: legacy-migration
+constraint: legacy
+context: Modernizing a system while keeping it running
+decision: Strangler fig pattern with explicit boundaries
+---
+
+## The Situation
+
+The old system works. It's ugly, unmaintainable, but it works. Business wants new features. You want to rewrite. Reality wants neither.
+
+## Options Considered
+
+### Option A: Big bang rewrite
+**Pros:** Clean slate, modern stack
+**Cons:** High risk, long timeline, features frozen during rewrite
+
+### Option B: Incremental refactoring
+**Pros:** Lower risk, continuous delivery
+**Cons:** Never actually finishes, accumulates weird hybrid states
+
+### Option C: Strangler fig pattern
+**Pros:** New system grows around old, gradual migration
+**Cons:** Need to maintain both systems, requires discipline
+
+## The Decision
+
+**Option C: Strangler fig with explicit boundaries.**
+
+The key insight: you need hard boundaries between old and new. Not "let's refactor this function" but "this entire domain now lives in the new system."
+
+## The Pattern
+
+```
+[New System] ←→ [API Boundary] ←→ [Old System]
+     ↓                                    ↓
+[New Feature]                    [Legacy Feature]
+```
+
+Rules:
+1. New features go in new system only
+2. Old features stay in old system until fully migrated
+3. No shared database tables across the boundary
+4. API boundary is the only communication channel
+
+## Consequences
+
+- Clear ownership and responsibilities
+- Can migrate one domain at a time
+- Old system shrinks predictably
+- Integration testing becomes critical
+
+## The Trap
+
+The temptation is to share data directly between systems "for efficiency." Don't. The moment you share a database table, you've coupled the systems and lost the ability to migrate independently.
+
+## Lessons
+
+1. **Boundaries over refactoring.** Clean cuts heal faster than gradual changes.
+2. **Migration is a feature.** Schedule it, track it, celebrate progress.
+3. **The old system earned its complexity.** Respect it while replacing it.

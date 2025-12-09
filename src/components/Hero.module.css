@@ -1,0 +1,146 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-8) var(--space-6);
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Photo */
+.photoWrapper {
+  margin-bottom: var(--space-8);
+}
+
+.photo {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 4px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.photoWrapper:hover .photo {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.25), var(--shadow-lg);
+}
+
+/* Intro */
+.intro {
+  margin-bottom: var(--space-8);
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-6);
+}
+
+.tagline {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.taglineAccent {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Social Links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.socialLink {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+}
+
+.socialLink:hover {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+/* Scroll Hint */
+.scrollHint {
+  position: absolute;
+  bottom: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.scrollText {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.scrollArrow {
+  font-size: 0.875rem;
+  color: var(--text-subtle);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .name {
+    font-size: 2.25rem;
+  }
+
+  .tagline {
+    font-size: 1.125rem;
+  }
+
+  .taglineAccent {
+    font-size: 0.9375rem;
+  }
+
+  .photo {
+    width: 140px;
+    height: 140px;
+  }
+}

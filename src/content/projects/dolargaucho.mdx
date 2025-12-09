@@ -1,0 +1,61 @@
+---
+slug: dolargaucho
+name: DólarGaucho
+tagline: Real-time currency tracking when APIs fail
+status: live
+topics:
+  - fintech
+  - data-reliability
+  - api-design
+complexity: intermediate
+---
+
+## The Problem
+
+Argentina has multiple dollar exchange rates. Official sources are unreliable. APIs fail constantly. Users need real-time data they can trust.
+
+## The Constraint
+
+**Bad data everywhere.**
+
+Every public API for Argentine exchange rates has issues:
+- Delayed updates (sometimes hours)
+- Incorrect values during high volatility
+- Downtime during market hours
+- Inconsistent data formats
+
+## The Decision
+
+Instead of trusting any single source, I built a system that:
+
+1. **Aggregates multiple sources** - Cross-references 5+ APIs
+2. **Detects anomalies** - Flags values that deviate from consensus
+3. **Falls back gracefully** - Uses cached data with clear timestamps
+4. **Shows uncertainty** - Displays confidence levels, not false precision
+
+## What Failed
+
+### Assumption: "More sources = better accuracy"
+
+Reality: More sources meant more edge cases. Some APIs update at different times. Some have bugs during weekends. The "consensus" was often wrong.
+
+**What I learned:** Quality of sources matters more than quantity. I ended up weighting sources by historical reliability.
+
+### Assumption: "Users want the most accurate number"
+
+Reality: Users want to know if they can trust the number. A value with "updated 2 minutes ago, high confidence" is more useful than a "precise" number with unknown freshness.
+
+## What I'd Change Today
+
+- Start with fewer, higher-quality sources
+- Build the confidence display from day one
+- Add user-reported corrections as a signal
+
+## Technical Details
+
+```
+Architecture: DB-first, not API-first
+Stack: Next.js, Supabase, Edge Functions
+Update frequency: 30 seconds during market hours
+Fallback: Cached values with decay indicators
+```

@@ -1,0 +1,124 @@
+.container {
+  margin-bottom: var(--space-8);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: var(--space-4);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  padding-left: calc(var(--space-4) + 18px + var(--space-3));
+  padding-right: var(--space-12);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--text);
+  outline: none;
+  transition: all 150ms ease;
+}
+
+.input::placeholder {
+  color: var(--text-subtle);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+
+.clear {
+  position: absolute;
+  right: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 150ms ease;
+}
+
+.clear:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.results {
+  margin-top: var(--space-3);
+}
+
+.noResults,
+.count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.post {
+  display: block;
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all 150ms ease;
+}
+
+.post:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+.postTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-2);
+}
+
+.post:hover .postTitle {
+  color: var(--accent);
+}
+
+.postDescription {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  padding: 2px 8px;
+  background: var(--accent-muted);
+  border-radius: var(--radius-full);
+}

@@ -1,36 +1,204 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio v2
+
+Personal portfolio built with Next.js 16, React 19, and TypeScript.
+
+## Tech Stack
+
+### Core
+- **Next.js 16** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vanilla Extract** - Zero-runtime CSS-in-JS
+
+### Content
+- **Content Collections** - MDX content management
+- **MDX** - Markdown with JSX support
+
+### Features
+- **Framer Motion** - Animations
+- **Geist Font** - Typography
+- **Fuse.js** - Fuzzy search
+- **Shiki** - Syntax highlighting
+
+### Analytics & Performance
+- **Vercel Analytics** - Privacy-friendly analytics
+- **Vercel Speed Insights** - Core Web Vitals monitoring
+
+## Features
+
+### Blog
+- MDX-based posts with frontmatter
+- Reading time calculation
+- Table of Contents (auto-generated)
+- Copy code button
+- Share buttons (Twitter, LinkedIn, Copy)
+- Reading progress bar
+- Fuzzy search with Fuse.js
+- JSON-LD structured data for SEO
+- Dynamic OG images per post
+- RSS feed (`/feed.xml`)
+
+### Navigation
+- Command Palette (`Cmd+K` / `Ctrl+K`)
+- View Transitions API
+- Interactive Terminal (press backtick `)
+
+### Theme
+- Dark/Light mode toggle
+- System preference detection
+- Persistent theme (localStorage)
+
+### SEO
+- Full metadata configuration
+- Open Graph images
+- Twitter cards
+- JSON-LD schema (BlogPosting)
+- XML Sitemap
+- RSS feed
+- robots.txt
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── blog/
+│   │   ├── [slug]/
+│   │   │   ├── page.tsx
+│   │   │   ├── page.module.css
+│   │   │   └── opengraph-image.tsx
+│   │   └── page.tsx
+│   ├── projects/
+│   ├── think/
+│   ├── feed.xml/
+│   │   └── route.ts
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── sitemap.ts
+├── components/
+│   ├── BlogSearch.tsx
+│   ├── CodeBlock.tsx
+│   ├── CommandPalette.tsx
+│   ├── Giscus.tsx
+│   ├── MDXContent.tsx
+│   ├── ReadingProgress.tsx
+│   ├── ShareButtons.tsx
+│   ├── TableOfContents.tsx
+│   ├── Terminal.tsx
+│   ├── ThemeProvider.tsx
+│   └── ThemeToggle.tsx
+├── content/
+│   ├── posts/
+│   ├── projects/
+│   └── decisions/
+└── styles/
+    └── globals.css
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content Management
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Blog Posts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.mdx` files in `src/content/posts/`:
 
-## Learn More
+```mdx
+---
+slug: my-post
+title: "My Post Title"
+description: "A brief description"
+date: "2025-01-01"
+image: "/images/post-image.jpg"
+tags: ["Tag1", "Tag2"]
+published: true
+---
 
-To learn more about Next.js, take a look at the following resources:
+Your content here...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Projects
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create `.mdx` files in `src/content/projects/`:
 
-## Deploy on Vercel
+```mdx
+---
+slug: project-name
+name: "Project Name"
+tagline: "Short description"
+status: "live" | "archived" | "learning"
+topics: ["React", "TypeScript"]
+complexity: "foundational" | "intermediate" | "advanced"
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project description...
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Cmd/Ctrl + K` | Open Command Palette |
+| `` ` `` (backtick) | Open Terminal |
+| `↑` `↓` | Navigate in Command Palette |
+| `Enter` | Select in Command Palette |
+| `Esc` | Close modals |
+
+## Components
+
+### ShareButtons
+Share post to Twitter, LinkedIn, or copy link.
+
+### ReadingProgress
+Progress bar showing scroll position on blog posts.
+
+### BlogSearch
+Fuzzy search powered by Fuse.js.
+
+### TableOfContents
+Auto-generated from H2/H3 headings with scroll spy.
+
+### CodeBlock
+Code blocks with copy-to-clipboard button.
+
+### CommandPalette
+Spotlight-style navigation (`Cmd+K`).
+
+### Giscus
+GitHub Discussions-based comments (requires configuration).
+
+## Performance
+
+- Static Site Generation (SSG)
+- Edge runtime for dynamic routes
+- Zero-runtime CSS (Vanilla Extract)
+- Automatic image optimization
+- View Transitions API enabled
+
+## Deploy
+
+Optimized for Vercel:
+
+```bash
+vercel
+```
+
+Or connect GitHub for automatic deployments.
+
+## License
+
+MIT

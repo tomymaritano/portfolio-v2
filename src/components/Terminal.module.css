@@ -1,0 +1,582 @@
+/* Toggle Button */
+.toggleButton {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease;
+  z-index: 1000;
+}
+
+.toggleButton:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.toggleIcon {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+/* Terminal Window */
+.terminal {
+  position: fixed;
+  bottom: calc(var(--space-6) + 56px);
+  right: var(--space-6);
+  width: 500px;
+  max-width: calc(100vw - var(--space-8));
+  height: 400px;
+  max-height: 60vh;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  z-index: 999;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.dot:hover {
+  opacity: 0.8;
+}
+
+.dot[data-color="red"] {
+  background: #ef4444;
+}
+
+.dot[data-color="yellow"] {
+  background: #f59e0b;
+}
+
+.dot[data-color="green"] {
+  background: var(--accent);
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.headerSpacer {
+  width: 54px;
+}
+
+/* Output Area */
+.output {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  cursor: text;
+}
+
+.outputItem {
+  margin-bottom: var(--space-3);
+}
+
+.commandLine,
+.inputLine {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: var(--accent);
+}
+
+.promptSeparator {
+  color: var(--text-muted);
+}
+
+.promptPath {
+  color: var(--cyan);
+}
+
+.promptSymbol {
+  color: var(--text-muted);
+  margin-right: var(--space-2);
+}
+
+.commandText {
+  color: var(--text);
+}
+
+.outputText {
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  margin-top: var(--space-1);
+}
+
+.outputText.error {
+  color: #ef4444;
+}
+
+/* Input */
+.inputLine {
+  margin-top: var(--space-2);
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text);
+  caret-color: var(--accent);
+}
+
+/* Help Output */
+.helpOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.commandList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-left: var(--space-4);
+}
+
+.cmd {
+  color: var(--accent);
+  min-width: 100px;
+  display: inline-block;
+}
+
+/* Skills Output */
+.skillsOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.skillCategory {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.skillLabel {
+  color: var(--accent);
+  min-width: 80px;
+}
+
+.skillBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.skillBar span {
+  min-width: 120px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Projects Output */
+.projectsOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.projectStatus {
+  font-size: 0.625rem;
+}
+
+.projectStatus[data-status="live"] {
+  color: var(--accent);
+}
+
+.projectStatus[data-status="archived"] {
+  color: var(--text-muted);
+}
+
+.projectName {
+  color: var(--text);
+  min-width: 120px;
+}
+
+.projectDesc {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.hint {
+  margin-top: var(--space-2);
+  color: var(--text-subtle);
+  font-size: 0.6875rem;
+  font-style: italic;
+}
+
+/* Experience Output */
+.experienceOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.job {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobTitle {
+  color: var(--text);
+}
+
+.jobDate {
+  color: var(--text-subtle);
+  font-size: 0.75rem;
+}
+
+.jobCompany {
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* Help Output v2 */
+.helpSection {
+  margin-bottom: var(--space-3);
+}
+
+.helpCategory {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-1);
+}
+
+/* Projects Output v2 */
+.projectRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+.projectTagline {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+
+/* Project Detail */
+.projectDetail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.projectHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.projectTitle {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.projectTaglineDetail {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.projectSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sectionLabel {
+  color: var(--text-subtle);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mistakes */
+.mistake {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mistake:last-child {
+  border-bottom: none;
+}
+
+.mistakeAssumption {
+  color: #ef4444;
+}
+
+.mistakeReality {
+  color: var(--text-secondary);
+  padding-left: var(--space-3);
+}
+
+.mistakeLearned {
+  color: var(--accent);
+  padding-left: var(--space-3);
+}
+
+/* Decisions */
+.decisionsOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.decisionsHeader,
+.mistakesHeader,
+.hireHeader,
+.thinkingHeader,
+.stackHeader,
+.nowHeader {
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+}
+
+.decisionsPrinciples,
+.constraintsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.principle {
+  color: var(--text-secondary);
+  padding-left: var(--space-3);
+}
+
+/* Mistakes List */
+.mistakesOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mistakesIntro {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.mistakesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mistakeItem {
+  color: var(--text-secondary);
+}
+
+/* Hire */
+.hireOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hirePoints {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hirePoint {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hireLabel {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hireContact {
+  color: var(--cyan);
+  margin-top: var(--space-2);
+}
+
+/* Thinking */
+.thinkingOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.thinkingSteps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.thinkingStep {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.stepNumber {
+  color: var(--accent);
+  font-size: 0.6875rem;
+}
+
+.stepText {
+  color: var(--text-secondary);
+}
+
+/* Stack */
+.stackOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stackItemRow {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.stackName {
+  color: var(--text);
+  min-width: 100px;
+}
+
+.stackReason {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* Now */
+.nowOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nowItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nowStatus {
+  font-size: 0.5rem;
+  color: var(--accent);
+}
+
+.nowUpdate {
+  color: var(--text-subtle);
+  font-size: 0.6875rem;
+  margin-top: var(--space-2);
+}
+
+/* Contact */
+.contactOutput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contactItem {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.contactLabel {
+  color: var(--text-muted);
+  min-width: 80px;
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .terminal {
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: calc(var(--space-4) + 56px);
+    width: auto;
+  }
+}

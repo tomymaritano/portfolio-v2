@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.container:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1db954;
+}
+
+.notPlaying {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.albumArt {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.albumArt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bars {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 12px;
+}
+
+.bars span {
+  width: 3px;
+  background: #1db954;
+  border-radius: 1px;
+  animation: equalizer 0.5s ease-in-out infinite alternate;
+}
+
+.bars span:nth-child(1) {
+  animation-delay: 0s;
+  height: 40%;
+}
+
+.bars span:nth-child(2) {
+  animation-delay: 0.2s;
+  height: 70%;
+}
+
+.bars span:nth-child(3) {
+  animation-delay: 0.4s;
+  height: 50%;
+}
+
+@keyframes equalizer {
+  from {
+    height: 30%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

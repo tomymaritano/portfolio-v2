@@ -1,0 +1,65 @@
+---
+id: bad-data-apis
+constraint: bad_data
+context: Building a financial product where external APIs are unreliable
+decision: Aggregate multiple sources and display confidence levels
+projectSlug: dolargaucho
+---
+
+## The Situation
+
+You're building something that depends on external data. The data is often wrong, delayed, or unavailable. Users need to make decisions based on this data.
+
+## Options Considered
+
+### Option A: Trust the "official" source
+**Pros:** Simple, single point of integration
+**Cons:** Single point of failure, no way to detect errors
+
+### Option B: Build your own data collection
+**Pros:** Full control
+**Cons:** Expensive, time-consuming, still might be wrong
+
+### Option C: Aggregate and score multiple sources
+**Pros:** Redundancy, error detection, graceful degradation
+**Cons:** More complex, need to handle conflicts
+
+## The Decision
+
+**Option C: Aggregate and score.**
+
+Not because it's the best architecture, but because the problem requires it. When data quality is the core challenge, you need systems that acknowledge uncertainty rather than hide it.
+
+## Implementation Pattern
+
+```typescript
+interface DataPoint {
+  value: number;
+  source: string;
+  timestamp: Date;
+  confidence: number; // 0-1 based on source history
+}
+
+function getConsensusValue(points: DataPoint[]): {
+  value: number;
+  confidence: number;
+  sources: string[];
+} {
+  // Weight by confidence and recency
+  // Flag outliers
+  // Return with metadata
+}
+```
+
+## Consequences
+
+- Users see confidence indicators, not false precision
+- System degrades gracefully when sources fail
+- More infrastructure to maintain
+- Need to monitor source quality over time
+
+## Lessons
+
+1. **Show your uncertainty.** Users prefer honest uncertainty over false confidence.
+2. **Quality > Quantity.** Three reliable sources beat ten unreliable ones.
+3. **Build the feedback loop.** Track which sources are right over time.

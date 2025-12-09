@@ -1,0 +1,6 @@
+# robots.txt for tomasmaritano.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tomasmaritano.com/sitemap.xml

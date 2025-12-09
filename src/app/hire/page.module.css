@@ -1,0 +1,213 @@
+.main {
+  min-height: 100vh;
+  padding: var(--space-8) var(--space-6);
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-12);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: var(--space-6);
+  transition: color 150ms ease;
+}
+
+.backLink:hover {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* Reasons Section */
+.reasonsSection {
+  margin-bottom: var(--space-16);
+}
+
+.reasonsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.reasonCard {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color 150ms ease;
+}
+
+.reasonCard:hover {
+  border-color: var(--border-hover);
+}
+
+.reasonTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 var(--space-2);
+}
+
+.reasonDescription {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 var(--space-4);
+}
+
+.reasonEvidence {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.reasonEvidence:hover {
+  text-decoration: underline;
+}
+
+/* Values Section */
+.valuesSection {
+  margin-bottom: var(--space-16);
+  padding: var(--space-6);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.sectionTitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--space-4);
+}
+
+.valuesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 500px) {
+  .valuesList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.valueItem {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.valueItem::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  padding: var(--space-12) var(--space-8);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.ctaTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--space-3);
+  letter-spacing: -0.02em;
+}
+
+.ctaText {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto var(--space-8);
+}
+
+.ctaLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all 150ms ease;
+}
+
+.primaryCta:hover {
+  background-color: var(--accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all 150ms ease;
+}
+
+.secondaryCta:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

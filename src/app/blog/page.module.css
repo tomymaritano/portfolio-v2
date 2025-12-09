@@ -1,0 +1,127 @@
+.main {
+  min-height: 100vh;
+  padding: var(--space-24) var(--space-6);
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-12);
+}
+
+.backLink {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+  transition: color 150ms ease;
+}
+
+.backLink:hover {
+  color: var(--accent);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-2);
+}
+
+.description {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+}
+
+/* Posts */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.postCard {
+  display: block;
+  padding: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  transition: all 200ms ease;
+}
+
+.postCard:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  padding: 2px 8px;
+  background: var(--accent-muted);
+  border-radius: var(--radius-full);
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+  color: var(--text);
+}
+
+.postDescription {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.readMore {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .main {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .postCard {
+    padding: var(--space-4);
+  }
+
+  .postTitle {
+    font-size: 1.125rem;
+  }
+}
