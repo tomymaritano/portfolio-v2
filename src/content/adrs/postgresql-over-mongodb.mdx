@@ -1,0 +1,49 @@
+---
+slug: postgresql-over-mongodb
+title: "Use PostgreSQL over MongoDB for Transactional Data"
+date: "2024-06-15"
+status: accepted
+context: "Needed a database for a fintech application handling financial transactions"
+decision: "Chose PostgreSQL for ACID compliance and strong data integrity"
+consequences:
+  - "Pro: Full ACID compliance ensures transaction integrity"
+  - "Pro: Mature ecosystem with excellent tooling"
+  - "Pro: Strong type system with constraints"
+  - "Con: Schema migrations require careful planning"
+  - "Con: Less flexibility for document-like data"
+tags:
+  - database
+  - backend
+  - fintech
+---
+
+## Context
+
+When building a fintech application that handles financial transactions, data integrity is paramount. We evaluated MongoDB and PostgreSQL as primary database options.
+
+## Decision Drivers
+
+- **Data Integrity**: Financial data must be consistent and accurate
+- **ACID Compliance**: Transactions need atomicity, consistency, isolation, durability
+- **Query Flexibility**: Complex reporting and analytics requirements
+- **Team Expertise**: Team had more experience with SQL databases
+
+## Considered Options
+
+### MongoDB
+- Flexible schema for rapid iteration
+- Horizontal scaling built-in
+- Document model fits some use cases
+
+### PostgreSQL
+- Strong ACID guarantees
+- Mature ecosystem
+- Excellent JSON support when needed
+- Better for relational data
+
+## Outcome
+
+PostgreSQL was chosen. After 6 months in production:
+- Zero data inconsistencies
+- Complex queries perform well with proper indexing
+- Schema migrations handled smoothly with tools like Prisma

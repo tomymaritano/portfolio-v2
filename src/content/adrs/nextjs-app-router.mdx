@@ -1,0 +1,49 @@
+---
+slug: nextjs-app-router
+title: "Migrate to Next.js App Router"
+date: "2024-09-01"
+status: accepted
+context: "Portfolio needed modernization and better performance"
+decision: "Adopted Next.js App Router with React Server Components"
+consequences:
+  - "Pro: Better performance with server components"
+  - "Pro: Simplified data fetching patterns"
+  - "Pro: Built-in metadata and SEO handling"
+  - "Con: Learning curve for RSC mental model"
+  - "Con: Some third-party libraries need updates"
+tags:
+  - frontend
+  - nextjs
+  - architecture
+---
+
+## Context
+
+The portfolio was using Next.js Pages Router. With the stable release of App Router and React Server Components, it was time to evaluate a migration.
+
+## Decision Drivers
+
+- **Performance**: Server components reduce client bundle size
+- **Developer Experience**: Colocation of data fetching and components
+- **SEO**: Better metadata handling out of the box
+- **Future Proofing**: App Router is the recommended approach going forward
+
+## Considered Options
+
+### Stay with Pages Router
+- Familiar patterns
+- All libraries work
+- No migration effort
+
+### Migrate to App Router
+- Modern React patterns
+- Better performance potential
+- Improved DX for many use cases
+
+## Outcome
+
+Migrated to App Router. Key learnings:
+- Server components significantly reduced JavaScript sent to client
+- Data fetching at component level simplified architecture
+- Streaming improved perceived performance
+- Some refactoring needed for client-side interactivity

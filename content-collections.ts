@@ -35,6 +35,17 @@ const decisionSchema = z.object({
   projectSlug: z.string().optional(),
 });
 
+const adrSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  date: z.string(),
+  status: z.enum(["accepted", "superseded", "deprecated", "proposed"]),
+  context: z.string(),
+  decision: z.string(),
+  consequences: z.array(z.string()).default([]),
+  tags: z.array(z.string()).default([]),
+});
+
 const projects = defineCollection({
   name: "projects",
   directory: "src/content/projects",
@@ -54,6 +65,20 @@ const decisions = defineCollection({
   directory: "src/content/decisions",
   include: "**/*.mdx",
   schema: decisionSchema,
+  transform: async (document, context) => {
+    const mdx = await compileMDX(context, document);
+    return {
+      ...document,
+      mdx,
+    };
+  },
+});
+
+const adrs = defineCollection({
+  name: "adrs",
+  directory: "src/content/adrs",
+  include: "**/*.mdx",
+  schema: adrSchema,
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);
     return {
@@ -96,5 +121,5 @@ const posts = defineCollection({
 });
 
 export default defineConfig({
-  collections: [projects, decisions, posts],
+  collections: [projects, decisions, adrs, posts],
 });

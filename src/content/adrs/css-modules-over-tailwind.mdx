@@ -1,0 +1,51 @@
+---
+slug: css-modules-over-tailwind
+title: "Use CSS Modules with Custom Properties"
+date: "2024-08-20"
+status: accepted
+context: "Needed a styling approach for the portfolio redesign"
+decision: "Chose CSS Modules with CSS custom properties over Tailwind CSS"
+consequences:
+  - "Pro: Full control over design system"
+  - "Pro: No runtime overhead"
+  - "Pro: Cleaner component markup"
+  - "Con: More initial setup required"
+  - "Con: No utility shortcuts for rapid prototyping"
+tags:
+  - frontend
+  - css
+  - design-system
+---
+
+## Context
+
+When redesigning the portfolio, I evaluated different styling approaches. The main contenders were Tailwind CSS and CSS Modules with a custom design system.
+
+## Decision Drivers
+
+- **Control**: Wanted precise control over the design system
+- **Performance**: Zero runtime overhead
+- **Maintainability**: Clear separation of concerns
+- **Learning**: Opportunity to deepen CSS knowledge
+
+## Considered Options
+
+### Tailwind CSS
+- Rapid development with utility classes
+- Consistent spacing and colors
+- Large community and ecosystem
+- Potential for cluttered markup
+
+### CSS Modules + Custom Properties
+- Full design system control
+- Clean component markup
+- Native CSS features
+- More setup work
+
+## Outcome
+
+CSS Modules with custom properties was chosen. Benefits realized:
+- Design system is explicit and documented in CSS variables
+- Components have clean, semantic class names
+- Easy to maintain consistent theming (light/dark modes)
+- No build-time or runtime CSS processing overhead
