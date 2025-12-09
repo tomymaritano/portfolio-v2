@@ -54,6 +54,19 @@
   color: var(--accent);
 }
 
+/* Typing cursor effect */
+.logo:hover .logoDot::after {
+  content: "|";
+  margin-left: 1px;
+  animation: blink 0.8s step-end infinite;
+  color: var(--accent);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Navigation Links */
 .navLinks {
   display: flex;

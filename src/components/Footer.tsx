@@ -35,9 +35,7 @@ export function Footer() {
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
               <span className={styles.logoText}>
-                <span className={styles.glitchText} data-text={siteConfig.firstName.toLowerCase()}>
-                  {siteConfig.firstName.toLowerCase()}
-                </span>
+                {siteConfig.firstName.toLowerCase()}
                 <span className={styles.logoDot}>.</span>
               </span>
             </Link>
