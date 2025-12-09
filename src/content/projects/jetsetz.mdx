@@ -1,0 +1,77 @@
+---
+slug: jetsetz
+name: Jetsetz
+tagline: Travel aggregator with wholesale business class deals
+status: live
+topics:
+  - travel
+  - e-commerce
+  - product-design
+complexity: advanced
+image: /images/projects/jetsetz.png
+links:
+  live: https://jetsetz.com/
+---
+
+## The Problem
+
+Travelers waste hours comparing prices across dozens of booking sites. Business class flyers pay retail prices when wholesale deals exist—but aren't accessible to consumers.
+
+## My Role
+
+**Product Designer & Engineer** — Owned the full product from concept to production:
+
+- **Product Design** — User flows, wireframes, and visual design
+- **Frontend Development** — Built the entire web application
+- **API Integrations** — Connected multiple travel data providers
+- **Production Deployment** — Infrastructure, monitoring, and optimization
+
+## The Solution
+
+A travel meta-search engine that aggregates results from multiple providers:
+
+1. **Unified Search** — Flights, hotels, and car rentals in one interface
+2. **Business Class Deals** — Wholesale airline tickets for premium cabins
+3. **Real-time Comparison** — Prices from hundreds of sites simultaneously
+4. **Smart Filters** — Narrow results by price, duration, stops, airline
+5. **Bidding Dashboard** — Internal tool for users to bid on premium tickets
+
+### Bidding Dashboard
+
+Built a separate admin dashboard where users can:
+- Submit bids for business/first class tickets
+- Track bid status in real-time
+- Receive notifications when bids are accepted
+- View historical bid performance and savings
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js |
+| UI | Chakra UI |
+| Rendering | SSR for SEO + fast initial load |
+| APIs | Multiple travel aggregator integrations |
+
+## Design Decisions
+
+### Tab-based Navigation
+
+Travel searches have distinct contexts (flights vs hotels vs cars). Instead of cramming everything into one form, I separated them into clear tabs—reducing cognitive load and error rates.
+
+### Trust Signals
+
+Travel is high-stakes purchasing. Added prominent trust indicators:
+- "Searching 100+ sites"
+- Clear price breakdowns
+- Familiar airline/hotel logos
+
+### Mobile-first Forms
+
+Complex multi-field forms on mobile are painful. Prioritized touch targets, smart defaults, and progressive disclosure.
+
+## What I Learned
+
+- **Aggregator complexity** — Each travel API has different rate limits, data formats, and pricing models
+- **Caching strategy matters** — Stale prices = angry users. Fresh prices = slow searches. Found the balance.
+- **Conversion is in the details** — Small UX improvements (autocomplete, date pickers, clear CTAs) had outsized impact

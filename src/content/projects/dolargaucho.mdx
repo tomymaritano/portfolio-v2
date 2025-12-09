@@ -1,61 +1,83 @@
 ---
 slug: dolargaucho
 name: DólarGaucho
-tagline: Real-time currency tracking when APIs fail
+tagline: Fintech platform bringing clarity to Argentina's volatile economy
 status: live
 topics:
   - fintech
+  - founder
   - data-reliability
-  - api-design
-complexity: intermediate
+complexity: advanced
+image: /images/projects/dolargaucho.png
+links:
+  live: https://dolargaucho.com/
 ---
 
 ## The Problem
 
-Argentina has multiple dollar exchange rates. Official sources are unreliable. APIs fail constantly. Users need real-time data they can trust.
+Argentina's economic context is highly volatile. Financial information is scattered and inconsistent: multiple dollar exchange rates, inflation, country risk, and key indicators appear fragmented, with unclear definitions and difficult comparisons.
 
-## The Constraint
+People making financial decisions—from small savers to businesses—lack a single source of truth.
 
-**Bad data everywhere.**
+## My Role
 
-Every public API for Argentine exchange rates has issues:
-- Delayed updates (sometimes hours)
-- Incorrect values during high volatility
-- Downtime during market hours
-- Inconsistent data formats
+**Founder** — Built the entire product from zero:
 
-## The Decision
+- **Vision & Strategy** — Defined the product direction and market positioning
+- **Problem Research** — Deep-dived into user pain points around financial data
+- **Roadmap & Prioritization** — Decided what to build and when
+- **Development** — Designed and built the platform end-to-end
+- **User Experience** — Transformed complex data into clear, actionable information
 
-Instead of trusting any single source, I built a system that:
+## The Solution
 
-1. **Aggregates multiple sources** - Cross-references 5+ APIs
-2. **Detects anomalies** - Flags values that deviate from consensus
-3. **Falls back gracefully** - Uses cached data with clear timestamps
-4. **Shows uncertainty** - Displays confidence levels, not false precision
+A data-driven fintech platform that consolidates Argentina's key financial indicators:
 
-## What Failed
+1. **Multiple Dollar Rates** — Blue, MEP, CCL, official, and more in one view
+2. **Real-time Updates** — 30-second refresh during market hours
+3. **Data Reliability** — Cross-references 5+ sources with confidence indicators
+4. **Historical Context** — Trends and comparisons over time
+5. **Actionable Insights** — Not just numbers, but what they mean
 
-### Assumption: "More sources = better accuracy"
+## Technical Architecture
 
-Reality: More sources meant more edge cases. Some APIs update at different times. Some have bugs during weekends. The "consensus" was often wrong.
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js |
+| Database | Supabase |
+| Processing | Edge Functions |
+| Updates | 30-second intervals |
+| Fallback | Cached values with decay indicators |
 
-**What I learned:** Quality of sources matters more than quantity. I ended up weighting sources by historical reliability.
+### Data Strategy
 
-### Assumption: "Users want the most accurate number"
+**DB-first, not API-first.** Instead of trusting any single source:
 
-Reality: Users want to know if they can trust the number. A value with "updated 2 minutes ago, high confidence" is more useful than a "precise" number with unknown freshness.
+- Aggregate multiple sources
+- Detect anomalies and flag deviations
+- Weight sources by historical reliability
+- Show uncertainty transparently
 
-## What I'd Change Today
+## Key Learnings
+
+### "More sources ≠ better accuracy"
+
+More sources meant more edge cases. Some APIs update at different times. Some have bugs during weekends. The "consensus" was often wrong.
+
+**Solution:** Quality over quantity. Weight sources by historical reliability.
+
+### "Users want trust, not precision"
+
+A value with "updated 2 minutes ago, high confidence" is more useful than a "precise" number with unknown freshness.
+
+**Solution:** Built confidence displays from day one. Transparency beats false precision.
+
+## Iteration Philosophy
+
+The platform is alive—constantly iterated based on real usage and user feedback. Data-driven decisions about the product that provides data-driven decisions.
+
+## What I'd Change
 
 - Start with fewer, higher-quality sources
-- Build the confidence display from day one
-- Add user-reported corrections as a signal
-
-## Technical Details
-
-```
-Architecture: DB-first, not API-first
-Stack: Next.js, Supabase, Edge Functions
-Update frequency: 30 seconds during market hours
-Fallback: Cached values with decay indicators
-```
+- Add user-reported corrections as a signal earlier
+- Build community features for power users
