@@ -1,8 +1,44 @@
 [
   {
-    "quote": "Tienes lo que muchos desarrolladores no tienen (client-facing, discovery) y lo que muchos PMs no tienen (estructura y conocimiento técnico)",
-    "author": "Tech Recruiter",
-    "role": "Senior Talent Partner",
+    "quote": "His smart, innovative approach to UX design was instrumental in elevating our web design to new heights. He possessed a unique ability to blend creativity with user-centered design principles.",
+    "author": "Lautaro Cayarga",
+    "role": "Growth Marketing Lead",
+    "company": "Unicoin"
+  },
+  {
+    "quote": "Su capacidad para unir el mundo técnico con el negocio es excepcional. Logra traducir necesidades de negocio en soluciones tecnológicas efectivas, alineando equipos multidisciplinarios con objetivos claros.",
+    "author": "Tomás Pascual",
+    "role": "Engineering Leadership",
+    "company": "Fintech & AI"
+  },
+  {
+    "quote": "His unique blend of knowledge and curiosity allows him to create innovative products that address both business and human needs. An effective team leader and exceptional mentor.",
+    "author": "Nico Serna Castro",
+    "role": "Brand Strategy Director",
     "company": ""
+  },
+  {
+    "quote": "Tiene una visión muy completa de cómo encarar el pipeline completo de desarrollo. Su capacidad para transformar ideas complejas en diseños claros y funcionales es impresionante.",
+    "author": "Fermin Escribano",
+    "role": "Marketing Manager",
+    "company": ""
+  },
+  {
+    "quote": "Es un profesional que busca la excelencia en sus resultados. Siempre a la vanguardia con los últimos avances de la tecnología. Tiene una mirada artística que acompaña de forma integral el desarrollo de sus trabajos.",
+    "author": "Candela Crosta",
+    "role": "Art Director",
+    "company": ""
+  },
+  {
+    "quote": "What was magical was his willingness to always go the extra mile to get the job done. Self-driven and the ability to create value for the team.",
+    "author": "Steffen Wendt",
+    "role": "Operations Lead",
+    "company": "Courier Gear"
+  },
+  {
+    "quote": "I recommend Thomas as a responsible and detail-oriented professional.",
+    "author": "Stepan Revyakin",
+    "role": "VP of IT",
+    "company": "KMGi Group"
   }
 ]
