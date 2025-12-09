@@ -7,6 +7,15 @@ import { siteConfig } from "@/config/site";
 import { TextReveal } from "./TextReveal";
 import styles from "./Hero.module.css";
 
+const floatingMessages = [
+  { text: "Ship it 🚀", position: "top-left", delay: 0 },
+  { text: "Let's iterate", position: "top-right", delay: 0.5 },
+  { text: "MVP first", position: "middle-left", delay: 1 },
+  { text: "User feedback?", position: "middle-right", delay: 1.5 },
+  { text: "Clean code ✓", position: "bottom-left", delay: 2 },
+  { text: "Deployed!", position: "bottom-right", delay: 2.5 },
+];
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -20,6 +29,31 @@ export function Hero() {
 
   return (
     <section ref={ref} className={styles.hero}>
+      {/* Floating message bubbles */}
+      <div className={styles.floatingMessages}>
+        {floatingMessages.map((msg, index) => (
+          <motion.div
+            key={index}
+            className={`${styles.messageBubble} ${styles[msg.position.replace("-", "")]}`}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{
+              opacity: [0, 0.15, 0.15, 0],
+              scale: [0.8, 1, 1, 0.9],
+              y: [20, 0, -10, -20]
+            }}
+            transition={{
+              duration: 8,
+              delay: msg.delay,
+              repeat: Infinity,
+              repeatDelay: 4,
+              ease: "easeInOut"
+            }}
+          >
+            {msg.text}
+          </motion.div>
+        ))}
+      </div>
+
       <motion.div
         className={styles.content}
         style={{ y, opacity }}

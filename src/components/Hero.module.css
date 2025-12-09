@@ -6,6 +6,65 @@
   align-items: center;
   padding: var(--space-8) var(--space-6);
   position: relative;
+  overflow: hidden;
+}
+
+/* Floating Messages Background */
+.floatingMessages {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.messageBubble {
+  position: absolute;
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Message positions */
+.topleft {
+  top: 15%;
+  left: 8%;
+}
+
+.topright {
+  top: 20%;
+  right: 10%;
+}
+
+.middleleft {
+  top: 45%;
+  left: 5%;
+}
+
+.middleright {
+  top: 50%;
+  right: 6%;
+}
+
+.bottomleft {
+  bottom: 25%;
+  left: 12%;
+}
+
+.bottomright {
+  bottom: 20%;
+  right: 8%;
+}
+
+@media (max-width: 768px) {
+  .floatingMessages {
+    display: none;
+  }
 }
 
 .content {
@@ -14,6 +73,8 @@
   align-items: center;
   text-align: center;
   max-width: 600px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Photo */
