@@ -62,7 +62,7 @@ export function Hero() {
 
         <div className={styles.intro}>
           <h1 className={styles.name}>
-            <TextReveal text="Tomas Maritano" delay={0.2} />
+            <TextReveal text="Tomás Maritano" delay={0.2} />
           </h1>
 
           <motion.p
