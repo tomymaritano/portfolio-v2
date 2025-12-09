@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,6 +8,41 @@ import { useI18n } from "@/lib/i18n/context";
 import { siteConfig } from "@/config/site";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Navbar.module.css";
+
+function useTypingAnimation() {
+  const firstName = siteConfig.firstName.toLowerCase();
+  const lastName = siteConfig.lastName.toLowerCase();
+  const [displayText, setDisplayText] = useState(firstName);
+  const [phase, setPhase] = useState<"showing" | "deleting" | "typing">("showing");
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (phase === "showing") {
+      // Wait 3 seconds before starting to delete
+      timeout = setTimeout(() => setPhase("deleting"), 3000);
+    } else if (phase === "deleting") {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 80);
+      } else {
+        setPhase("typing");
+      }
+    } else if (phase === "typing") {
+      if (displayText.length < lastName.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(lastName.slice(0, displayText.length + 1));
+        }, 100);
+      }
+      // Stay on lastName permanently
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, phase, firstName, lastName]);
+
+  return displayText;
+}
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -22,6 +57,7 @@ export function Navbar() {
   const { locale, setLocale } = useI18n();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const logoText = useTypingAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +88,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className={styles.logo}>
             <span className={styles.logoText}>
-              {siteConfig.lastName.toLowerCase()}
+              {logoText}
               <span className={styles.logoDot}>.</span>
             </span>
           </Link>
