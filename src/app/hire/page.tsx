@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLayout, PageHeader } from "@/components/PageLayout";
 import styles from "./page.module.css";
 
 interface Reason {
@@ -44,75 +44,68 @@ const values = [
 
 export default function HirePage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <Link href="/" className={styles.backLink}>
-            ← Back to home
-          </Link>
-          <h1 className={styles.title}>Why People Hire Me</h1>
-          <p className={styles.subtitle}>
-            I build products that work under real-world constraints.
-            Here&apos;s what that means in practice.
-          </p>
-        </header>
+    <PageLayout size="sm">
+      <PageHeader
+        badge="Work with me"
+        title="Why People Hire Me"
+        description="I build products that work under real-world constraints. Here's what that means in practice."
+      />
 
-        <section className={styles.reasonsSection}>
-          <div className={styles.reasonsList}>
-            {reasons.map((reason, index) => (
-              <article key={index} className={styles.reasonCard}>
-                <h2 className={styles.reasonTitle}>{reason.title}</h2>
-                <p className={styles.reasonDescription}>{reason.description}</p>
-                <span className={styles.reasonEvidence}>{reason.evidence}</span>
-              </article>
-            ))}
-          </div>
-        </section>
+      <section className={styles.reasonsSection}>
+        <div className={styles.reasonsList}>
+          {reasons.map((reason, index) => (
+            <article key={index} className={styles.reasonCard}>
+              <h2 className={styles.reasonTitle}>{reason.title}</h2>
+              <p className={styles.reasonDescription}>{reason.description}</p>
+              <span className={styles.reasonEvidence}>{reason.evidence}</span>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <section className={styles.valuesSection}>
-          <h2 className={styles.sectionTitle}>How I Work</h2>
-          <ul className={styles.valuesList}>
-            {values.map((value, index) => (
-              <li key={index} className={styles.valueItem}>
-                {value}
-              </li>
-            ))}
-          </ul>
-        </section>
+      <section className={styles.valuesSection}>
+        <h2 className={styles.sectionTitle}>How I Work</h2>
+        <ul className={styles.valuesList}>
+          {values.map((value, index) => (
+            <li key={index} className={styles.valueItem}>
+              {value}
+            </li>
+          ))}
+        </ul>
+      </section>
 
-        <section className={styles.ctaSection}>
-          <h2 className={styles.ctaTitle}>Want to work together?</h2>
-          <p className={styles.ctaText}>
-            I&apos;m open to interesting projects where I can own outcomes,
-            not just write code. If you have something that needs building
-            under real constraints, let&apos;s talk.
-          </p>
-          <div className={styles.ctaLinks}>
-            <a
-              href="mailto:hello@example.com"
-              className={styles.primaryCta}
-            >
-              Get in touch
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondaryCta}
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondaryCta}
-            >
-              GitHub
-            </a>
-          </div>
-        </section>
-      </div>
-    </main>
+      <section className={styles.ctaSection}>
+        <h2 className={styles.ctaTitle}>Want to work together?</h2>
+        <p className={styles.ctaText}>
+          I&apos;m open to interesting projects where I can own outcomes,
+          not just write code. If you have something that needs building
+          under real constraints, let&apos;s talk.
+        </p>
+        <div className={styles.ctaLinks}>
+          <a
+            href="mailto:hello@example.com"
+            className={styles.primaryCta}
+          >
+            Get in touch
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondaryCta}
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondaryCta}
+          >
+            GitHub
+          </a>
+        </div>
+      </section>
+    </PageLayout>
   );
 }

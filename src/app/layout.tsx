@@ -7,6 +7,11 @@ import { Terminal } from "@/components/Terminal";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CommandPalette } from "@/components/CommandPalette";
+import { NowPlaying } from "@/components/NowPlaying";
+import { AIChat } from "@/components/AIChat";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { I18nProvider } from "@/lib/i18n/context";
 import "@/styles/globals.css";
 
 const siteUrl = "https://tomasmaritano.com";
@@ -91,10 +96,16 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <ThemeToggle />
-          <CommandPalette />
-          {children}
-          <Terminal />
+          <I18nProvider>
+            <Navbar />
+            <ThemeToggle />
+            <CommandPalette />
+            <main style={{ paddingTop: "80px" }}>{children}</main>
+            <Footer />
+            <NowPlaying />
+            <AIChat />
+            <Terminal />
+          </I18nProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

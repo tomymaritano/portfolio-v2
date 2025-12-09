@@ -2,6 +2,7 @@ import { allPosts } from "content-collections";
 import { BlogSearch } from "@/components/BlogSearch";
 import Link from "next/link";
 import { Metadata } from "next";
+import { PageLayout, PageHeader } from "@/components/PageLayout";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -15,19 +16,14 @@ export default function BlogPage() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <Link href="/" className={styles.backLink}>
-            ← Back
-          </Link>
-          <h1 className={styles.title}>Blog</h1>
-          <p className={styles.description}>
-            Thoughts on product engineering, AI, and building things that ship.
-          </p>
-        </header>
+    <PageLayout size="md">
+      <PageHeader
+        badge="Writing"
+        title="Blog"
+        description="Thoughts on product engineering, AI, and building things that ship."
+      />
 
-        <BlogSearch
+      <BlogSearch
           posts={posts.map((p) => ({
             slug: p.slug,
             title: p.title,
@@ -69,7 +65,6 @@ export default function BlogPage() {
             </Link>
           ))}
         </div>
-      </div>
-    </main>
+    </PageLayout>
   );
 }

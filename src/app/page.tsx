@@ -21,13 +21,6 @@ export default function Home() {
       <Experience />
       <BlogSection posts={posts} />
       <Contact />
-
-      {/* Terminal hint */}
-      <footer className={styles.footer}>
-        <span className={styles.hint}>
-          Press <kbd>`</kbd> to open terminal
-        </span>
-      </footer>
     </main>
   );
 }

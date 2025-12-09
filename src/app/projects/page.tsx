@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { allProjects } from "content-collections";
 import type { Metadata } from "next";
+import { PageLayout, PageHeader } from "@/components/PageLayout";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -15,19 +16,12 @@ export default function ProjectsPage() {
   const learningProjects = allProjects.filter((p) => p.status === "learning");
 
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        {/* Header */}
-        <header className={styles.header}>
-          <Link href="/" className={styles.backLink}>
-            ← Back to home
-          </Link>
-          <h1 className={styles.title}>Projects</h1>
-          <p className={styles.subtitle}>
-            A collection of products I&apos;ve built, from concept to deployment.
-            Each project represents a different challenge and set of learnings.
-          </p>
-        </header>
+    <PageLayout size="lg">
+      <PageHeader
+        badge="Portfolio"
+        title="Projects"
+        description="A collection of products I've built, from concept to deployment. Each project represents a different challenge and set of learnings."
+      />
 
         {/* Stats */}
         <div className={styles.stats}>
@@ -89,8 +83,7 @@ export default function ProjectsPage() {
             </div>
           </section>
         )}
-      </div>
-    </main>
+    </PageLayout>
   );
 }
 

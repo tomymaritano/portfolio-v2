@@ -81,6 +81,47 @@ const RssIcon = () => (
   </svg>
 );
 
+const UsesIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  </svg>
+);
+
+const GuestbookIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 20h9" />
+    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const TwitterIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+  </svg>
+);
+
+const CopyIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+  </svg>
+);
+
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -94,14 +135,27 @@ export function CommandPalette() {
     localStorage.setItem("theme", current === "dark" ? "light" : "dark");
   }, []);
 
+  const copyEmail = useCallback(() => {
+    navigator.clipboard.writeText("tomas@tomasmaritano.com");
+  }, []);
+
   const commands: Command[] = [
+    // Navigation
     { id: "home", label: "Go to Home", href: "/", icon: <HomeIcon /> },
     { id: "projects", label: "Go to Projects", href: "/projects", icon: <ProjectsIcon /> },
     { id: "blog", label: "Go to Blog", href: "/blog", icon: <BlogIcon /> },
+    { id: "uses", label: "Go to Uses", href: "/uses", icon: <UsesIcon /> },
     { id: "think", label: "Go to Think", href: "/think", icon: <ThinkIcon /> },
+    { id: "guestbook", label: "Go to Guestbook", href: "/guestbook", icon: <GuestbookIcon /> },
     { id: "hire", label: "Go to Hire Me", href: "/hire", icon: <HireIcon /> },
+    // Theme
     { id: "theme-light", label: "Switch to Light Mode", action: toggleTheme, icon: <SunIcon /> },
     { id: "theme-dark", label: "Switch to Dark Mode", action: toggleTheme, icon: <MoonIcon /> },
+    // Social & External
+    { id: "github", label: "Open GitHub", action: () => window.open("https://github.com/tomasmaritano", "_blank"), icon: <GitHubIcon /> },
+    { id: "linkedin", label: "Open LinkedIn", action: () => window.open("https://linkedin.com/in/tomasmaritano", "_blank"), icon: <LinkedInIcon /> },
+    { id: "twitter", label: "Open X (Twitter)", action: () => window.open("https://x.com/tomasmaritano", "_blank"), icon: <TwitterIcon /> },
+    { id: "copy-email", label: "Copy Email Address", action: copyEmail, icon: <CopyIcon /> },
     { id: "rss", label: "Subscribe to RSS Feed", href: "/feed.xml", icon: <RssIcon /> },
   ];
 

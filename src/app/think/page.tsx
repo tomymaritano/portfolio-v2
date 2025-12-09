@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageLayout, PageHeader } from "@/components/PageLayout";
 import styles from "./page.module.css";
 
 interface Constraint {
@@ -43,38 +44,32 @@ const constraints: Constraint[] = [
 
 export default function ThinkPage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <Link href="/" className={styles.backLink}>
-            ← Back to home
-          </Link>
-          <h1 className={styles.title}>How I Think About Constraints</h1>
-          <p className={styles.subtitle}>
-            Every decision happens under constraints. Choose a constraint to see how I approach it.
-          </p>
-        </header>
+    <PageLayout size="md">
+      <PageHeader
+        badge="Process"
+        title="How I Think About Constraints"
+        description="Every decision happens under constraints. Choose a constraint to see how I approach it."
+      />
 
-        <div className={styles.constraintsGrid}>
-          {constraints.map((constraint) => (
-            <Link
-              key={constraint.id}
-              href={`/think/${constraint.id}`}
-              className={styles.constraintCard}
-            >
-              <h2 className={styles.constraintName}>{constraint.name}</h2>
-              <p className={styles.constraintDescription}>{constraint.description}</p>
-              <ul className={styles.examplesList}>
-                {constraint.examples.map((example, i) => (
-                  <li key={i} className={styles.example}>
-                    {example}
-                  </li>
-                ))}
-              </ul>
-            </Link>
-          ))}
-        </div>
+      <div className={styles.constraintsGrid}>
+        {constraints.map((constraint) => (
+          <Link
+            key={constraint.id}
+            href={`/think/${constraint.id}`}
+            className={styles.constraintCard}
+          >
+            <h2 className={styles.constraintName}>{constraint.name}</h2>
+            <p className={styles.constraintDescription}>{constraint.description}</p>
+            <ul className={styles.examplesList}>
+              {constraint.examples.map((example, i) => (
+                <li key={i} className={styles.example}>
+                  {example}
+                </li>
+              ))}
+            </ul>
+          </Link>
+        ))}
       </div>
-    </main>
+    </PageLayout>
   );
 }

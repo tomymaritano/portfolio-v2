@@ -34,8 +34,8 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <main className={styles.main}>
-      <Link href="/" className={styles.backLink}>
-        &larr; Back
+      <Link href="/projects" className={styles.backLink}>
+        ← Back to projects
       </Link>
 
       <header className={styles.header}>
@@ -61,8 +61,8 @@ export default async function ProjectPage({ params }: Props) {
       </article>
 
       <footer className={styles.footer}>
-        <Link href="/" className={styles.backLink}>
-          &larr; Back to home
+        <Link href="/projects" className={styles.backLink}>
+          ← Back to all projects
         </Link>
       </footer>
     </main>

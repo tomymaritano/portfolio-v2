@@ -1,0 +1,109 @@
+/*
+ * Layout System
+ * Consistent page widths:
+ * - sm: 640px  (blog posts, articles)
+ * - md: 768px  (blog list, default)
+ * - lg: 960px  (projects, uses)
+ * - xl: 1200px (dashboard, wide layouts)
+ */
+
+.layout {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-8) var(--space-6);
+  margin: 0 auto;
+}
+
+/* Container Sizes */
+.sm {
+  max-width: 640px;
+}
+
+.md {
+  max-width: 768px;
+}
+
+.lg {
+  max-width: 960px;
+}
+
+.xl {
+  max-width: 1200px;
+}
+
+/* Page Header */
+.header {
+  margin-bottom: var(--space-12);
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: var(--accent-muted);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+  color: var(--text);
+}
+
+.description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* Section */
+.section {
+  margin-bottom: var(--space-12);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layout {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
