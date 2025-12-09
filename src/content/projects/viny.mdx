@@ -1,0 +1,89 @@
+---
+slug: viny
+name: Viny
+tagline: Offline-first Markdown editor with semantic search and plugins
+status: building
+topics:
+  - electron
+  - productivity
+  - founder
+complexity: advanced
+image: /images/projects/viny.png
+links:
+  github: https://github.com/tomymaritano/viny
+---
+
+## The Problem
+
+Note-taking apps force a tradeoff: cloud-based tools sacrifice privacy and offline access, while local apps lack modern features like semantic search and extensibility. Power users need both.
+
+## My Role
+
+**Founder & Developer** — Conceived and built the entire application:
+
+- **Product Vision** — Defined the offline-first, privacy-focused approach
+- **Architecture Design** — Structured the plugin system and data layer
+- **Full Development** — Electron, frontend, and semantic search implementation
+- **UX Design** — Crafted the writing experience and notebook organization
+
+## The Solution
+
+A cross-platform Markdown editor built for serious note-takers:
+
+1. **Offline-First** — All data stored locally, works without internet
+2. **Hierarchical Notebooks** — Organize notes in nested folder structures
+3. **Tag System** — Flexible categorization across notebooks
+4. **Semantic Search** — Find notes by meaning, not just keywords
+5. **Plugin Architecture** — Extend functionality without core modifications
+
+## Technical Architecture
+
+| Layer | Technology |
+|-------|------------|
+| Framework | Electron |
+| Frontend | React |
+| Editor | Markdown with live preview |
+| Search | Semantic embeddings |
+| Storage | Local filesystem |
+| Plugins | Modular extension system |
+
+## Design Decisions
+
+### Offline-First Philosophy
+
+**Decision:** Local storage as the source of truth, sync as optional layer.
+
+**Reasoning:**
+- Privacy: Notes never leave your device unless you choose
+- Reliability: No dependency on external services
+- Speed: Instant access without network latency
+
+### Hierarchical + Tags
+
+**Decision:** Support both folder hierarchy AND tags.
+
+**Reasoning:** Different mental models for different contexts:
+- Hierarchies for project-based organization
+- Tags for cross-cutting themes and quick filtering
+
+### Plugin System
+
+**Decision:** Build extensibility from day one.
+
+**Reasoning:** Note-taking is personal. Instead of bloating the core with features, let users add what they need.
+
+## Current Status
+
+**Blocked** by Electron module resolution issue requiring migration to esbuild with externals configuration. The bundler needs to properly handle native Node modules in the Electron main process.
+
+## Key Learnings
+
+- **Electron is powerful but complex** — Native module resolution across main/renderer processes requires careful bundler configuration
+- **Semantic search changes everything** — Finding notes by concept rather than exact text transforms how you organize information
+- **Offline-first is a feature** — In an era of mandatory cloud sync, local-first is a competitive advantage for privacy-conscious users
+
+## What's Next
+
+- Resolve esbuild migration for Electron compatibility
+- Implement sync layer (optional, encrypted)
+- Launch beta for early adopters
