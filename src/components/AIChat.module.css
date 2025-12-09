@@ -1,7 +1,7 @@
 .toggle {
   position: fixed;
-  bottom: var(--space-4);
-  right: var(--space-4);
+  bottom: calc(var(--space-4) + 70px);
+  left: var(--space-4);
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -24,8 +24,8 @@
 
 .container {
   position: fixed;
-  bottom: calc(var(--space-4) + 70px);
-  right: var(--space-4);
+  bottom: calc(var(--space-4) + 140px);
+  left: var(--space-4);
   width: 380px;
   max-width: calc(100vw - var(--space-8));
   height: 500px;
@@ -218,7 +218,7 @@
 @media (max-width: 480px) {
   .container {
     bottom: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     max-width: 100%;
     height: 100%;
@@ -227,7 +227,7 @@
   }
 
   .toggle {
-    bottom: var(--space-4);
-    right: var(--space-4);
+    bottom: calc(var(--space-4) + 70px);
+    left: var(--space-4);
   }
 }
