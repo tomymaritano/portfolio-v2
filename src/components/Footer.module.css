@@ -68,11 +68,11 @@
   color: var(--accent);
 }
 
-/* Typing cursor effect */
-.logo:hover .logoDot::after {
+/* Typing cursor effect - always visible */
+.logoDot::after {
   content: "|";
   margin-left: 1px;
-  animation: blink 0.8s step-end infinite;
+  animation: blink 1s step-end infinite;
   color: var(--accent);
 }
 

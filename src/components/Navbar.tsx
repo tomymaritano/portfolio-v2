@@ -52,7 +52,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className={styles.logo}>
             <span className={styles.logoText}>
-              {siteConfig.firstName.toLowerCase()}
+              {siteConfig.lastName.toLowerCase()}
               <span className={styles.logoDot}>.</span>
             </span>
           </Link>
