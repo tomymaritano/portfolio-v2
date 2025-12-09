@@ -62,10 +62,11 @@
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: var(--space-2);
-  background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text);
+}
+
+.name span {
+  display: inline-block;
 }
 
 .role {

@@ -61,14 +61,9 @@ export function Hero() {
         </motion.div>
 
         <div className={styles.intro}>
-          <motion.h1
-            className={styles.name}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
+          <h1 className={styles.name}>
             <TextReveal text="Tomas Maritano" delay={0.2} />
-          </motion.h1>
+          </h1>
 
           <motion.p
             className={styles.role}
