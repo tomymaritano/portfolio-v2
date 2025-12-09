@@ -41,6 +41,11 @@
   color: var(--text-muted);
 }
 
+/* Bento Grid */
+.bentoWrapper {
+  margin-bottom: var(--space-8);
+}
+
 /* Tech Stack */
 .stack {
   padding-top: var(--space-6);

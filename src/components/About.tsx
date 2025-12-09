@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BentoGrid } from "./BentoGrid";
 import styles from "./About.module.css";
 
 const techStack = [
@@ -59,6 +60,10 @@ export function About() {
           <p className={styles.bioMuted}>
             Currently building tools that help people navigate complex financial systems.
           </p>
+        </motion.div>
+
+        <motion.div className={styles.bentoWrapper} variants={itemVariants}>
+          <BentoGrid />
         </motion.div>
 
         <motion.div className={styles.stack} variants={itemVariants}>
