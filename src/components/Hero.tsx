@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useRef } from "react";
+import { TextReveal } from "./TextReveal";
 import styles from "./Hero.module.css";
 
 const socialLinks = [
@@ -12,17 +14,28 @@ const socialLinks = [
 ];
 
 export function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax effects
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section className={styles.hero}>
+    <section ref={ref} className={styles.hero}>
       <motion.div
         className={styles.content}
+        style={{ y, opacity }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <motion.div
           className={styles.photoWrapper}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, rotate: 2 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <Image
@@ -33,6 +46,18 @@ export function Hero() {
             className={styles.photo}
             priority
           />
+          <motion.div
+            className={styles.photoGlow}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "easeInOut",
+            }}
+          />
         </motion.div>
 
         <div className={styles.intro}>
@@ -42,14 +67,14 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
           >
-            Tomas Maritano
+            <TextReveal text="Tomas Maritano" delay={0.2} />
           </motion.h1>
 
           <motion.p
             className={styles.role}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
           >
             Product Engineer
           </motion.p>
@@ -58,7 +83,7 @@ export function Hero() {
             className={styles.tagline}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
           >
             I turn ambiguity into shipped products.
             <br />
@@ -72,17 +97,19 @@ export function Hero() {
           className={styles.links}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
+          transition={{ delay: 0.9, duration: 0.5 }}
         >
-          {socialLinks.map((link) => (
+          {socialLinks.map((link, i) => (
             <motion.a
               key={link.name}
               href={link.href}
               target={link.href.startsWith("mailto") ? undefined : "_blank"}
               rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               className={styles.socialLink}
-              whileHover={{ y: -2 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + i * 0.1, duration: 0.4 }}
+              whileHover={{ y: -3, color: "var(--accent)" }}
             >
               {link.name}
             </motion.a>
@@ -94,13 +121,14 @@ export function Hero() {
         className={styles.scrollHint}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        style={{ opacity }}
       >
         <span className={styles.scrollText}>scroll</span>
         <motion.span
           className={styles.scrollArrow}
-          animate={{ y: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
         >
           ↓
         </motion.span>

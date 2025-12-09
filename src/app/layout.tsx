@@ -11,6 +11,8 @@ import { NowPlaying } from "@/components/NowPlaying";
 import { AIChat } from "@/components/AIChat";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CursorEffect } from "@/components/CursorEffect";
+import { EasterEggs } from "@/components/EasterEggs";
 import { I18nProvider } from "@/lib/i18n/context";
 import "@/styles/globals.css";
 
@@ -105,6 +107,8 @@ export default function RootLayout({
             <NowPlaying />
             <AIChat />
             <Terminal />
+            <CursorEffect />
+            <EasterEggs />
           </I18nProvider>
         </ThemeProvider>
         <Analytics />

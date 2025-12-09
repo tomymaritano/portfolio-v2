@@ -1,0 +1,81 @@
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    var(--surface-hover) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Variants */
+.text {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  height: 1.5rem;
+  width: 100%;
+  margin-bottom: var(--space-3);
+}
+
+.card {
+  height: 280px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.image {
+  aspect-ratio: 16/9;
+  width: 100%;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.button {
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+}
+
+/* Card Skeleton Layout */
+.cardSkeleton {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: var(--space-4);
+}
+
+.cardTags {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* Post Skeleton Layout */
+.postSkeleton {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border);
+}
