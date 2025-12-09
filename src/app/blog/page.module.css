@@ -26,6 +26,36 @@
   color: var(--accent);
 }
 
+.postCard:hover .postImage img {
+  transform: scale(1.05);
+}
+
+/* Card with image layout */
+.hasImage {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.postImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+.postImage img {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.postContent {
+  min-width: 0;
+}
+
 .postMeta {
   display: flex;
   align-items: center;
@@ -93,6 +123,14 @@
 
   .postCard {
     padding: var(--space-4);
+  }
+
+  .hasImage {
+    grid-template-columns: 1fr;
+  }
+
+  .postImage {
+    aspect-ratio: 16/9;
   }
 
   .postTitle {

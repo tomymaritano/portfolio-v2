@@ -1,5 +1,6 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
+import remarkGfm from "remark-gfm";
 import { z } from "zod";
 
 const projectSchema = z.object({
@@ -53,7 +54,9 @@ const projects = defineCollection({
   include: "**/*.mdx",
   schema: projectSchema,
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
     return {
       ...document,
       mdx,
@@ -67,7 +70,9 @@ const decisions = defineCollection({
   include: "**/*.mdx",
   schema: decisionSchema,
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
     return {
       ...document,
       mdx,
@@ -81,7 +86,9 @@ const adrs = defineCollection({
   include: "**/*.mdx",
   schema: adrSchema,
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
     return {
       ...document,
       mdx,
@@ -95,7 +102,9 @@ const posts = defineCollection({
   include: "**/*.mdx",
   schema: postSchema,
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
     // Calculate reading time (average 200 words per minute)
     const words = document.content.split(/\s+/).length;
     const readingTime = Math.ceil(words / 200);

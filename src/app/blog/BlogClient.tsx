@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import Fuse from "fuse.js";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { BlogSearch } from "@/components/BlogSearch";
 import styles from "./page.module.css";
@@ -13,6 +14,7 @@ interface Post {
   description: string;
   tags: string[];
   date: string;
+  image?: string;
 }
 
 interface BlogClientProps {
@@ -66,7 +68,18 @@ export function BlogClient({ posts }: BlogClientProps) {
               }}
             >
               <Link href={`/blog/${post.slug}`} className={styles.postCard}>
-                <article>
+                <article className={post.image ? styles.hasImage : undefined}>
+                  {post.image && (
+                    <div className={styles.postImage}>
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 300px"
+                      />
+                    </div>
+                  )}
+                  <div className={styles.postContent}>
                   <div className={styles.postMeta}>
                     <time className={styles.date}>
                       {new Date(post.date).toLocaleDateString("en-US", {
@@ -88,6 +101,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                   <h2 className={styles.postTitle}>{post.title}</h2>
                   <p className={styles.postDescription}>{post.description}</p>
                   <span className={styles.readMore}>Read more →</span>
+                  </div>
                 </article>
               </Link>
             </motion.div>

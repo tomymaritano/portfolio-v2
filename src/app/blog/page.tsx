@@ -18,6 +18,7 @@ export default function BlogPage() {
       description: post.description,
       tags: post.tags,
       date: post.date,
+      image: post.image,
     }));
 
   return (
