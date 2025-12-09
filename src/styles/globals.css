@@ -42,11 +42,27 @@
   --radius-lg: 0.75rem;
   --radius-full: 9999px;
 
+  /* Animation Timing */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.6);
   --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
+
+  /* Cards */
+  --card-bg: rgba(17, 17, 19, 0.6);
+  --card-bg-hover: rgba(22, 22, 24, 0.8);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-shadow-hover: 0 0 40px rgba(16, 185, 129, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  /* Header */
+  --header-bg: rgba(9, 9, 11, 0.8);
 }
 
 /* Light Mode */
@@ -73,6 +89,15 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 0 20px rgba(5, 150, 105, 0.1);
+
+  /* Cards */
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-bg-hover: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 0 40px rgba(5, 150, 105, 0.08), 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* Header */
+  --header-bg: rgba(255, 255, 255, 0.8);
 
   color-scheme: light;
 }
@@ -210,6 +235,34 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* Input Focus Animations */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  transition: border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              background-color var(--duration-fast) ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+
+/* Button animations */
+button {
+  transition: transform var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              background-color var(--duration-fast) ease,
+              opacity var(--duration-fast) ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 /* Scrollbar */

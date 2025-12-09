@@ -3,15 +3,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import { siteConfig } from "@/config/site";
 import { TextReveal } from "./TextReveal";
 import styles from "./Hero.module.css";
-
-const socialLinks = [
-  { name: "GitHub", href: "https://github.com/tomasmaritano" },
-  { name: "LinkedIn", href: "https://linkedin.com/in/tomasmaritano" },
-  { name: "X", href: "https://x.com/tomasmaritano" },
-  { name: "Email", href: "mailto:tomas@maritano.dev" },
-];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -39,8 +33,8 @@ export function Hero() {
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <Image
-            src="/images/profile.png"
-            alt="Tomas Maritano"
+            src={siteConfig.hero.photo}
+            alt={siteConfig.name}
             width={160}
             height={160}
             className={styles.photo}
@@ -62,7 +56,7 @@ export function Hero() {
 
         <div className={styles.intro}>
           <h1 className={styles.name}>
-            <TextReveal text="Tomás Maritano" delay={0.2} />
+            <TextReveal text={siteConfig.name} delay={0.2} />
           </h1>
 
           <motion.p
@@ -71,7 +65,7 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            Product Engineer
+            {siteConfig.role}
           </motion.p>
 
           <motion.p
@@ -80,53 +74,37 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
           >
-            I turn ambiguity into shipped products.
+            {siteConfig.tagline}
             <br />
             <span className={styles.taglineAccent}>
-              From fintech APIs to habit trackers, I build what others only plan.
+              {siteConfig.taglineAccent}
             </span>
           </motion.p>
-        </div>
 
-        <motion.nav
-          className={styles.links}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-        >
-          {socialLinks.map((link, i) => (
+          <motion.div
+            className={styles.ctas}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
             <motion.a
-              key={link.name}
-              href={link.href}
-              target={link.href.startsWith("mailto") ? undefined : "_blank"}
-              rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-              className={styles.socialLink}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 + i * 0.1, duration: 0.4 }}
-              whileHover={{ y: -3, color: "var(--accent)" }}
+              href={siteConfig.hero.ctas.primary.href}
+              className={styles.ctaPrimary}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              {link.name}
+              {siteConfig.hero.ctas.primary.label}
             </motion.a>
-          ))}
-        </motion.nav>
-      </motion.div>
-
-      <motion.div
-        className={styles.scrollHint}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        style={{ opacity }}
-      >
-        <span className={styles.scrollText}>scroll</span>
-        <motion.span
-          className={styles.scrollArrow}
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          ↓
-        </motion.span>
+            <motion.a
+              href={siteConfig.hero.ctas.secondary.href}
+              className={styles.ctaSecondary}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {siteConfig.hero.ctas.secondary.label}
+            </motion.a>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

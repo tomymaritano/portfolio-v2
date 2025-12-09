@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 import styles from "./Contact.module.css";
 
 export function Contact() {
@@ -15,27 +16,37 @@ export function Contact() {
       >
         <span className={styles.label}>Contact</span>
 
-        <h2 className={styles.title}>Let&apos;s build something together</h2>
+        <h2 className={styles.title}>{siteConfig.contact.title}</h2>
 
         <p className={styles.description}>
-          I&apos;m open to new opportunities, collaborations, and interesting
-          conversations about product and engineering.
+          {siteConfig.contact.description}
         </p>
 
         <div className={styles.actions}>
           <motion.a
-            href="mailto:tomas@maritano.dev"
+            href={siteConfig.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.primaryButton}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className={styles.buttonIcon}>✉</span>
-            Send me an email
+            {siteConfig.contact.calendlyText}
+          </motion.a>
+          <span className={styles.microCopy}>{siteConfig.contact.calendlyMicro}</span>
+
+          <motion.a
+            href={`mailto:${siteConfig.email}`}
+            className={styles.emailButton}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {siteConfig.contact.emailText}
           </motion.a>
 
           <div className={styles.secondaryLinks}>
             <motion.a
-              href="https://linkedin.com/in/tomasmaritano"
+              href={siteConfig.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.secondaryLink}
@@ -46,7 +57,7 @@ export function Contact() {
             </motion.a>
             <span className={styles.dot}>·</span>
             <motion.a
-              href="https://github.com/tomasmaritano"
+              href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.secondaryLink}
@@ -57,7 +68,7 @@ export function Contact() {
             </motion.a>
             <span className={styles.dot}>·</span>
             <motion.a
-              href="https://x.com/tomasmaritano"
+              href={siteConfig.social.twitter}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.secondaryLink}

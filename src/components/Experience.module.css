@@ -52,6 +52,31 @@
   box-shadow: 0 0 8px var(--accent);
   flex-shrink: 0;
   margin-top: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--accent);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px var(--accent), 0 0 24px var(--accent);
+    transform: scale(1.1);
+  }
+}
+
+/* First dot pulses slightly different */
+.job:first-child .dot {
+  animation-delay: 0s;
+}
+
+.job:nth-child(2) .dot {
+  animation-delay: 0.3s;
+}
+
+.job:nth-child(3) .dot {
+  animation-delay: 0.6s;
 }
 
 .line {

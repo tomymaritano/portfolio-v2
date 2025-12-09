@@ -60,10 +60,31 @@
 .primaryButton:hover {
   background: var(--accent-hover);
   color: var(--bg);
+  box-shadow: 0 0 20px var(--accent-muted);
 }
 
-.buttonIcon {
-  font-size: 1rem;
+.microCopy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin-top: calc(var(--space-1) * -1);
+}
+
+.emailButton {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all 150ms ease;
+  text-decoration: none;
+}
+
+.emailButton:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background: var(--surface);
 }
 
 /* Secondary Links */

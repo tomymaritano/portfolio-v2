@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { getInitials } from "@/lib/utils";
 import styles from "./Footer.module.css";
 
 const footerLinks = {
@@ -17,9 +19,9 @@ const footerLinks = {
     { label: "RSS", href: "/feed.xml" },
   ],
   social: [
-    { label: "GitHub", href: "https://github.com/tomasmaritano", external: true },
-    { label: "LinkedIn", href: "https://linkedin.com/in/tomasmaritano", external: true },
-    { label: "X (Twitter)", href: "https://x.com/tomasmaritano", external: true },
+    { label: "GitHub", href: siteConfig.social.github, external: true },
+    { label: "LinkedIn", href: siteConfig.social.linkedin, external: true },
+    { label: "X (Twitter)", href: siteConfig.social.twitter, external: true },
   ],
 };
 
@@ -33,11 +35,11 @@ export function Footer() {
           {/* Brand */}
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.logoIcon}>TM</span>
-              <span className={styles.logoText}>Tomas Maritano</span>
+              <span className={styles.logoIcon}>{getInitials(siteConfig.name)}</span>
+              <span className={styles.logoText}>{siteConfig.name}</span>
             </Link>
             <p className={styles.tagline}>
-              Product Engineer building digital products from 0 to 1.
+              {siteConfig.role} building digital products from 0 to 1.
             </p>
           </div>
 
@@ -104,7 +106,7 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            {currentYear} Tomas Maritano. All rights reserved.
+            {currentYear} {siteConfig.name}. {siteConfig.footer.copyright}
           </p>
           <p className={styles.builtWith}>
             Built with{" "}

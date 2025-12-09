@@ -1,121 +1,125 @@
-import type { Metadata } from "next";
-import { PageLayout, PageHeader } from "@/components/PageLayout";
+"use client";
+
+import { motion } from "framer-motion";
+import nowData from "@/content/now.json";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Now",
-  description: "What I'm currently focused on, building, and learning.",
+const now = nowData;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
 };
 
-const now = {
-  focus: "Building product experiences in fintech",
-  building: [
-    { name: "Portfolio v2", description: "This site you're looking at" },
-    { name: "DólarGaucho", description: "Real-time currency tracking for Argentina" },
-  ],
-  learning: [
-    { name: "System Design", description: "Scalable architecture patterns" },
-    { name: "AI/ML", description: "LLMs and practical applications" },
-  ],
-  reading: {
-    title: "Shape Up",
-    author: "Basecamp",
-    link: "https://basecamp.com/shapeup",
-  },
-  location: "Buenos Aires, Argentina",
-  lastUpdated: "December 2024",
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 };
 
 export default function NowPage() {
   return (
-    <PageLayout size="sm">
-      <PageHeader
-        badge="Current"
-        title="Now"
-        description="What I'm focused on right now. Inspired by Derek Sivers' /now page movement."
-      />
+    <div className={styles.page}>
+      <motion.div
+        className={styles.container}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        {/* Header */}
+        <motion.header className={styles.header} variants={itemVariants}>
+          <span className={styles.badge}>Current</span>
+          <h1 className={styles.title}>Now</h1>
+          <p className={styles.description}>
+            What I&apos;m focused on right now. Inspired by Derek Sivers&apos;{" "}
+            <a
+              href="https://nownownow.com/about"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              /now page movement
+            </a>
+            .
+          </p>
+        </motion.header>
 
-      {/* Focus */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.icon}>🎯</span>
-          Focus
-        </h2>
-        <p className={styles.focusText}>{now.focus}</p>
-      </section>
+        {/* Focus */}
+        <motion.section className={styles.section} variants={itemVariants}>
+          <h2 className={styles.sectionTitle}>Focus</h2>
+          <p className={styles.focusText}>{now.focus}</p>
+        </motion.section>
 
-      {/* Building */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.icon}>🔨</span>
-          Building
-        </h2>
-        <ul className={styles.list}>
-          {now.building.map((item) => (
-            <li key={item.name} className={styles.listItem}>
-              <span className={styles.itemName}>{item.name}</span>
-              <span className={styles.itemDescription}>{item.description}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+        {/* Building */}
+        <motion.section className={styles.section} variants={itemVariants}>
+          <h2 className={styles.sectionTitle}>Building</h2>
+          <ul className={styles.list}>
+            {now.building.map((item, index) => (
+              <motion.li
+                key={item.name}
+                className={styles.listItem}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + index * 0.1 }}
+              >
+                <span className={styles.itemName}>{item.name}</span>
+                <span className={styles.itemDescription}>{item.description}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.section>
 
-      {/* Learning */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.icon}>📚</span>
-          Learning
-        </h2>
-        <ul className={styles.list}>
-          {now.learning.map((item) => (
-            <li key={item.name} className={styles.listItem}>
-              <span className={styles.itemName}>{item.name}</span>
-              <span className={styles.itemDescription}>{item.description}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+        {/* Learning */}
+        <motion.section className={styles.section} variants={itemVariants}>
+          <h2 className={styles.sectionTitle}>Learning</h2>
+          <ul className={styles.list}>
+            {now.learning.map((item, index) => (
+              <motion.li
+                key={item.name}
+                className={styles.listItem}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
+                <span className={styles.itemName}>{item.name}</span>
+                <span className={styles.itemDescription}>{item.description}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.section>
 
-      {/* Reading */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.icon}>📖</span>
-          Reading
-        </h2>
-        <a
-          href={now.reading.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.readingCard}
-        >
-          <span className={styles.bookTitle}>{now.reading.title}</span>
-          <span className={styles.bookAuthor}>by {now.reading.author}</span>
-        </a>
-      </section>
+        {/* Reading */}
+        <motion.section className={styles.section} variants={itemVariants}>
+          <h2 className={styles.sectionTitle}>Reading</h2>
+          <motion.a
+            href={now.reading.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.readingCard}
+            whileHover={{ x: 4 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span className={styles.bookTitle}>{now.reading.title}</span>
+            <span className={styles.bookAuthor}>by {now.reading.author}</span>
+            <span className={styles.arrow}>→</span>
+          </motion.a>
+        </motion.section>
 
-      {/* Location */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.icon}>📍</span>
-          Location
-        </h2>
-        <p className={styles.locationText}>{now.location}</p>
-      </section>
+        {/* Location */}
+        <motion.section className={styles.section} variants={itemVariants}>
+          <h2 className={styles.sectionTitle}>Location</h2>
+          <p className={styles.locationText}>{now.location}</p>
+        </motion.section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <p className={styles.updated}>
-          Last updated: <time>{now.lastUpdated}</time>
-        </p>
-        <a
-          href="https://nownownow.com/about"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.aboutNow}
-        >
-          What is a /now page?
-        </a>
-      </footer>
-    </PageLayout>
+        {/* Footer */}
+        <motion.footer className={styles.footer} variants={itemVariants}>
+          <p className={styles.updated}>
+            Last updated: <time>{now.lastUpdated}</time>
+          </p>
+        </motion.footer>
+      </motion.div>
+    </div>
   );
 }

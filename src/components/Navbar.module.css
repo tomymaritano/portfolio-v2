@@ -9,14 +9,10 @@
 }
 
 .header.scrolled {
-  background: rgba(9, 9, 11, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-}
-
-[data-theme="light"] .header.scrolled {
-  background: rgba(255, 255, 255, 0.8);
 }
 
 .nav {

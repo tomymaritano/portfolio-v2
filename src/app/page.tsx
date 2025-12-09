@@ -4,6 +4,7 @@ import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
 import { BlogSection } from "@/components/BlogSection";
+import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import styles from "./page.module.css";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <About />
       <Projects projects={projects} />
       <Experience />
+      <Testimonials />
       <BlogSection posts={posts} />
       <Contact />
     </main>

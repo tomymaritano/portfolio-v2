@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
-import { allProjects, allDecisions } from "content-collections";
+import { allProjects, allDecisions, allPosts } from "content-collections";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://tomasmaritano.com";
+  const baseUrl = siteConfig.meta.domain;
 
   // Static pages
   const staticPages = [
@@ -13,15 +14,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/case-study`,
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: "monthly" as const,
+      changeFrequency: "weekly" as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/think`,
+      url: `${baseUrl}/projects`,
       lastModified: new Date(),
-      changeFrequency: "monthly" as const,
+      changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     {
@@ -31,14 +32,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}/now`,
       lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/case-study`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/think`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     },
   ];
 
-  // Dynamic project pages
+  // Blog posts
+  const blogPages = allPosts
+    .filter((post) => post.published)
+    .map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }));
+
+  // Project pages
   const projectPages = allProjects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     lastModified: new Date(),
@@ -46,13 +69,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Dynamic constraint pages
+  // Decision/constraint pages
   const constraintPages = allDecisions.map((decision) => ({
     url: `${baseUrl}/think/${decision.constraint}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.6,
+    priority: 0.5,
   }));
 
-  return [...staticPages, ...projectPages, ...constraintPages];
+  return [...staticPages, ...blogPages, ...projectPages, ...constraintPages];
 }

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/lib/i18n/context";
+import { siteConfig } from "@/config/site";
+import { getInitials } from "@/lib/utils";
 import styles from "./Navbar.module.css";
 
 const navItems = [
@@ -49,8 +51,8 @@ export function Navbar() {
         <nav className={styles.nav}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>TM</span>
-            <span className={styles.logoText}>Tomas Maritano</span>
+            <span className={styles.logoIcon}>{getInitials(siteConfig.name)}</span>
+            <span className={styles.logoText}>{siteConfig.name}</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -3,6 +3,12 @@
   border-top: 1px solid var(--border);
 }
 
+/* Word-by-word reveal */
+.word {
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
 .container {
   max-width: 680px;
   margin: 0 auto;

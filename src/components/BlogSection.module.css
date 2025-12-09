@@ -39,12 +39,30 @@
 }
 
 .post {
+  position: relative;
   border-radius: var(--radius-md);
-  transition: background 150ms ease;
+  transition: background var(--duration-fast) ease;
+}
+
+.post::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+  transition: height var(--duration-normal) var(--ease-spring);
 }
 
 .post:hover {
   background: var(--surface);
+}
+
+.post:hover::before {
+  height: 60%;
 }
 
 .postLink {

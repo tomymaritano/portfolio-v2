@@ -1,6 +1,74 @@
 # Portfolio v2
 
-Personal portfolio built with Next.js 16, React 19, and TypeScript.
+A modern, minimal portfolio template built with Next.js 16, React 19, and TypeScript. Designed for Product Engineers, Developers, and Designers who want a clean, professional online presence.
+
+## Use as a Template
+
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tomasmaritano/portfolio.git my-portfolio
+   cd my-portfolio
+   npm install
+   ```
+
+2. **Configure your site** - Edit `src/config/site.ts`:
+   ```typescript
+   export const siteConfig = {
+     // Personal Info
+     name: "Your Name",
+     role: "Your Role",
+     tagline: "What you do",
+     taglineAccent: "Your unique value.",
+     location: "Your City, Country",
+     email: "you@example.com",
+     calendly: "https://calendly.com/yourhandle/intro",
+
+     // Social Links
+     social: {
+       github: "https://github.com/yourhandle",
+       linkedin: "https://linkedin.com/in/yourhandle",
+       twitter: "https://x.com/yourhandle",
+     },
+
+     // ... rest of config
+   };
+   ```
+
+3. **Add your content**:
+   - Replace `public/images/profile.jpg` with your photo
+   - Edit testimonials in `src/content/testimonials.json`
+   - Add blog posts in `src/content/posts/`
+   - Add projects in `src/content/projects/`
+
+4. **Customize colors** - Edit `src/styles/globals.css`:
+   ```css
+   :root {
+     --accent: #10b981; /* Your brand color */
+   }
+   ```
+
+5. **Deploy**
+   ```bash
+   npm run build
+   vercel
+   ```
+
+### Files to Customize
+
+| File | What to Change |
+|------|----------------|
+| `src/config/site.ts` | Name, role, social links, meta |
+| `src/content/testimonials.json` | Your testimonials |
+| `src/content/now.json` | Your /now page content |
+| `public/images/profile.jpg` | Your profile photo |
+| `public/og-image.png` | Your OG image |
+| `public/favicon.ico` | Your favicon |
+| `public/robots.txt` | Your domain in sitemap URL |
+| `src/styles/globals.css` | Colors, fonts |
+
+---
 
 ## Tech Stack
 

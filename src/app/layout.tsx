@@ -3,34 +3,30 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Terminal } from "@/components/Terminal";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CommandPalette } from "@/components/CommandPalette";
 import { NowPlaying } from "@/components/NowPlaying";
-import { AIChat } from "@/components/AIChat";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CursorEffect } from "@/components/CursorEffect";
 import { EasterEggs } from "@/components/EasterEggs";
 import { I18nProvider } from "@/lib/i18n/context";
+import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
-const siteUrl = "https://tomasmaritano.com";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteConfig.meta.domain),
   alternates: {
     types: {
       "application/rss+xml": "/feed.xml",
     },
   },
   title: {
-    default: "Tomas Maritano — Product Engineer",
-    template: "%s | Tomas Maritano",
+    default: siteConfig.meta.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "I build digital products from 0→1. Systems thinker. Design-minded developer. Focused on fintech and developer tools.",
+  description: siteConfig.meta.description,
   keywords: [
     "Product Engineer",
     "Full Stack Developer",
@@ -38,34 +34,32 @@ export const metadata: Metadata = {
     "React",
     "Next.js",
     "Fintech",
-    "Buenos Aires",
+    siteConfig.location,
   ],
-  authors: [{ name: "Tomas Maritano", url: siteUrl }],
-  creator: "Tomas Maritano",
+  authors: [{ name: siteConfig.name, url: siteConfig.meta.domain }],
+  creator: siteConfig.name,
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: siteUrl,
-    siteName: "Tomas Maritano",
-    title: "Tomas Maritano — Product Engineer",
-    description:
-      "I build digital products from 0→1. Systems thinker. Design-minded developer.",
+    locale: siteConfig.meta.locale,
+    url: siteConfig.meta.domain,
+    siteName: siteConfig.name,
+    title: siteConfig.meta.title,
+    description: siteConfig.meta.description,
     images: [
       {
-        url: "/og-image.png",
+        url: siteConfig.meta.image,
         width: 1200,
         height: 630,
-        alt: "Tomas Maritano — Product Engineer",
+        alt: siteConfig.meta.title,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tomas Maritano — Product Engineer",
-    description:
-      "I build digital products from 0→1. Systems thinker. Design-minded developer.",
-    images: ["/og-image.png"],
-    creator: "@tomasmaritano",
+    title: siteConfig.meta.title,
+    description: siteConfig.meta.description,
+    images: [siteConfig.meta.image],
+    creator: `@${siteConfig.social.twitter.split("/").pop()}`,
   },
   robots: {
     index: true,
@@ -105,8 +99,6 @@ export default function RootLayout({
             <main style={{ paddingTop: "80px" }}>{children}</main>
             <Footer />
             <NowPlaying />
-            <AIChat />
-            <Terminal />
             <CursorEffect />
             <EasterEggs />
           </I18nProvider>

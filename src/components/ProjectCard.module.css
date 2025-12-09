@@ -1,22 +1,30 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: rgba(17, 17, 19, 0.6);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 300ms ease;
+  transition: transform var(--duration-normal) var(--ease-spring),
+              background var(--duration-normal) ease,
+              border-color var(--duration-normal) ease,
+              box-shadow var(--duration-normal) ease;
   text-decoration: none;
   height: 100%;
 }
 
 .card:hover {
-  background: rgba(22, 22, 24, 0.8);
+  background: var(--card-bg-hover);
   border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-6px) rotate(0.5deg);
+}
+
+.card:active {
+  transform: translateY(-2px) rotate(0deg);
+  transition-duration: var(--duration-fast);
 }
 
 .card:hover .title {

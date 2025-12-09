@@ -1,0 +1,30 @@
+{
+  "focus": "Building product experiences in fintech",
+  "building": [
+    {
+      "name": "Portfolio v2",
+      "description": "This site you're looking at"
+    },
+    {
+      "name": "DolarGaucho",
+      "description": "Real-time currency tracking for Argentina"
+    }
+  ],
+  "learning": [
+    {
+      "name": "System Design",
+      "description": "Scalable architecture patterns"
+    },
+    {
+      "name": "AI/ML",
+      "description": "LLMs and practical applications"
+    }
+  ],
+  "reading": {
+    "title": "Shape Up",
+    "author": "Basecamp",
+    "link": "https://basecamp.com/shapeup"
+  },
+  "location": "Buenos Aires, Argentina",
+  "lastUpdated": "December 2024"
+}
