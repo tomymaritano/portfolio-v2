@@ -32,19 +32,22 @@
 
 /* Card with image layout */
 .hasImage {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: var(--space-6);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .postImage {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--bg-subtle);
+  margin: calc(-1 * var(--space-6));
+  margin-bottom: 0;
+  width: calc(100% + 2 * var(--space-6));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .postImage img {
@@ -125,12 +128,10 @@
     padding: var(--space-4);
   }
 
-  .hasImage {
-    grid-template-columns: 1fr;
-  }
-
   .postImage {
-    aspect-ratio: 16/9;
+    margin: calc(-1 * var(--space-4));
+    margin-bottom: 0;
+    width: calc(100% + 2 * var(--space-4));
   }
 
   .postTitle {
