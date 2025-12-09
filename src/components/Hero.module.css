@@ -75,29 +75,13 @@
   display: inline-block;
 }
 
-.roleWrapper {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: var(--space-6);
-  overflow: hidden;
-}
-
 .role {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-}
-
-.roleLine {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  margin-top: var(--space-2);
-  transform-origin: center;
+  margin-bottom: var(--space-6);
 }
 
 .tagline {
@@ -133,25 +117,27 @@
 }
 
 .ctaPrimary {
-  color: var(--bg);
+  color: var(--accent);
+}
+
+.ctaPrimary::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
   background: var(--accent);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-md);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.ctaPrimary:hover {
-  background: var(--accent-hover);
-}
-
-.ctaArrow {
+  transform: scaleX(1);
   transition: transform 200ms ease;
 }
 
-.ctaPrimary:hover .ctaArrow {
-  transform: translateX(4px);
+.ctaPrimary:hover {
+  color: var(--accent-hover);
+}
+
+.ctaPrimary:hover::after {
+  transform: scaleX(0);
 }
 
 .ctaSecondary {

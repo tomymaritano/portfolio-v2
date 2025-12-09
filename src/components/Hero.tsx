@@ -58,20 +58,14 @@ export function Hero() {
             {siteConfig.name}
           </motion.h1>
 
-          <motion.div
-            className={styles.roleWrapper}
-            initial={{ opacity: 0, width: 0 }}
-            animate={{ opacity: 1, width: "auto" }}
+          <motion.p
+            className={styles.role}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
-            <span className={styles.role}>{siteConfig.role}</span>
-            <motion.span
-              className={styles.roleLine}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.1, duration: 0.4 }}
-            />
-          </motion.div>
+            {siteConfig.role}
+          </motion.p>
 
           <motion.p
             className={styles.tagline}
@@ -93,24 +87,23 @@ export function Hero() {
 
           <motion.div
             className={styles.ctas}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.5 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
           >
             <motion.a
               href={siteConfig.hero.ctas.primary.href}
               className={styles.ctaPrimary}
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               {siteConfig.hero.ctas.primary.label}
-              <span className={styles.ctaArrow}>→</span>
             </motion.a>
             <motion.a
               href={siteConfig.hero.ctas.secondary.href}
               className={styles.ctaSecondary}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               {siteConfig.hero.ctas.secondary.label}
             </motion.a>
