@@ -1,78 +1,100 @@
 [
   {
     "company": "Unicoin",
-    "role": "Product Manager & UX Lead",
-    "location": "Miami, US (Remote)",
-    "period": "2022 - Present",
-    "duration": "2.5+ years",
-    "type": "full-time",
+    "role": "Technical Project Manager",
+    "location": "United States (Remote)",
+    "period": "Sep 2024 - Jun 2025",
+    "duration": "10 months",
+    "type": "contract",
     "highlights": [
-      "Led product strategy for cryptocurrency investment platform",
-      "Managed UX team designing crypto-native experiences",
-      "Shipped compliance-first features for SEC requirements"
+      "Coordinated design and engineering teams to deliver product features on schedule",
+      "Acted as technical point of contact, aligning UX decisions with system constraints",
+      "Researched and evaluated APIs and third-party integrations",
+      "Defined functional requirements, acceptance criteria, and delivery scope"
+    ]
+  },
+  {
+    "company": "Unicoin",
+    "role": "UX Engineer",
+    "location": "United States (Remote)",
+    "period": "Jan 2023 - Sep 2024",
+    "duration": "1 yr 9 months",
+    "type": "contract",
+    "highlights": [
+      "Bridge between design and engineering teams, ensuring UX solutions were technically feasible",
+      "Researched and evaluated APIs and third-party services for product features",
+      "Defined functional requirements, interaction behavior, and technical constraints",
+      "Implemented frontend changes and prototypes to validate feasibility"
     ]
   },
   {
     "company": "Valere Realms",
-    "role": "Product Manager",
-    "location": "Remote",
-    "period": "2023",
-    "duration": "6 months",
-    "type": "freelance",
+    "role": "Senior Frontend Engineer",
+    "location": "United States (Remote)",
+    "period": "Aug 2023 - Dec 2024",
+    "duration": "1 yr 5 months",
+    "type": "contract",
     "highlights": [
-      "Defined product roadmap for Web3 gaming platform",
-      "Coordinated between dev team and stakeholders"
+      "Designed and implemented user interfaces using React",
+      "Created UX flows, wireframes, and high-fidelity designs in Figma",
+      "Worked end-to-end on product features balancing UX, technical feasibility, and business requirements",
+      "Collaborated directly with clients and stakeholders on MVPs"
     ]
   },
   {
     "company": "Unicorn Hunters",
-    "role": "UX Manager",
-    "location": "Miami, US (Remote)",
-    "period": "2021 - 2022",
-    "duration": "1 year",
-    "type": "full-time",
+    "role": "UX Engineer",
+    "location": "Remote",
+    "period": "Jan 2024 - Nov 2024",
+    "duration": "11 months",
+    "type": "contract",
     "highlights": [
-      "Built and led UX design team from scratch",
-      "Designed investor-facing product interfaces"
+      "Main interface between design and development teams",
+      "Defined UI patterns, interaction rules, and constraints for frontend implementation",
+      "Created wireframes and high-fidelity designs aligned with technical limitations",
+      "Ensured consistent UX delivery across teams and platforms"
     ]
   },
   {
     "company": "Grandvalira SAETDE",
-    "role": "UX Engineer",
-    "location": "Andorra",
-    "period": "2019 - 2021",
-    "duration": "2 years",
+    "role": "Full Stack Engineer",
+    "location": "Andorra (On-site)",
+    "period": "Dec 2023 - Nov 2024",
+    "duration": "1 year",
     "type": "full-time",
     "highlights": [
-      "Redesigned booking experience for ski resort",
-      "Implemented design system across digital products",
-      "Reduced booking abandonment by 35%"
+      "Led end-to-end development of production-ready internal application",
+      "Designed system architecture, data models, APIs, and frontend using React",
+      "Built full user experience from scratch including UX flows and responsive layouts",
+      "Deployed and maintained application in production"
     ]
   },
   {
     "company": "Wolt",
-    "role": "Operations Team Lead",
-    "location": "Copenhagen, Denmark",
-    "period": "2018 - 2019",
-    "duration": "1 year",
+    "role": "Team Lead",
+    "location": "Copenhagen, Denmark (On-site)",
+    "period": "May 2021 - May 2023",
+    "duration": "2 yrs 1 month",
     "type": "full-time",
     "highlights": [
-      "Led operations expansion in new markets",
-      "Built internal tools for courier management",
-      "Scaled team from 5 to 25 people"
+      "Led multidisciplinary team focused on operational efficiency and performance optimization",
+      "Managed and analyzed team KPIs and performance metrics",
+      "Streamlined workflows and implemented best practices",
+      "Conducted strategic planning based on data-driven insights"
     ]
   },
   {
     "company": "Su Web Express",
-    "role": "UX Developer",
-    "location": "Córdoba, Argentina",
-    "period": "2016 - 2018",
-    "duration": "2 years",
+    "role": "Frontend Developer",
+    "location": "Buenos Aires, Argentina (On-site)",
+    "period": "Apr 2017 - Jun 2018",
+    "duration": "1 yr 3 months",
     "type": "full-time",
     "highlights": [
-      "First professional role in tech",
-      "Full-stack development with UX focus",
-      "Built e-commerce solutions for SMBs"
+      "Maintained and built client websites with focus on usability and responsive design",
+      "Worked with HTML, CSS, and JavaScript to create layouts based on design requirements",
+      "Ensured cross-browser compatibility, performance, and visual consistency",
+      "Collaborated with designers and developers to deliver user-friendly websites"
     ]
   }
 ]

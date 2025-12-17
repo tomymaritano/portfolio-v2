@@ -9,10 +9,11 @@ interface Project {
   slug: string;
   name: string;
   tagline: string;
-  status: "live" | "archived" | "learning";
+  status: "live" | "archived" | "learning" | "experiment";
   topics: string[];
   complexity: "foundational" | "intermediate" | "advanced";
   image?: string;
+  featured?: boolean;
 }
 
 interface ProjectCardProps {

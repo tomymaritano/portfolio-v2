@@ -9,10 +9,11 @@ interface Project {
   slug: string;
   name: string;
   tagline: string;
-  status: "live" | "archived" | "learning";
+  status: "live" | "archived" | "learning" | "experiment";
   topics: string[];
   complexity: "foundational" | "intermediate" | "advanced";
   image?: string;
+  featured?: boolean;
 }
 
 interface ProjectsProps {
@@ -20,8 +21,10 @@ interface ProjectsProps {
 }
 
 export function Projects({ projects }: ProjectsProps) {
-  // Show only featured projects (first 2)
-  const featuredProjects = projects.slice(0, 2);
+  // Show featured projects first, then take first 2
+  const featuredProjects = [...projects]
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+    .slice(0, 2);
 
   return (
     <section className={styles.projects} id="projects">

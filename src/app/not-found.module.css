@@ -42,32 +42,59 @@
 
 .primaryLink {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--accent);
-  padding: var(--space-3) var(--space-5);
-  background: var(--accent-muted);
-  border-radius: var(--radius-md);
-  transition: all 150ms ease;
+  padding: var(--space-2) 0;
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.primaryLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(1);
+  transition: transform 200ms ease;
 }
 
 .primaryLink:hover {
-  background: var(--accent);
-  color: var(--bg);
+  color: var(--accent-hover);
+}
+
+.primaryLink:hover::after {
+  transform: scaleX(0);
 }
 
 .secondaryLink {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
-  padding: var(--space-3) var(--space-5);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  transition: all 150ms ease;
+  padding: var(--space-2) 0;
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.secondaryLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text);
+  transition: width 200ms ease;
 }
 
 .secondaryLink:hover {
-  border-color: var(--border-hover);
   color: var(--text);
+}
+
+.secondaryLink:hover::after {
+  width: 100%;
 }
 
 .hint {

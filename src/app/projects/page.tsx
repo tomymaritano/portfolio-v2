@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const liveProjects = allProjects.filter((p) => p.status === "live");
+  const experimentProjects = allProjects.filter((p) => p.status === "experiment");
   const archivedProjects = allProjects.filter((p) => p.status === "archived");
   const learningProjects = allProjects.filter((p) => p.status === "learning");
 
@@ -49,6 +50,21 @@ export default function ProjectsPage() {
           <div className={styles.grid}>
             {liveProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} priority={index === 0} index={index} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Experiment Projects */}
+      {experimentProjects.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.statusDot} data-status="experiment" />
+            Experiments
+          </h2>
+          <div className={styles.grid}>
+            {experimentProjects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>
         </section>

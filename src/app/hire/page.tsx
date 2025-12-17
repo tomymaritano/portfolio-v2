@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageLayout, PageHeader } from "@/components/PageLayout";
 import { siteConfig } from "@/config/site";
 import styles from "./page.module.css";
@@ -6,6 +7,7 @@ interface Reason {
   title: string;
   description: string;
   evidence: string;
+  evidenceLink: string;
 }
 
 const reasons: Reason[] = [
@@ -14,24 +16,28 @@ const reasons: Reason[] = [
     description:
       "Most of my work happens in environments with limited time, unclear requirements, or unreliable data. I've learned to make decisions that are good enough to move forward, while leaving room to adjust.",
     evidence: "See how I handled bad data in DólarGaucho →",
+    evidenceLink: "/projects/dolargaucho",
   },
   {
     title: "I think in systems, not features",
     description:
       "Before building, I understand how pieces connect. This means fewer surprises later, better architecture decisions, and systems that scale without rewrites.",
     evidence: "See my approach to technical systems →",
+    evidenceLink: "/systems",
   },
   {
     title: "I own the outcome, not just the code",
     description:
       "Writing code is the easy part. Understanding what to build, why it matters, and how to validate it—that's where I focus. The goal is impact, not output.",
     evidence: "See how I think about product decisions →",
+    evidenceLink: "/think",
   },
   {
     title: "I communicate trade-offs clearly",
     description:
       "Every decision has costs. I make those visible, so stakeholders can make informed choices. No hidden tech debt, no 'we'll fix it later' without a plan.",
     evidence: "See real trade-offs I've documented →",
+    evidenceLink: "/decisions",
   },
 ];
 
@@ -58,7 +64,7 @@ export default function HirePage() {
             <article key={index} className={styles.reasonCard}>
               <h2 className={styles.reasonTitle}>{reason.title}</h2>
               <p className={styles.reasonDescription}>{reason.description}</p>
-              <span className={styles.reasonEvidence}>{reason.evidence}</span>
+              <Link href={reason.evidenceLink} className={styles.reasonEvidence}>{reason.evidence}</Link>
             </article>
           ))}
         </div>

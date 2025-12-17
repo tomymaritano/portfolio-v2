@@ -7,10 +7,11 @@ const projectSchema = z.object({
   slug: z.string(),
   name: z.string(),
   tagline: z.string(),
-  status: z.enum(["live", "archived", "learning"]),
+  status: z.enum(["live", "archived", "learning", "experiment"]),
   topics: z.array(z.string()),
   complexity: z.enum(["foundational", "intermediate", "advanced"]),
   image: z.string().optional(),
+  featured: z.boolean().optional().default(false),
 });
 
 const postSchema = z.object({
