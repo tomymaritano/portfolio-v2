@@ -47,7 +47,6 @@ function useTypingAnimation() {
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/skills", label: "Skills" },
   { href: "/blog", label: "Blog" },
   { href: "/now", label: "Now" },
   { href: "/hire", label: "Hire" },
