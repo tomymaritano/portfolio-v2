@@ -22,19 +22,20 @@ People making financial decisions—from small savers to businesses—lack a sin
 
 ## My Role
 
-**Founder** — Built the entire product from zero:
+**Founder & Solo Developer** — Built the entire product from zero:
 
 - **Vision & Strategy** — Defined the product direction and market positioning
 - **Problem Research** — Deep-dived into user pain points around financial data
 - **Roadmap & Prioritization** — Decided what to build and when
-- **Development** — Designed and built the platform end-to-end
+- **Full-Stack Development** — Designed and built the entire platform end-to-end
+- **Data Engineering** — Built aggregation system with 5+ sources
 - **User Experience** — Transformed complex data into clear, actionable information
 
 ## The Solution
 
 A data-driven fintech platform that consolidates Argentina's key financial indicators:
 
-1. **Multiple Dollar Rates** — Blue, MEP, CCL, official, and more in one view
+1. **Multiple Dollar Rates** — Blue, MEP, CCL, official, crypto, and more in one view
 2. **Real-time Updates** — 30-second refresh during market hours
 3. **Data Reliability** — Cross-references 5+ sources with confidence indicators
 4. **Historical Context** — Trends and comparisons over time
@@ -44,20 +45,41 @@ A data-driven fintech platform that consolidates Argentina's key financial indic
 
 | Layer | Technology |
 |-------|------------|
-| Framework | Next.js |
-| Database | Supabase |
-| Processing | Edge Functions |
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict mode) |
+| Database | Neon Postgres |
+| State Management | TanStack Query |
+| Auth | Custom JWT + CSRF protection |
 | Updates | 30-second intervals |
-| Fallback | Cached values with decay indicators |
+| Testing | 474 E2E tests |
+
+### Scale & Complexity
+
+| Metric | Count |
+|--------|-------|
+| **API Routes** | 50+ |
+| **Custom Hooks** | 80+ |
+| **E2E Tests** | 474 |
+| **Data Sources** | 5+ |
 
 ### Data Strategy
 
 **DB-first, not API-first.** Instead of trusting any single source:
 
-- Aggregate multiple sources
-- Detect anomalies and flag deviations
-- Weight sources by historical reliability
-- Show uncertainty transparently
+- Aggregate multiple sources in real-time
+- Detect anomalies and flag deviations automatically
+- Weight sources by historical reliability scores
+- Show uncertainty transparently with confidence indicators
+- Cached fallback with decay indicators when sources fail
+
+### Authentication Architecture
+
+Custom-built auth system prioritizing security:
+
+- **JWT tokens** with short expiration
+- **CSRF protection** on all mutations
+- **Session management** with secure cookie handling
+- No third-party auth dependencies
 
 ## Key Learnings
 
@@ -72,6 +94,12 @@ More sources meant more edge cases. Some APIs update at different times. Some ha
 A value with "updated 2 minutes ago, high confidence" is more useful than a "precise" number with unknown freshness.
 
 **Solution:** Built confidence displays from day one. Transparency beats false precision.
+
+### "474 tests aren't overkill for fintech"
+
+Financial data requires absolute reliability. Users make real money decisions based on this data.
+
+**Solution:** Comprehensive E2E test coverage for every data flow and edge case.
 
 ## Iteration Philosophy
 
