@@ -1,30 +1,15 @@
 [
   {
     "company": "Unicoin",
-    "role": "Technical Project Manager",
+    "role": "Frontend Developer",
     "location": "United States (Remote)",
-    "period": "Sep 2024 - Jun 2025",
-    "duration": "10 months",
+    "period": "Jan 2024 - Nov 2025",
+    "duration": "1 yr 11 months",
     "type": "contract",
     "highlights": [
-      "Coordinated design and engineering teams to deliver product features on schedule",
-      "Acted as technical point of contact, aligning UX decisions with system constraints",
-      "Researched and evaluated APIs and third-party integrations",
-      "Defined functional requirements, acceptance criteria, and delivery scope"
-    ]
-  },
-  {
-    "company": "Unicoin",
-    "role": "UX Engineer",
-    "location": "United States (Remote)",
-    "period": "Jan 2023 - Sep 2024",
-    "duration": "1 yr 9 months",
-    "type": "contract",
-    "highlights": [
-      "Bridge between design and engineering teams, ensuring UX solutions were technically feasible",
-      "Researched and evaluated APIs and third-party services for product features",
-      "Defined functional requirements, interaction behavior, and technical constraints",
-      "Implemented frontend changes and prototypes to validate feasibility"
+      "Owned and implemented complex, state-heavy frontend features using React and Next.js",
+      "Built and maintained production-grade UI flows critical to the core product experience",
+      "Improved frontend reliability by reducing UI edge cases and inconsistent states"
     ]
   },
   {
@@ -35,52 +20,36 @@
     "duration": "1 yr 5 months",
     "type": "contract",
     "highlights": [
-      "Designed and implemented user interfaces using React",
-      "Created UX flows, wireframes, and high-fidelity designs in Figma",
-      "Worked end-to-end on product features balancing UX, technical feasibility, and business requirements",
-      "Collaborated directly with clients and stakeholders on MVPs"
-    ]
-  },
-  {
-    "company": "Unicorn Hunters",
-    "role": "UX Engineer",
-    "location": "Remote",
-    "period": "Jan 2024 - Nov 2024",
-    "duration": "11 months",
-    "type": "contract",
-    "highlights": [
-      "Main interface between design and development teams",
-      "Defined UI patterns, interaction rules, and constraints for frontend implementation",
-      "Created wireframes and high-fidelity designs aligned with technical limitations",
-      "Ensured consistent UX delivery across teams and platforms"
+      "Owned and implemented complex, state-heavy frontend features using React and Next.js",
+      "Built and maintained production-grade UI flows critical to the core product experience",
+      "Translated product and UX requirements into clear frontend logic and reusable components"
     ]
   },
   {
     "company": "Grandvalira SAETDE",
     "role": "Full Stack Engineer",
     "location": "Andorra (On-site)",
-    "period": "Dec 2023 - Nov 2024",
-    "duration": "1 year",
+    "period": "May 2022 - Nov 2023",
+    "duration": "1 yr 7 months",
     "type": "full-time",
     "highlights": [
-      "Led end-to-end development of production-ready internal application",
-      "Designed system architecture, data models, APIs, and frontend using React",
-      "Built full user experience from scratch including UX flows and responsive layouts",
-      "Deployed and maintained application in production"
+      "Owned and implemented complex frontend features using React and Next.js, enhancing user experience",
+      "Built and maintained production-grade UI flows critical to the core product experience",
+      "Translated product and UX requirements into clear frontend logic and reusable components"
     ]
   },
   {
     "company": "Wolt",
-    "role": "Team Lead",
+    "role": "Frontend Developer",
     "location": "Copenhagen, Denmark (On-site)",
-    "period": "May 2021 - May 2023",
+    "period": "May 2020 - May 2022",
     "duration": "2 yrs 1 month",
     "type": "full-time",
     "highlights": [
-      "Led multidisciplinary team focused on operational efficiency and performance optimization",
-      "Managed and analyzed team KPIs and performance metrics",
-      "Streamlined workflows and implemented best practices",
-      "Conducted strategic planning based on data-driven insights"
+      "Developed and maintained internal frontend tools to support time-critical operations",
+      "Created data-driven user interfaces emphasizing clarity, speed, and reliability",
+      "Managed complex UI states for real-time data and operational workflows",
+      "Collaborated with backend systems to ensure seamless data flow and consistent frontend performance"
     ]
   },
   {
