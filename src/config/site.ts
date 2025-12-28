@@ -17,7 +17,7 @@ export const siteConfig = {
 
   // Contact
   email: "tomymaritano@gmail.com",
-  calendly: "https://calendly.com/tomymaritano/intro",
+  calendly: "https://calendly.com/tomymaritano",
 
   // Social Links
   social: {

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig } from "@/config/site";
 import styles from "./CommandPalette.module.css";
 
 interface Command {
@@ -151,7 +152,7 @@ export function CommandPalette() {
   }, []);
 
   const copyEmail = useCallback(() => {
-    navigator.clipboard.writeText("tomas@tomasmaritano.com");
+    navigator.clipboard.writeText(siteConfig.email);
   }, []);
 
   const commands: Command[] = [
@@ -169,9 +170,9 @@ export function CommandPalette() {
     { id: "theme-light", label: "Switch to Light Mode", action: toggleTheme, icon: <SunIcon /> },
     { id: "theme-dark", label: "Switch to Dark Mode", action: toggleTheme, icon: <MoonIcon /> },
     // Social & External
-    { id: "github", label: "Open GitHub", action: () => window.open("https://github.com/tomasmaritano", "_blank"), icon: <GitHubIcon /> },
-    { id: "linkedin", label: "Open LinkedIn", action: () => window.open("https://linkedin.com/in/tomasmaritano", "_blank"), icon: <LinkedInIcon /> },
-    { id: "twitter", label: "Open X (Twitter)", action: () => window.open("https://x.com/tomasmaritano", "_blank"), icon: <TwitterIcon /> },
+    { id: "github", label: "Open GitHub", action: () => window.open(siteConfig.social.github, "_blank"), icon: <GitHubIcon /> },
+    { id: "linkedin", label: "Open LinkedIn", action: () => window.open(siteConfig.social.linkedin, "_blank"), icon: <LinkedInIcon /> },
+    { id: "twitter", label: "Open X (Twitter)", action: () => window.open(siteConfig.social.twitter, "_blank"), icon: <TwitterIcon /> },
     { id: "copy-email", label: "Copy Email Address", action: copyEmail, icon: <CopyIcon /> },
     { id: "rss", label: "Subscribe to RSS Feed", href: "/feed.xml", icon: <RssIcon /> },
   ];
