@@ -1,0 +1,81 @@
+---
+slug: criterionx
+name: CriterionX
+tagline: Universal decision engine for business-critical systems
+status: live
+topics:
+  - open-source
+  - typescript
+  - developer-tools
+complexity: advanced
+image: /images/projects/criterionx.png
+links:
+  github: https://github.com/tomymaritano/criterionx
+---
+
+## The Problem
+
+Business logic is often scattered throughout codebases—conditionals in controllers, rules in services, validations everywhere. This makes systems hard to test, debug, and audit. When stakeholders ask "why did this decision happen?", there's no clear answer.
+
+## My Role
+
+**Creator & Maintainer** — Designed and built the entire engine:
+
+- Architected the core decision engine
+- Built framework integrations (React, Express, Fastify, tRPC)
+- Implemented observability with OpenTelemetry
+- Created CLI and testing utilities
+
+## The Solution
+
+A TypeScript-based decision engine that encodes business logic as pure, testable functions:
+
+1. **Declarative Decisions** — Define rules for risk levels, eligibility, discounts, etc.
+2. **Explainable Results** — Every decision includes a complete audit trail
+3. **Profile-Driven** — Different behaviors by region, tier, or context
+4. **Framework Agnostic** — Works with React, Express, Fastify, tRPC
+
+## Core Principles
+
+| Principle | Description |
+|-----------|-------------|
+| **Deterministic** | Identical inputs always produce identical outputs |
+| **Side-effect Free** | No I/O, database calls, or external dependencies |
+| **Explainable** | Decisions include reasoning trails for compliance |
+| **Testable** | Pure functions make unit testing trivial |
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Language | TypeScript (99%+) |
+| Validation | Zod schemas |
+| Observability | OpenTelemetry |
+| Integrations | React, Express, Fastify, tRPC |
+| Tooling | CLI, Testing utilities, MCP for LLMs |
+
+## Monorepo Structure
+
+```
+@criterionx/core        # Core decision engine
+@criterionx/server      # Server utilities
+@criterionx/react       # React integration
+@criterionx/express     # Express middleware
+@criterionx/fastify     # Fastify plugin
+@criterionx/trpc        # tRPC integration
+@criterionx/cli         # Command-line tools
+@criterionx/testing     # Test utilities
+```
+
+## Use Cases
+
+- **Risk Assessment** — Determine transaction risk levels with full audit trail
+- **Eligibility Rules** — User qualification for features, tiers, or programs
+- **Pricing Logic** — Dynamic discounts and pricing rules
+- **Compliance** — Auditable decisions for regulated industries
+
+## What I Learned
+
+- **Developer Experience matters** — Good APIs get adopted; bad ones get worked around
+- **Monorepo complexity** — Managing multiple packages requires discipline
+- **Observability from day one** — OpenTelemetry integration should be built-in, not bolted on

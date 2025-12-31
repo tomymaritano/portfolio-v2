@@ -1,0 +1,64 @@
+---
+slug: psynth
+name: AssessFlow
+tagline: Patient assessment management dashboard for psychological evaluations
+status: live
+topics:
+  - healthcare
+  - dashboard
+  - react
+complexity: intermediate
+image: /images/projects/psynth.png
+links:
+  live: https://psynth-ai.vercel.app/
+  github: https://github.com/tomymaritano/psynth.ai
+---
+
+## The Problem
+
+Mental health professionals need efficient tools to manage patient psychological assessments. Existing solutions are often clunky, lack proper filtering, and don't provide clear visualization of assessment progress.
+
+## My Role
+
+**Frontend Developer** — Built the complete dashboard:
+
+- Designed and implemented the entire UI architecture
+- Created reusable component system with ShadCN UI
+- Built advanced filtering and search functionality
+- Implemented responsive design for desktop and mobile
+
+## The Solution
+
+A modern assessment management dashboard that streamlines the workflow:
+
+1. **Statistics Overview** — Real-time metrics for total, completed, and in-progress assessments
+2. **Advanced Filtering** — Debounced search, status filters, type filters, and date range presets
+3. **Responsive Views** — Table view for desktop, card view for mobile
+4. **Detail Panel** — Slide-over panel with score visualization using custom gauge component
+5. **Polish** — Loading skeletons, empty states, and smooth transitions
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | React 19 |
+| Language | TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Components | ShadCN UI (Radix primitives) |
+| Testing | Vitest + React Testing Library |
+
+## Architecture
+
+Centralized state management through a custom `useAssessments` hook:
+
+- Eliminates prop drilling
+- Separates business logic from UI components
+- Makes testing straightforward
+- 19 comprehensive tests covering filtering, pagination, and selection
+
+## What I Learned
+
+- **React 19 features** — Explored the latest React capabilities in a production context
+- **ShadCN + Radix** — Building accessible, composable UI components efficiently
+- **Testing patterns** — Writing meaningful tests for filtering logic and user interactions
