@@ -1,137 +1,53 @@
-"use client";
-
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { siteConfig } from "@/config/site";
 import styles from "./About.module.css";
 
-const techStack = [
-  { name: "TypeScript", category: "language" },
-  { name: "React", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "Node.js", category: "backend" },
-  { name: "PostgreSQL", category: "database" },
-  { name: "Supabase", category: "backend" },
-  { name: "Figma", category: "design" },
-  { name: "Framer", category: "design" },
-];
-
-// Paragraph with scroll-based word reveal
-function ScrollParagraph({ text, scrollYProgress, className }: {
-  text: string;
-  scrollYProgress: MotionValue<number>;
-  className?: string;
-}) {
-  const words = text.split(" ");
-
-  return (
-    <p className={className}>
-      {words.map((word, i) => {
-        const start = i / words.length;
-        const end = start + 1 / words.length;
-
-        return (
-          <Word key={i} word={word} range={[start, end]} progress={scrollYProgress} />
-        );
-      })}
-    </p>
-  );
-}
-
-// Single word component
-function Word({ word, range, progress }: {
-  word: string;
-  range: [number, number];
-  progress: MotionValue<number>;
-}) {
-  const opacity = useTransform(progress, range, [0.15, 1]);
-
-  return (
-    <motion.span className={styles.word} style={{ opacity }}>
-      {word}
-    </motion.span>
-  );
-}
+const stack = {
+  Languages: ["TypeScript", "JavaScript", "Python"],
+  Frameworks: ["React", "Next.js", "Node.js"],
+  Tools: ["Vercel", "Prisma", "PostgreSQL", "Docker"],
+};
 
 export function About() {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.9", "start 0.25"],
-  });
-
-  const para1 = "Product Engineer with 7+ years building digital products across Argentina, Denmark, Andorra, and the US. I've led UX teams, managed products, and shipped code in fintech, e-commerce, and operations.";
-  const para2 = "I work best in the ambiguous space between \"idea\" and \"shipped product\". I design interfaces, write code, and make decisions when there's no playbook.";
-  const para3 = "Currently building tools that help people navigate complex financial systems.";
-
   return (
-    <section ref={containerRef} className={styles.about} id="about">
-      <div className={styles.container}>
-        <motion.span
-          className={styles.label}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
-          About
-        </motion.span>
-
-        <div className={styles.content}>
-          <ScrollParagraph
-            text={para1}
-            scrollYProgress={scrollYProgress}
-            className={styles.bio}
-          />
-
-          <ScrollParagraph
-            text={para2}
-            scrollYProgress={scrollYProgress}
-            className={styles.bio}
-          />
-
-          <ScrollParagraph
-            text={para3}
-            scrollYProgress={scrollYProgress}
-            className={styles.bioMuted}
-          />
-        </div>
-
-        <motion.div
-          className={styles.stack}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
-          <span className={styles.stackLabel}>Tech I use</span>
-          <div className={styles.stackGrid}>
-            {techStack.map((tech, index) => (
-              <motion.span
-                key={tech.name}
-                className={styles.techBadge}
-                data-category={tech.category}
-                initial={{ opacity: 0, y: -30, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.4,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15,
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  y: -4,
-                  backgroundColor: "var(--accent-muted)",
-                }}
-              >
-                {tech.name}
-              </motion.span>
-            ))}
+    <div className={styles.about}>
+      <div className={styles.bio}>
+        <div className={styles.identity}>
+          <img src={siteConfig.hero.photo} alt={siteConfig.name} className={styles.avatar} />
+          <div>
+            <h1 className={styles.name}>{siteConfig.name}</h1>
+            <p className={styles.location}>{siteConfig.role} · {siteConfig.location}</p>
           </div>
-        </motion.div>
+        </div>
+        <p className={styles.text}>
+          I build products that users love and businesses need. Currently focused on fintech
+          and developer tools. I care about shipping fast without cutting corners — the kind
+          of software that feels good to use and is built to last.
+        </p>
+        <p className={styles.text}>
+          Previously built software for tourism, Web3, and delivery platforms across Latin
+          America and Europe.
+        </p>
+        <div className={styles.socials}>
+          <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer">X</a>
+          <a href={`mailto:${siteConfig.email}`}>Email</a>
+        </div>
       </div>
-    </section>
+
+      <div className={styles.stack}>
+        <h2 className={styles.sectionTitle}>Stack</h2>
+        {Object.entries(stack).map(([category, items]) => (
+          <div key={category} className={styles.stackGroup}>
+            <span className={styles.stackLabel}>{category}</span>
+            <div className={styles.pills}>
+              {items.map((item) => (
+                <span key={item} className={styles.pill}>{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

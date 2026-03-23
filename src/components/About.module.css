@@ -1,149 +1,102 @@
 .about {
-  padding: var(--space-24) var(--space-6);
-  position: relative;
-}
-
-/* Gradient divider */
-.about::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-  margin-bottom: var(--space-24);
-}
-
-/* Word-by-word reveal */
-.word {
-  display: inline-block;
-  margin-right: 0.3em;
-}
-
-.container {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  color: var(--text-subtle);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--space-6);
-}
-
-.content {
-  margin-bottom: var(--space-8);
+  max-width: 640px;
 }
 
 .bio {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-4);
+  padding: 80px 0 0;
 }
 
-.bio strong {
-  color: var(--text);
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 28px;
   font-weight: 500;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
-.bioMuted {
-  font-size: 1rem;
-  line-height: 1.7;
+.location {
+  font-size: 14px;
   color: var(--text-muted);
+  margin: 0;
 }
 
-/* Tech Stack */
+.text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.socials a {
+  color: var(--text-subtle);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 150ms ease;
+}
+
+.socials a:hover {
+  color: var(--text-secondary);
+}
+
 .stack {
-  padding-top: var(--space-6);
-  position: relative;
+  padding: 48px 0 0;
 }
 
-.stack::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-  margin-bottom: var(--space-6);
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.stackGroup {
+  margin-bottom: 20px;
 }
 
 .stackLabel {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  color: var(--text-subtle);
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--space-4);
+  letter-spacing: 0.1em;
+  color: var(--text-subtle);
+  margin-bottom: 10px;
 }
 
-.stackGrid {
+.pills {
   display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  gap: var(--space-2);
 }
 
-.techBadge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
+.pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
   background: var(--surface);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  transition: all var(--duration-normal) var(--ease-out);
-  cursor: default;
-}
-
-.techBadge:hover {
-  border-color: var(--border-hover);
   color: var(--text-secondary);
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-
-.techBadge[data-category="frontend"] {
-  border-color: rgba(6, 182, 212, 0.2);
-}
-
-.techBadge[data-category="frontend"]:hover {
-  background: var(--cyan-muted);
-  color: var(--cyan);
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.12);
-}
-
-.techBadge[data-category="backend"] {
-  border-color: rgba(52, 211, 153, 0.2);
-}
-
-.techBadge[data-category="backend"]:hover {
-  background: var(--accent-muted);
-  color: var(--accent);
-}
-
-.techBadge[data-category="design"] {
-  border-color: rgba(168, 85, 247, 0.2);
-}
-
-.techBadge[data-category="design"]:hover {
-  background: rgba(168, 85, 247, 0.1);
-  color: #a855f7;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.1);
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-  .about {
-    padding: var(--space-16) var(--space-4);
-  }
-
-  .about::before {
-    margin-bottom: var(--space-16);
-  }
-
-  .bio {
-    font-size: 1rem;
-  }
 }
