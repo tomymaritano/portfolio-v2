@@ -17,9 +17,7 @@ export default function AboutPage() {
       <div className={styles.divider} />
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Activity</h2>
-        <div className={styles.card}>
-          <GitHubCalendar username="tomymaritano" />
-        </div>
+        <GitHubCalendar username="tomymaritano" />
       </section>
       <div className={styles.divider} />
       <section className={styles.section}>
