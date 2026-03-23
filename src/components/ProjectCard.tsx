@@ -1,87 +1,28 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./ProjectCard.module.css";
 
-interface Project {
+interface ProjectCardProps {
   slug: string;
   name: string;
   tagline: string;
-  status: "live" | "archived" | "learning" | "experiment";
+  status: string;
   topics: string[];
-  complexity: "foundational" | "intermediate" | "advanced";
-  image?: string;
-  featured?: boolean;
 }
 
-interface ProjectCardProps {
-  project: Project;
-  priority?: boolean;
-  index?: number;
-}
-
-export function ProjectCard({ project, priority = false, index = 0 }: ProjectCardProps) {
+export function ProjectCard({ project }: { project: ProjectCardProps }) {
+  const { slug, name, tagline, status, topics } = project;
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        scale: 0.95,
-        filter: "blur(8px)"
-      }}
-      whileInView={{
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)"
-      }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }}
-    >
-      <Link href={`/projects/${project.slug}`} className={styles.card}>
-        <div className={styles.imageWrapper}>
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.name}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
-              className={styles.image}
-              priority={priority}
-            />
-          ) : (
-            <div className={styles.placeholder}>
-              <span>{project.name[0]}</span>
-            </div>
-          )}
-        </div>
-
-        <div className={styles.content}>
-          <div className={styles.header}>
-            <span className={styles.status} data-status={project.status}>
-              {project.status}
-            </span>
-            <span className={styles.complexity}>{project.complexity}</span>
-          </div>
-
-          <h3 className={styles.title}>{project.name}</h3>
-          <p className={styles.tagline}>{project.tagline}</p>
-
-          <div className={styles.topics}>
-            {project.topics.slice(0, 3).map((topic) => (
-              <span key={topic} className={styles.topic}>
-                {topic}
-              </span>
-            ))}
-          </div>
-        </div>
-      </Link>
-    </motion.div>
+    <Link href={`/projects/${slug}`} className={styles.card}>
+      <div className={styles.header}>
+        <span className={styles.name}>{name}</span>
+        <span className={`${styles.badge} ${styles[status] || ""}`}>{status}</span>
+      </div>
+      <p className={styles.tagline}>{tagline}</p>
+      <div className={styles.topics}>
+        {topics.slice(0, 3).map((t) => (
+          <span key={t} className={styles.topic}>{t}</span>
+        ))}
+      </div>
+    </Link>
   );
 }

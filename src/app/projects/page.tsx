@@ -48,8 +48,8 @@ export default function ProjectsPage() {
             Live Projects
           </h2>
           <div className={styles.grid}>
-            {liveProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} priority={index === 0} index={index} />
+            {liveProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </section>
@@ -63,8 +63,8 @@ export default function ProjectsPage() {
             Experiments
           </h2>
           <div className={styles.grid}>
-            {experimentProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
+            {experimentProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </section>
@@ -78,8 +78,8 @@ export default function ProjectsPage() {
             Archived
           </h2>
           <div className={styles.grid}>
-            {archivedProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
+            {archivedProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </section>
@@ -93,8 +93,8 @@ export default function ProjectsPage() {
             Learning Experiments
           </h2>
           <div className={styles.grid}>
-            {learningProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
+            {learningProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
         </section>
