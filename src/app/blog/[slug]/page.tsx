@@ -118,6 +118,10 @@ export default async function BlogPostPage({ params }: Props) {
           )}
         </header>
 
+        {post.image && (
+          <img src={post.image} alt={post.title} className={styles.heroImage} />
+        )}
+
         {post.headings && post.headings.length >= 2 && (
           <TableOfContents headings={post.headings} />
         )}

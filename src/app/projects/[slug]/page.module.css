@@ -1,15 +1,14 @@
 .main {
   min-height: 100vh;
   padding: 64px 32px;
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .backLink {
   display: inline-block;
-  font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-subtle);
   margin-bottom: 32px;
   text-decoration: none;
   transition: color 150ms ease;
@@ -22,8 +21,6 @@
 /* Header */
 .header {
   margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
 }
 
 .titleRow {
@@ -34,43 +31,26 @@
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 500;
   letter-spacing: -0.03em;
-  line-height: 1.1;
+  line-height: 1.2;
   color: var(--text);
 }
 
 .statusBadge {
   font-family: var(--font-mono);
   font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   padding: 2px 8px;
   border-radius: 4px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.live {
-  background: #052e16;
-  color: #34d399;
-}
-
-.experiment {
-  background: #0c1a2e;
-  color: #60a5fa;
-}
-
-.learning {
-  background: #1c1a05;
-  color: #fbbf24;
-}
-
-.archived {
-  background: #1c1917;
-  color: #a8a29e;
-}
+.live { background: #052e16; color: #34d399; }
+.experiment { background: #0c1a2e; color: #60a5fa; }
+.learning { background: #1c1a05; color: #fbbf24; }
+.archived { background: #1c1917; color: #a8a29e; }
 
 .tagline {
   font-size: 16px;
@@ -95,39 +75,46 @@
   border: 1px solid var(--border);
 }
 
+/* Hero image */
+.heroImage {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+}
+
 /* Content */
 .content {
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 640px;
 }
 
 .content h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text);
-  margin-top: 40px;
-  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--text);
+  margin-top: 48px;
+  margin-bottom: 16px;
 }
 
 .content h3 {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 500;
   color: var(--text);
-  margin-top: 28px;
+  margin-top: 32px;
   margin-bottom: 12px;
 }
 
 .content p {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .content ul,
 .content ol {
-  margin-bottom: 16px;
-  padding-left: 20px;
+  margin-bottom: 20px;
+  padding-left: 24px;
 }
 
 .content li {
@@ -135,8 +122,8 @@
 }
 
 .content strong {
+  font-weight: 600;
   color: var(--text);
-  font-weight: 500;
 }
 
 .content code {
@@ -151,10 +138,10 @@
 .content pre {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 20px;
   overflow-x: auto;
-  margin-bottom: 16px;
+  margin: 24px 0;
 }
 
 .content pre code {
@@ -162,14 +149,16 @@
   border: none;
   padding: 0;
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
 .content blockquote {
-  border-left: 2px solid var(--border);
-  padding-left: 16px;
-  margin: 16px 0;
+  margin: 24px 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border-left: 3px solid var(--text-subtle);
+  border-radius: 0 8px 8px 0;
   color: var(--text-muted);
   font-style: italic;
 }
@@ -177,29 +166,39 @@
 .content a {
   color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 150ms ease;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--text-subtle);
+  transition: text-decoration-color 150ms ease;
 }
 
 .content a:hover {
-  color: var(--text-muted);
+  text-decoration-color: var(--text);
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+.content img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+
+.content hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 40px 0;
+}
+
+@media (max-width: 768px) {
   .main {
     padding: 48px 16px;
   }
 
   .title {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .titleRow {
     flex-wrap: wrap;
-  }
-
-  .tagline {
-    font-size: 15px;
   }
 }

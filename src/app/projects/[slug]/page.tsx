@@ -64,6 +64,10 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </header>
 
+      {project.image && (
+        <img src={project.image} alt={project.name} className={styles.heroImage} />
+      )}
+
       <article className={styles.content}>
         <MDXContent code={project.mdx} />
       </article>
