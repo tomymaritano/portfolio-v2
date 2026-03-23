@@ -1,23 +1,25 @@
 .hero {
   padding: 80px 0 48px;
+  max-width: 600px;
 }
 
 .identity {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--border);
 }
 
 .name {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--text);
   margin: 0;
@@ -27,35 +29,104 @@
 .role {
   font-size: 13px;
   color: var(--text-muted);
-  margin: 0;
+  margin: 4px 0 0;
 }
 
-.bio {
-  font-size: 15px;
+/* Intro box — like Takuya's greeting */
+.introBox {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin: 0 0 16px;
-  max-width: 480px;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-.socials {
+/* About section */
+.about {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 16px;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--text-subtle);
+  text-decoration-thickness: 3px;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0 0 12px;
+}
+
+/* Timeline */
+.timeline {
+  margin-bottom: 24px;
+}
+
+.timelineEntry {
   display: flex;
   gap: 16px;
+  margin-bottom: 10px;
+}
+
+.year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 44px;
+  flex-shrink: 0;
+}
+
+.timelineText {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Social links */
+.socials {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
 }
 
 .socials a {
   font-size: 13px;
   color: var(--text-subtle);
   text-decoration: none;
-  transition: color 150ms ease;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 150ms ease;
 }
 
 .socials a:hover {
+  border-color: var(--text-subtle);
   color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
   .hero {
     padding: 48px 0 32px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .name {
+    font-size: 20px;
   }
 }

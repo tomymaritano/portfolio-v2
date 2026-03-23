@@ -2,7 +2,6 @@ import { allProjects, allPosts } from "content-collections";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
 import { BlogSection } from "@/components/BlogSection";
-import { Experience } from "@/components/Experience";
 import { GitHubCalendar } from "@/components/GitHubCalendar";
 import { NowPlaying } from "@/components/NowPlaying";
 import { Contact } from "@/components/Contact";
@@ -21,8 +20,6 @@ export default function Home() {
       <Projects projects={projects} />
       <div className={styles.divider} />
       <BlogSection posts={posts} />
-      <div className={styles.divider} />
-      <Experience variant="compact" />
       <div className={styles.divider} />
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Activity</h2>
