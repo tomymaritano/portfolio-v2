@@ -1,69 +1,76 @@
 [
   {
+    "company": "Psynth",
+    "role": "Frontend & Design Engineer",
+    "location": "Oklahoma, US (Remote)",
+    "period": "Jan 2026 — Present",
+    "duration": "3 mos",
+    "type": "full-time",
+    "highlights": [
+      "Frontend development and systems design for clinical assessment platform",
+      "UI design and Web Services API integration with React"
+    ]
+  },
+  {
     "company": "Unicoin",
     "role": "Frontend Developer",
     "location": "United States (Remote)",
-    "period": "Jan 2024 - Nov 2025",
-    "duration": "1 yr 11 months",
+    "period": "Jan 2024 — Jul 2025",
+    "duration": "1 yr 7 mos",
     "type": "contract",
     "highlights": [
-      "Owned and implemented complex, state-heavy frontend features using React and Next.js",
-      "Built and maintained production-grade UI flows critical to the core product experience",
-      "Improved frontend reliability by reducing UI edge cases and inconsistent states"
+      "Owned complex, state-heavy frontend features using React and Next.js",
+      "Built production-grade UI flows critical to the core product",
+      "Reduced UI edge cases and inconsistent states"
     ]
   },
   {
     "company": "Valere Realms",
     "role": "Senior Frontend Engineer",
     "location": "United States (Remote)",
-    "period": "Aug 2023 - Dec 2024",
-    "duration": "1 yr 5 months",
+    "period": "Aug 2023 — Dec 2024",
+    "duration": "1 yr 5 mos",
     "type": "contract",
     "highlights": [
-      "Owned and implemented complex, state-heavy frontend features using React and Next.js",
-      "Built and maintained production-grade UI flows critical to the core product experience",
-      "Translated product and UX requirements into clear frontend logic and reusable components"
+      "Complex state-heavy features with React and Next.js",
+      "Translated product and UX requirements into reusable components"
     ]
   },
   {
     "company": "Grandvalira SAETDE",
     "role": "Full Stack Engineer",
     "location": "Andorra (On-site)",
-    "period": "May 2022 - Nov 2023",
-    "duration": "1 yr 7 months",
+    "period": "May 2022 — Nov 2023",
+    "duration": "1 yr 7 mos",
     "type": "full-time",
     "highlights": [
-      "Owned and implemented complex frontend features using React and Next.js, enhancing user experience",
-      "Built and maintained production-grade UI flows critical to the core product experience",
-      "Translated product and UX requirements into clear frontend logic and reusable components"
+      "Frontend features with React and Next.js for tourism platform",
+      "Translated product and UX requirements into frontend logic"
     ]
   },
   {
     "company": "Wolt",
     "role": "Frontend Developer",
     "location": "Copenhagen, Denmark (On-site)",
-    "period": "May 2020 - May 2022",
-    "duration": "2 yrs 1 month",
+    "period": "May 2020 — May 2022",
+    "duration": "2 yrs 1 mo",
     "type": "full-time",
     "highlights": [
-      "Developed and maintained internal frontend tools to support time-critical operations",
-      "Created data-driven user interfaces emphasizing clarity, speed, and reliability",
-      "Managed complex UI states for real-time data and operational workflows",
-      "Collaborated with backend systems to ensure seamless data flow and consistent frontend performance"
+      "Internal frontend tools for time-critical delivery operations",
+      "Data-driven UIs emphasizing clarity, speed, and reliability",
+      "Real-time data and operational workflow state management"
     ]
   },
   {
     "company": "Su Web Express",
     "role": "Frontend Developer",
     "location": "Buenos Aires, Argentina (On-site)",
-    "period": "Apr 2017 - Jun 2018",
-    "duration": "1 yr 3 months",
+    "period": "Apr 2017 — Jun 2018",
+    "duration": "1 yr 3 mos",
     "type": "full-time",
     "highlights": [
-      "Maintained and built client websites with focus on usability and responsive design",
-      "Worked with HTML, CSS, and JavaScript to create layouts based on design requirements",
-      "Ensured cross-browser compatibility, performance, and visual consistency",
-      "Collaborated with designers and developers to deliver user-friendly websites"
+      "Client websites with focus on responsive design and usability",
+      "Cross-browser compatibility and visual consistency"
     ]
   }
 ]

@@ -2,11 +2,12 @@ import { siteConfig } from "@/config/site";
 import styles from "./Hero.module.css";
 
 const bio = [
-  { year: "2017", text: "Started building client websites at Su Web Express" },
-  { year: "2020", text: "Moved to Copenhagen — frontend at Wolt" },
-  { year: "2022", text: "Full-stack at Grandvalira (Andorra) — tourism tech" },
-  { year: "2023", text: "Frontend at Valere Realms — Web3" },
-  { year: "2024", text: "Product Engineer at Unicoin — fintech" },
+  { year: "2017", text: "Started building client websites at Su Web Express, Buenos Aires" },
+  { year: "2020", text: "Moved to Copenhagen — frontend developer at Wolt" },
+  { year: "2022", text: "Full-stack engineer at Grandvalira (Andorra) — tourism tech" },
+  { year: "2023", text: "Senior frontend at Valere Realms — Web3" },
+  { year: "2024", text: "Frontend developer at Unicoin — crypto & fintech" },
+  { year: "2026", text: "Frontend & Design Engineer at Psynth — clinical AI platform" },
 ];
 
 export function Hero() {
@@ -32,12 +33,13 @@ export function Hero() {
         <h2 className={styles.sectionTitle}>About</h2>
         <p className={styles.text}>
           Product engineer focused on fintech, developer tools, and thoughtful interfaces.
-          From building client sites in Buenos Aires to shipping trading platforms, the thread
-          has always been the same — make complex things feel simple.
+          From building client sites in Buenos Aires to shipping trading platforms and clinical
+          AI tools, the thread has always been the same — make complex things feel simple.
         </p>
         <p className={styles.text}>
-          Currently at Unicoin working on crypto and fintech products. Previously built
-          software for tourism in Andorra, delivery in Copenhagen, and Web3 startups.
+          Currently at Psynth building frontend and design systems for a clinical assessment
+          platform. Previously shipped crypto products at Unicoin, tourism tech in Andorra,
+          and delivery tools at Wolt in Copenhagen.
         </p>
       </div>
 
