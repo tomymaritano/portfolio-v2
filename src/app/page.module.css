@@ -8,3 +8,9 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
 }
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0 16px;
+  }
+}

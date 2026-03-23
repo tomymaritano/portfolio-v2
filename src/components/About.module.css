@@ -100,3 +100,19 @@
   border: 1px solid var(--border);
   color: var(--text-secondary);
 }
+
+@media (max-width: 768px) {
+  .bio {
+    padding: 48px 0 0;
+  }
+
+  .identity {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 22px;
+  }
+}

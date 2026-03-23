@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import { allProjects } from "content-collections";
 import { ProjectsClient } from "./ProjectsClient";
 import styles from "./page.module.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Projects",
   description: "Things I've built, shipped, and experimented with.",
 };
