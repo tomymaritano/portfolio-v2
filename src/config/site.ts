@@ -50,7 +50,7 @@ export const siteConfig = {
 
   // Hero Section
   hero: {
-    photo: "/images/profile.png",
+    photo: "/images/profile.jpg",
     badge: "Available for work",
     ctas: {
       primary: {
