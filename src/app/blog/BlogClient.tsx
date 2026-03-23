@@ -11,13 +11,10 @@ interface Post {
   description: string;
   tags: string[];
   date: string;
+  image?: string;
 }
 
-interface BlogClientProps {
-  posts: Post[];
-}
-
-export function BlogClient({ posts }: BlogClientProps) {
+export function BlogClient({ posts }: { posts: Post[] }) {
   const [query, setQuery] = useState("");
 
   const fuse = useMemo(
@@ -37,28 +34,35 @@ export function BlogClient({ posts }: BlogClientProps) {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.pageTitle}>Blog</h1>
-      <p className={styles.pageSubtitle}>
-        Thoughts on building software, tools, and products.
-      </p>
+      <div className={styles.header}>
+        <div>
+          <h1 className={styles.pageTitle}>Blog</h1>
+          <p className={styles.pageSubtitle}>
+            Thoughts on building software, tools, and products.
+          </p>
+        </div>
+        <input
+          type="search"
+          placeholder="Search..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
 
-      <input
-        type="search"
-        placeholder="Search posts..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className={styles.searchInput}
-      />
-
-      <div className={styles.posts}>
+      <div className={styles.grid}>
         {filteredPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className={styles.postRow}
+            className={styles.card}
           >
-            <div className={styles.postHeader}>
-              <span className={styles.postTitle}>{post.title}</span>
+            {post.image && (
+              <div className={styles.imageWrapper}>
+                <img src={post.image} alt={post.title} className={styles.image} loading="lazy" />
+              </div>
+            )}
+            <div className={styles.cardBody}>
               <time className={styles.postDate}>
                 {new Date(post.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -66,24 +70,25 @@ export function BlogClient({ posts }: BlogClientProps) {
                   day: "numeric",
                 })}
               </time>
+              <h2 className={styles.postTitle}>{post.title}</h2>
+              <p className={styles.postDescription}>{post.description}</p>
+              {post.tags.length > 0 && (
+                <div className={styles.postTags}>
+                  {post.tags.map((tag) => (
+                    <span key={tag} className={styles.postTag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-            <p className={styles.postDescription}>{post.description}</p>
-            {post.tags.length > 0 && (
-              <div className={styles.postTags}>
-                {post.tags.map((tag) => (
-                  <span key={tag} className={styles.postTag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </Link>
         ))}
       </div>
 
       {filteredPosts.length === 0 && (
         <p className={styles.empty}>
-          {query.trim() ? "No posts match your search." : "No posts yet. Check back soon!"}
+          {query.trim() ? "No posts match your search." : "No posts yet."}
         </p>
       )}
     </main>
