@@ -24,6 +24,7 @@ const CommandPalette = dynamic(() => import("@/components/CommandPalette").then(
 const NowPlaying = dynamic(() => import("@/components/NowPlaying").then(mod => mod.NowPlaying));
 const CursorEffect = dynamic(() => import("@/components/CursorEffect").then(mod => mod.CursorEffect));
 const EasterEggs = dynamic(() => import("@/components/EasterEggs").then(mod => mod.EasterEggs));
+const Chat = dynamic(() => import("@/components/Chat").then(mod => mod.Chat));
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.meta.domain),
@@ -111,6 +112,7 @@ export default function RootLayout({
             <NowPlaying />
             <CursorEffect />
             <EasterEggs />
+            <Chat />
           </I18nProvider>
         </ThemeProvider>
         <Analytics />

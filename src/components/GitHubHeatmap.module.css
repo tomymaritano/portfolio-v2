@@ -1,0 +1,137 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.total {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  text-decoration: none;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.skeleton {
+  height: 100px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+.scrollWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-2);
+}
+
+.scrollWrapper::-webkit-scrollbar { height: 4px; }
+.scrollWrapper::-webkit-scrollbar-track { background: transparent; }
+.scrollWrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.calendar {
+  display: flex;
+  gap: var(--space-2);
+  min-width: max-content;
+}
+
+.dayLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 20px;
+}
+
+.dayLabel {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  color: var(--text-subtle);
+  height: 10px;
+  line-height: 10px;
+  text-align: right;
+  padding-right: 4px;
+}
+
+.gridArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.monthRow {
+  display: grid;
+  grid-auto-columns: 12px;
+  height: 16px;
+  margin-bottom: 2px;
+}
+
+.monthLabel {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+.grid {
+  display: flex;
+  gap: 2px;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  transition: outline var(--duration-fast) ease;
+}
+
+.cell:hover {
+  outline: 1px solid var(--text-subtle);
+  outline-offset: 1px;
+}
+
+.cell[data-level="0"] { background: rgba(255, 255, 255, 0.03); }
+.cell[data-level="1"] { background: rgba(52, 211, 153, 0.12); }
+.cell[data-level="2"] { background: rgba(52, 211, 153, 0.3); }
+.cell[data-level="3"] { background: rgba(52, 211, 153, 0.55); }
+.cell[data-level="4"] { background: #34D399; }
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--space-3);
+  justify-content: flex-end;
+}
+
+.legendText {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  color: var(--text-subtle);
+}
