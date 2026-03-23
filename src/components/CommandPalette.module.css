@@ -97,7 +97,8 @@
   margin-bottom: var(--space-2);
 }
 
-.sectionLabel {
+/* cmdk group heading */
+.section [cmdk-group-heading] {
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 600;
@@ -125,12 +126,12 @@
 }
 
 .item:hover,
-.item.selected {
+.item[data-selected="true"] {
   background: var(--surface-hover);
   color: var(--text);
 }
 
-.item.selected::before {
+.item[data-selected="true"]::before {
   content: "";
   position: absolute;
   left: 0;
@@ -166,7 +167,7 @@
 }
 
 .item:hover .description,
-.item.selected .description {
+.item[data-selected="true"] .description {
   color: var(--text-subtle);
 }
 

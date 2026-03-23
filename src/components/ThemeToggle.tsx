@@ -1,11 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "next-themes";
 import styles from "./ThemeToggle.module.css";
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <motion.button

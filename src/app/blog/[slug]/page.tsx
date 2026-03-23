@@ -2,7 +2,6 @@ import { allPosts } from "content-collections";
 import { MDXContent } from "@/components/MDXContent";
 import { TableOfContents } from "@/components/TableOfContents";
 import { ShareButtons } from "@/components/ShareButtons";
-import { ReadingProgress } from "@/components/ReadingProgress";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -88,7 +87,6 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ReadingProgress />
       <main className={styles.main}>
         <div className={styles.layout}>
           <article className={styles.article}>

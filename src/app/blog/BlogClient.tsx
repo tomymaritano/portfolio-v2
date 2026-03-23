@@ -5,7 +5,6 @@ import Fuse from "fuse.js";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { BlogSearch } from "@/components/BlogSearch";
 import styles from "./page.module.css";
 
 interface Post {
@@ -47,9 +46,11 @@ export function BlogClient({ posts }: BlogClientProps) {
 
   return (
     <>
-      <BlogSearch
-        onQueryChange={handleQueryChange}
-        resultCount={isFiltering ? filteredPosts.length : undefined}
+      <input
+        type="search"
+        placeholder="Search posts..."
+        onChange={(e) => handleQueryChange(e.target.value)}
+        className={styles.searchInput}
       />
 
       <motion.div className={styles.posts} layout>

@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { Command } from "cmdk";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "sonner";
 import {
   searchCommands,
   addRecentCommand,
   getRecentCommands,
   findCommand,
 } from "@/lib/commands";
-import type { Command, CommandCategory } from "@/lib/commands";
+import type { Command as Cmd, CommandCategory } from "@/lib/commands";
 import styles from "./CommandPalette.module.css";
 
 const categoryLabels: Record<CommandCategory, string> = {
@@ -29,8 +31,8 @@ const categoryOrder: CommandCategory[] = [
   "fun",
 ];
 
-function groupByCategory(commands: Command[]): Map<CommandCategory, Command[]> {
-  const grouped = new Map<CommandCategory, Command[]>();
+function groupByCategory(commands: Cmd[]): Map<CommandCategory, Cmd[]> {
+  const grouped = new Map<CommandCategory, Cmd[]>();
   for (const cmd of commands) {
     const list = grouped.get(cmd.category) || [];
     list.push(cmd);
@@ -42,35 +44,22 @@ function groupByCategory(commands: Command[]): Map<CommandCategory, Command[]> {
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = useMemo(() => searchCommands(search), [search]);
+  const allCommands = useMemo(() => searchCommands(""), []);
+  const grouped = useMemo(() => groupByCategory(allCommands), [allCommands]);
 
   const recentIds = useMemo(() => (open ? getRecentCommands() : []), [open]);
   const recentCommands = useMemo(
-    () => recentIds.map(findCommand).filter(Boolean) as Command[],
+    () => recentIds.map(findCommand).filter(Boolean) as Cmd[],
     [recentIds]
   );
 
-  const grouped = useMemo(() => groupByCategory(results), [results]);
-
-  // Build flat list for keyboard navigation
-  const flatList = useMemo(() => {
-    const list: Command[] = [];
-    if (!search && recentCommands.length > 0) {
-      list.push(...recentCommands);
-    }
-    for (const cat of categoryOrder) {
-      const items = grouped.get(cat);
-      if (items) list.push(...items.slice(0, 5));
-    }
-    return list;
-  }, [search, recentCommands, grouped]);
-
   const handleSelect = useCallback(
-    async (command: Command) => {
+    async (commandId: string) => {
+      const command = findCommand(commandId);
+      if (!command) return;
+
       addRecentCommand(command.id);
       const result = await command.action();
 
@@ -80,59 +69,30 @@ export function CommandPalette() {
         } else {
           router.push(result.url);
         }
+      } else if (result.type === "action" && result.message) {
+        toast(result.message);
+      } else if (result.type === "text" && result.content) {
+        toast(result.content);
       }
-      // For action/text/data types, palette just closes
 
       setOpen(false);
       setSearch("");
-      setSelectedIndex(0);
     },
     [router]
   );
 
+  // Global ⌘K shortcut
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setOpen((prev) => !prev);
       }
-
-      if (!open) return;
-
-      if (e.key === "Escape") {
-        setOpen(false);
-        setSearch("");
-        setSelectedIndex(0);
-      }
-
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev < flatList.length - 1 ? prev + 1 : 0));
-      }
-
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : flatList.length - 1));
-      }
-
-      if (e.key === "Enter" && flatList[selectedIndex]) {
-        handleSelect(flatList[selectedIndex]);
-      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [open, flatList, selectedIndex, handleSelect]);
-
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [search]);
-
-  useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
-
-  let runningIndex = -1;
+  }, []);
 
   return (
     <AnimatePresence>
@@ -152,98 +112,110 @@ export function CommandPalette() {
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
           >
-            {/* Search input */}
-            <div className={styles.inputWrapper}>
-              <svg
-                className={styles.searchIcon}
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <input
-                ref={inputRef}
-                type="text"
-                className={styles.input}
-                placeholder="Type a command or search..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <kbd className={styles.kbd}>ESC</kbd>
-            </div>
+            <Command
+              label="Command palette"
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setOpen(false);
+                  setSearch("");
+                }
+              }}
+            >
+              {/* Search input */}
+              <div className={styles.inputWrapper}>
+                <svg
+                  className={styles.searchIcon}
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <Command.Input
+                  className={styles.input}
+                  placeholder="Type a command or search..."
+                  value={search}
+                  onValueChange={setSearch}
+                  autoFocus
+                />
+                <kbd className={styles.kbd}>ESC</kbd>
+              </div>
 
-            {/* Results */}
-            <div className={styles.list}>
-              {flatList.length === 0 ? (
-                <div className={styles.empty}>No results found</div>
-              ) : (
-                <>
-                  {/* Recent section */}
-                  {!search && recentCommands.length > 0 && (
-                    <div className={styles.section}>
-                      <div className={styles.sectionLabel}>Recent</div>
-                      {recentCommands.map((cmd) => {
-                        runningIndex++;
-                        const idx = runningIndex;
-                        return (
-                          <button
-                            key={`recent-${cmd.id}`}
-                            className={`${styles.item} ${idx === selectedIndex ? styles.selected : ""}`}
-                            onClick={() => handleSelect(cmd)}
-                            onMouseEnter={() => setSelectedIndex(idx)}
-                          >
-                            <span className={styles.icon}>{cmd.icon}</span>
-                            <span className={styles.label}>{cmd.name}</span>
-                            <span className={styles.description}>{cmd.description}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
+              {/* Results */}
+              <Command.List className={styles.list}>
+                <Command.Empty className={styles.empty}>
+                  No results found
+                </Command.Empty>
 
-                  {/* Category sections */}
-                  {categoryOrder.map((cat) => {
-                    const items = grouped.get(cat);
-                    if (!items || items.length === 0) return null;
-                    return (
-                      <div key={cat} className={styles.section}>
-                        <div className={styles.sectionLabel}>
-                          {categoryLabels[cat]}
-                        </div>
-                        {items.slice(0, 5).map((cmd) => {
-                          runningIndex++;
-                          const idx = runningIndex;
-                          return (
-                            <button
-                              key={cmd.id}
-                              className={`${styles.item} ${idx === selectedIndex ? styles.selected : ""}`}
-                              onClick={() => handleSelect(cmd)}
-                              onMouseEnter={() => setSelectedIndex(idx)}
-                            >
-                              <span className={styles.icon}>{cmd.icon}</span>
-                              <span className={styles.label}>{cmd.name}</span>
-                              <span className={styles.description}>{cmd.description}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    );
-                  })}
-                </>
-              )}
-            </div>
+                {/* Recent section */}
+                {!search && recentCommands.length > 0 && (
+                  <Command.Group
+                    heading="Recent"
+                    className={styles.section}
+                  >
+                    {recentCommands.map((cmd) => (
+                      <Command.Item
+                        key={`recent-${cmd.id}`}
+                        value={`recent ${cmd.name} ${cmd.description}`}
+                        onSelect={() => handleSelect(cmd.id)}
+                        className={styles.item}
+                      >
+                        <span className={styles.icon}>{cmd.icon}</span>
+                        <span className={styles.label}>{cmd.name}</span>
+                        <span className={styles.description}>
+                          {cmd.description}
+                        </span>
+                      </Command.Item>
+                    ))}
+                  </Command.Group>
+                )}
 
-            {/* Footer */}
-            <div className={styles.footer}>
-              <span><kbd>↑↓</kbd> navigate</span>
-              <span><kbd>↵</kbd> select</span>
-              <span><kbd>esc</kbd> close</span>
-            </div>
+                {/* Category sections */}
+                {categoryOrder.map((cat) => {
+                  const items = grouped.get(cat);
+                  if (!items || items.length === 0) return null;
+                  return (
+                    <Command.Group
+                      key={cat}
+                      heading={categoryLabels[cat]}
+                      className={styles.section}
+                    >
+                      {items.map((cmd) => (
+                        <Command.Item
+                          key={cmd.id}
+                          value={`${cmd.name} ${cmd.description} ${cmd.keywords?.join(" ") ?? ""}`}
+                          onSelect={() => handleSelect(cmd.id)}
+                          className={styles.item}
+                        >
+                          <span className={styles.icon}>{cmd.icon}</span>
+                          <span className={styles.label}>{cmd.name}</span>
+                          <span className={styles.description}>
+                            {cmd.description}
+                          </span>
+                        </Command.Item>
+                      ))}
+                    </Command.Group>
+                  );
+                })}
+              </Command.List>
+
+              {/* Footer */}
+              <div className={styles.footer}>
+                <span>
+                  <kbd>↑↓</kbd> navigate
+                </span>
+                <span>
+                  <kbd>↵</kbd> select
+                </span>
+                <span>
+                  <kbd>esc</kbd> close
+                </span>
+              </div>
+            </Command>
           </motion.div>
         </>
       )}

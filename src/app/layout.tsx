@@ -2,29 +2,17 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Instrument_Serif } from "next/font/google";
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { I18nProvider } from "@/lib/i18n/context";
 import { siteConfig } from "@/config/site";
+import { Toaster } from "sonner";
 import "@/styles/globals.css";
 
 // Dynamic imports for non-critical components (code splitting)
 const CommandPalette = dynamic(() => import("@/components/CommandPalette").then(mod => mod.CommandPalette));
-const NowPlaying = dynamic(() => import("@/components/NowPlaying").then(mod => mod.NowPlaying));
-const CursorEffect = dynamic(() => import("@/components/CursorEffect").then(mod => mod.CursorEffect));
-const EasterEggs = dynamic(() => import("@/components/EasterEggs").then(mod => mod.EasterEggs));
-const Chat = dynamic(() => import("@/components/Chat").then(mod => mod.Chat));
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.meta.domain),
@@ -99,21 +87,27 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider>
-          <I18nProvider>
-            <Navbar />
-            <CommandPalette />
-            <main style={{ paddingTop: "80px" }}>{children}</main>
-            <Footer />
-            <NowPlaying />
-            <CursorEffect />
-            <EasterEggs />
-            <Chat />
-          </I18nProvider>
+          <Navbar />
+          <CommandPalette />
+          <main style={{ paddingTop: "80px" }}>{children}</main>
+          <Footer />
+          <Toaster
+            theme="dark"
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "var(--surface-elevated)",
+                border: "1px solid var(--border)",
+                color: "var(--text)",
+                fontFamily: "var(--font-sans)",
+              },
+            }}
+          />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
