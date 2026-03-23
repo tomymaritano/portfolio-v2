@@ -1,6 +1,5 @@
 import { allPosts } from "content-collections";
 import { MDXContent } from "@/components/MDXContent";
-import { TableOfContents } from "@/components/TableOfContents";
 import { ShareButtons } from "@/components/ShareButtons";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -120,10 +119,6 @@ export default async function BlogPostPage({ params }: Props) {
 
         {post.image && (
           <img src={post.image} alt={post.title} className={styles.heroImage} />
-        )}
-
-        {post.headings && post.headings.length >= 2 && (
-          <TableOfContents headings={post.headings} />
         )}
 
         <article className={styles.content}>
