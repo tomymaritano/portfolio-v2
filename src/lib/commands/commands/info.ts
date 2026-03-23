@@ -39,24 +39,4 @@ export const infoCommands: Command[] = [
       content: `✉️  ${siteConfig.email}\n📅 ${siteConfig.calendly}\n🐙 ${siteConfig.social.github}\n💼 ${siteConfig.social.linkedin}`,
     }),
   },
-  {
-    id: "whoami",
-    name: "Who Am I",
-    description: "Your browser info",
-    category: "info",
-    keywords: ["whoami", "me", "visitor", "browser"],
-    icon: "🔍",
-    action: () => {
-      if (typeof window === "undefined") {
-        return { type: "text", content: "Running on server — no browser info available." };
-      }
-      const lang = navigator.language;
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const screen = `${window.screen.width}×${window.screen.height}`;
-      return {
-        type: "text",
-        content: `Locale: ${lang}\nTimezone: ${tz}\nScreen: ${screen}`,
-      };
-    },
-  },
 ];
