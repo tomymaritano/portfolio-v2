@@ -28,13 +28,4 @@ export const navigationCommands: Command[] = [
     icon: "📝",
     action: () => ({ type: "navigate", url: "/blog" }),
   },
-  {
-    id: "goto-about",
-    name: "About",
-    description: "About me",
-    category: "navigation",
-    keywords: ["about", "bio", "me", "quien", "sobre"],
-    icon: "👤",
-    action: () => ({ type: "navigate" as const, url: "/about" }),
-  },
 ];

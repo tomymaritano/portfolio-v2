@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import styles from "./Hero.module.css";
 
@@ -12,23 +11,18 @@ export function Hero() {
           className={styles.avatar}
         />
         <div>
-          <div className={styles.name}>{siteConfig.name}</div>
-          <div className={styles.location}>
-            {siteConfig.role} · {siteConfig.location}
-          </div>
+          <h1 className={styles.name}>{siteConfig.name}</h1>
+          <p className={styles.role}>Product Engineer · Buenos Aires</p>
         </div>
       </div>
-      <h1 className={styles.tagline}>{siteConfig.tagline}</h1>
-      <p className={styles.description}>
-        Fintech, developer tools, and interfaces that get out of the way. Based in Buenos Aires.
+      <p className={styles.bio}>
+        Fintech, developer tools, and interfaces that get out of the way.
       </p>
-      <div className={styles.ctas}>
-        <Link href="/projects" className={styles.primary}>
-          View Projects
-        </Link>
-        <Link href="/blog" className={styles.ghost}>
-          Read Blog
-        </Link>
+      <div className={styles.socials}>
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer">X</a>
+        <a href={`mailto:${siteConfig.email}`}>Email</a>
       </div>
     </section>
   );
