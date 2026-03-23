@@ -26,6 +26,13 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+const statusClass: Record<string, string> = {
+  live: styles.live,
+  experiment: styles.experiment,
+  learning: styles.learning,
+  archived: styles.archived,
+};
+
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = allProjects.find((p) => p.slug === slug);
@@ -35,17 +42,18 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className={styles.main}>
       <Link href="/projects" className={styles.backLink}>
-        ← Back to projects
+        &larr; Back to projects
       </Link>
 
       <header className={styles.header}>
-        <div className={styles.meta}>
-          <span className={styles.status} data-status={project.status}>
+        <div className={styles.titleRow}>
+          <h1 className={styles.title}>{project.name}</h1>
+          <span
+            className={`${styles.statusBadge} ${statusClass[project.status] || ""}`}
+          >
             {project.status}
           </span>
-          <span className={styles.complexity}>{project.complexity}</span>
         </div>
-        <h1 className={styles.title}>{project.name}</h1>
         <p className={styles.tagline}>{project.tagline}</p>
         <div className={styles.topics}>
           {project.topics.map((topic) => (
@@ -59,12 +67,6 @@ export default async function ProjectPage({ params }: Props) {
       <article className={styles.content}>
         <MDXContent code={project.mdx} />
       </article>
-
-      <footer className={styles.footer}>
-        <Link href="/projects" className={styles.backLink}>
-          ← Back to all projects
-        </Link>
-      </footer>
     </main>
   );
 }

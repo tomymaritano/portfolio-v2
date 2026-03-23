@@ -1,11 +1,10 @@
 import { allPosts } from "content-collections";
 import type { Metadata } from "next";
-import { PageLayout, PageHeader } from "@/components/PageLayout";
 import { BlogClient } from "./BlogClient";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Thoughts on product engineering, AI, and building things that ship.",
+  description: "Thoughts on building software, tools, and products.",
 };
 
 export default function BlogPage() {
@@ -18,18 +17,7 @@ export default function BlogPage() {
       description: post.description,
       tags: post.tags,
       date: post.date,
-      image: post.image,
     }));
 
-  return (
-    <PageLayout size="md">
-      <PageHeader
-        badge="Writing"
-        title="Blog"
-        description="Thoughts on product engineering, AI, and building things that ship."
-      />
-
-      <BlogClient posts={posts} />
-    </PageLayout>
-  );
+  return <BlogClient posts={posts} />;
 }

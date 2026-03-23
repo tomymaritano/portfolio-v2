@@ -88,54 +88,50 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main className={styles.main}>
-        <div className={styles.layout}>
-          <article className={styles.article}>
-            <header className={styles.header}>
-              <Link href="/blog" className={styles.backLink}>
-                ← Back to blog
-              </Link>
-              <div className={styles.meta}>
-                <time className={styles.date}>
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-                <span className={styles.separator}>·</span>
-                <span className={styles.readingTime}>{post.readingTime} min read</span>
-                {post.tags.length > 0 && (
-                  <div className={styles.tags}>
-                    {post.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <h1 className={styles.title}>{post.title}</h1>
-              <p className={styles.description}>{post.description}</p>
-            </header>
+        <Link href="/blog" className={styles.backLink}>
+          &larr; Back to blog
+        </Link>
 
-            <div className={styles.content}>
-              <MDXContent code={post.mdx} />
+        <header className={styles.header}>
+          <div className={styles.meta}>
+            <time className={styles.date}>
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <span className={styles.separator}>&middot;</span>
+            <span className={styles.readingTime}>
+              {post.readingTime} min read
+            </span>
+          </div>
+          <h1 className={styles.title}>{post.title}</h1>
+          {post.tags.length > 0 && (
+            <div className={styles.tags}>
+              {post.tags.map((tag) => (
+                <span key={tag} className={styles.tag}>
+                  {tag}
+                </span>
+              ))}
             </div>
-
-            <footer className={styles.footer}>
-              <ShareButtons title={post.title} url={postUrl} />
-              <Link href="/blog" className={styles.backLink}>
-                ← Back to all posts
-              </Link>
-            </footer>
-          </article>
-
-          {post.headings && post.headings.length >= 2 && (
-            <aside className={styles.sidebar}>
-              <TableOfContents headings={post.headings} />
-            </aside>
           )}
-        </div>
+        </header>
+
+        {post.headings && post.headings.length >= 2 && (
+          <TableOfContents headings={post.headings} />
+        )}
+
+        <article className={styles.content}>
+          <MDXContent code={post.mdx} />
+        </article>
+
+        <footer className={styles.footer}>
+          <ShareButtons title={post.title} url={postUrl} />
+          <Link href="/blog" className={styles.backLink}>
+            &larr; Back to all posts
+          </Link>
+        </footer>
       </main>
     </>
   );

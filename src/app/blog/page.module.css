@@ -1,140 +1,129 @@
-/* Posts */
-.posts {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+.main {
+  min-height: 100vh;
+  padding: 64px 32px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.postCard {
-  display: block;
-  padding: var(--space-6);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  transition: all 200ms ease;
-  text-decoration: none;
+.pageTitle {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 4px;
 }
 
-.postCard:hover {
-  border-color: var(--accent);
-  background: var(--surface-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+.pageSubtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
 }
 
-.postCard:hover .postTitle {
-  color: var(--accent);
-}
-
-.postCard:hover .postImage img {
-  transform: scale(1.05);
-}
-
-/* Card with image layout */
-.hasImage {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.postImage {
-  position: relative;
+/* Search */
+.searchInput {
   width: 100%;
-  aspect-ratio: 21/9;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--bg-subtle);
-  margin: calc(-1 * var(--space-6));
-  margin-bottom: 0;
-  width: calc(100% + 2 * var(--space-6));
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 150ms ease;
+  margin-bottom: 32px;
 }
 
-.postImage img {
-  object-fit: cover;
-  transition: transform 300ms ease;
-}
-
-.postContent {
-  min-width: 0;
-}
-
-.postMeta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
-}
-
-.date {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+.searchInput::placeholder {
   color: var(--text-subtle);
 }
 
-.tags {
-  display: flex;
-  gap: var(--space-2);
+.searchInput:focus {
+  border-color: var(--text-muted);
 }
 
-.tag {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--accent);
-  padding: 2px 8px;
-  background: var(--accent-muted);
-  border-radius: var(--radius-full);
+/* Post list */
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.postRow {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.postRow:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.postRow:hover .postTitle {
+  color: var(--text-muted);
+}
+
+.postHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
 }
 
 .postTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-2);
+  font-size: 15px;
+  font-weight: 500;
   color: var(--text);
+  transition: color 150ms ease;
+}
+
+.postDate {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-subtle);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .postDescription {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: var(--space-3);
+  font-size: 13px;
+  color: var(--text-subtle);
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
-.readMore {
+.postTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.postTag {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--accent);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
 .empty {
   text-align: center;
   color: var(--text-muted);
-  padding: var(--space-12) 0;
-  font-size: 0.9375rem;
+  padding: 48px 0;
+  font-size: 14px;
 }
 
 /* Responsive */
 @media (max-width: 640px) {
   .main {
-    padding: var(--space-16) var(--space-4);
+    padding: 48px 16px;
   }
 
-  .title {
-    font-size: 2rem;
-  }
-
-  .postCard {
-    padding: var(--space-4);
-  }
-
-  .postImage {
-    margin: calc(-1 * var(--space-4));
-    margin-bottom: 0;
-    width: calc(100% + 2 * var(--space-4));
-  }
-
-  .postTitle {
-    font-size: 1.125rem;
+  .postHeader {
+    flex-direction: column;
+    gap: 2px;
   }
 }

@@ -40,7 +40,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 
   return (
     <nav className={styles.toc} aria-label="Table of contents">
-      <h4 className={styles.title}>On this page</h4>
+      <p className={styles.title}>On this page</p>
       <ul className={styles.list}>
         {headings.map(({ level, text, slug }) => (
           <li
