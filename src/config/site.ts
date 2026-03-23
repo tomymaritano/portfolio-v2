@@ -11,8 +11,8 @@ export const siteConfig = {
   firstName: "Tomás",
   lastName: "Maritano",
   role: "Product Engineer",
-  tagline: "I build products that users love",
-  taglineAccent: "and businesses need.",
+  tagline: "Software should feel inevitable.",
+  taglineAccent: "",
   location: "Buenos Aires, Argentina",
 
   // Contact
@@ -29,7 +29,7 @@ export const siteConfig = {
   // Site Meta
   meta: {
     title: "Tomás Maritano - Product Engineer",
-    description: "Product Engineer building user-focused experiences. Combining technical depth with product thinking to ship fast and iterate based on real feedback.",
+    description: "Product Engineer. Fintech, developer tools, and interfaces that get out of the way.",
     domain: "https://tomasmaritano.com",
     image: "/og-image.png",
     locale: "en_US",

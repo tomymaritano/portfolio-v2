@@ -20,8 +20,7 @@ export function Hero() {
       </div>
       <h1 className={styles.tagline}>{siteConfig.tagline}</h1>
       <p className={styles.description}>
-        Product engineer focused on fintech, developer tools, and thoughtful UI.
-        TypeScript, React, Next.js.
+        Fintech, developer tools, and interfaces that get out of the way. Based in Buenos Aires.
       </p>
       <div className={styles.ctas}>
         <Link href="/projects" className={styles.primary}>

@@ -1,15 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import styles from "./ThemeToggle.module.css";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  // Avoid hydration mismatch — render nothing until mounted
+  if (!mounted) {
+    return <div className={styles.toggle} style={{ width: 36, height: 36 }} />;
+  }
 
   return (
     <motion.button

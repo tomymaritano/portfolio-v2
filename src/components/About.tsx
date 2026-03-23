@@ -19,13 +19,13 @@ export function About() {
           </div>
         </div>
         <p className={styles.text}>
-          I build products that users love and businesses need. Currently focused on fintech
-          and developer tools. I care about shipping fast without cutting corners — the kind
-          of software that feels good to use and is built to last.
+          Product engineer working at the intersection of fintech and developer tools.
+          Focused on shipping software that feels obvious in hindsight — simple interfaces
+          backed by solid engineering.
         </p>
         <p className={styles.text}>
-          Previously built software for tourism, Web3, and delivery platforms across Latin
-          America and Europe.
+          Background in tourism tech, Web3, and delivery platforms across Latin America
+          and Europe. Currently building from Buenos Aires.
         </p>
         <div className={styles.socials}>
           <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
