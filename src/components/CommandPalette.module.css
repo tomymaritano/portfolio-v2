@@ -2,31 +2,52 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 100;
 }
 
 .container {
   position: fixed;
-  top: 20%;
+  top: 18%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 560px;
-  background: var(--surface);
+  max-width: 640px;
+  background: var(--surface-elevated);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(52, 211, 153, 0.04);
   overflow: hidden;
   z-index: 101;
+}
+
+/* Gradient border glow */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), transparent 40%, rgba(6, 182, 212, 0.1));
+  z-index: -1;
 }
 
 .inputWrapper {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-4);
-  border-bottom: 1px solid var(--border);
+  padding: var(--space-4) var(--space-4);
+  position: relative;
+}
+
+.inputWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 .searchIcon {
@@ -39,6 +60,7 @@
   background: none;
   border: none;
   font-size: 1rem;
+  font-family: var(--font-sans);
   color: var(--text);
   outline: none;
 }
@@ -49,16 +71,16 @@
 
 .kbd {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   padding: 2px 6px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  color: var(--text-muted);
+  color: var(--text-subtle);
 }
 
 .list {
-  max-height: 320px;
+  max-height: 400px;
   overflow-y: auto;
   padding: var(--space-2);
 }
@@ -70,20 +92,36 @@
   font-size: 0.875rem;
 }
 
+/* Section grouping */
+.section {
+  margin-bottom: var(--space-2);
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-subtle);
+  padding: var(--space-2) var(--space-4) var(--space-1);
+}
+
 .item {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-2) var(--space-4);
   background: none;
   border: none;
   border-radius: var(--radius-md);
   color: var(--text-secondary);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   text-align: left;
   cursor: pointer;
-  transition: all 100ms ease;
+  transition: all 80ms ease;
+  position: relative;
 }
 
 .item:hover,
@@ -92,29 +130,43 @@
   color: var(--text);
 }
 
+.item.selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+}
+
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted);
-}
-
-.item:hover .icon,
-.item.selected .icon {
-  color: var(--accent);
+  font-size: 1rem;
+  width: 20px;
+  flex-shrink: 0;
 }
 
 .label {
-  flex: 1;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.shortcut {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  padding: 2px 6px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+.description {
+  flex: 1;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item:hover .description,
+.item.selected .description {
   color: var(--text-subtle);
 }
 
@@ -122,21 +174,31 @@
   display: flex;
   gap: var(--space-6);
   padding: var(--space-3) var(--space-4);
-  border-top: 1px solid var(--border);
-  background: var(--bg-subtle);
+  background: rgba(5, 5, 5, 0.5);
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 .footer span {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: var(--text-subtle);
 }
 
 .footer kbd {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   padding: 1px 4px;
   background: var(--surface);
   border: 1px solid var(--border);
