@@ -66,12 +66,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    // Fallback: Just log the email (for testing)
-    console.log(`Newsletter subscription: ${email}`);
-    return NextResponse.json({
-      success: true,
-      message: "Subscription recorded (configure newsletter provider for full functionality)"
-    });
+    // No newsletter provider configured
+    return NextResponse.json(
+      { error: "Newsletter not configured. Set BUTTONDOWN_API_KEY or CONVERTKIT_API_KEY." },
+      { status: 503 }
+    );
 
   } catch (error) {
     console.error("Newsletter subscription error:", error);

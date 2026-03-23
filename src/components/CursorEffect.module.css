@@ -19,7 +19,7 @@
 .cursor.hovering {
   width: 48px;
   height: 48px;
-  background: rgba(16, 185, 129, 0.2);
+  background: rgba(52, 211, 153, 0.2);
   mix-blend-mode: normal;
 }
 

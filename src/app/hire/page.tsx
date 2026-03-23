@@ -22,8 +22,8 @@ const reasons: Reason[] = [
     title: "I think in systems, not features",
     description:
       "Before building, I understand how pieces connect. This means fewer surprises later, better architecture decisions, and systems that scale without rewrites.",
-    evidence: "See my approach to technical systems →",
-    evidenceLink: "/systems",
+    evidence: "See my approach to technical decisions →",
+    evidenceLink: "/decisions",
   },
   {
     title: "I own the outcome, not just the code",

@@ -1,31 +1,35 @@
-/* Design System Variables */
+/* Design System Variables — Raycast-inspired Premium Dark */
 :root {
-  /* Colors - refined palette */
-  --bg: #09090b;
-  --bg-subtle: #0c0c0f;
-  --surface: #111113;
-  --surface-hover: #161618;
-  --border: #1f1f23;
-  --border-hover: #2a2a2e;
-  --grid-color: rgba(255, 255, 255, 0.03);
+  /* Colors - deep blacks */
+  --bg: #050505;
+  --bg-subtle: #080809;
+  --surface: #0a0a0c;
+  --surface-hover: #111114;
+  --surface-elevated: #0f0f12;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.1);
+  --grid-color: rgba(255, 255, 255, 0.02);
 
   /* Text */
-  --text: #fafafa;
-  --text-secondary: #a1a1aa;
-  --text-muted: #8b8b93;
-  --text-subtle: #52525b;
+  --text: #e8e8ed;
+  --text-secondary: #8f8f9d;
+  --text-muted: #5c5c6a;
+  --text-subtle: #3a3a44;
 
-  /* Accents */
-  --accent: #10b981;
-  --accent-hover: #059669;
-  --accent-muted: rgba(16, 185, 129, 0.15);
-  --accent-rgb: 16, 185, 129;
+  /* Accents - cool mint */
+  --accent: #34D399;
+  --accent-hover: #6EE7B7;
+  --accent-muted: rgba(52, 211, 153, 0.12);
+  --accent-rgb: 52, 211, 153;
+  --accent-glow: rgba(52, 211, 153, 0.15);
+  --gradient-accent: linear-gradient(135deg, #34D399, #06b6d4);
   --cyan: #06b6d4;
-  --cyan-muted: rgba(6, 182, 212, 0.15);
+  --cyan-muted: rgba(6, 182, 212, 0.12);
 
   /* Typography */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -42,29 +46,31 @@
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
   --radius-full: 9999px;
 
   /* Animation Timing */
   --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
-  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-normal: 200ms;
+  --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px rgba(52, 211, 153, 0.12);
 
   /* Cards */
-  --card-bg: rgba(17, 17, 19, 0.6);
-  --card-bg-hover: rgba(22, 22, 24, 0.8);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-shadow-hover: 0 0 40px rgba(16, 185, 129, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
+  --card-bg: rgba(10, 10, 12, 0.5);
+  --card-bg-hover: rgba(15, 15, 18, 0.7);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-border-hover: rgba(52, 211, 153, 0.3);
+  --card-shadow-hover: 0 0 30px rgba(52, 211, 153, 0.08), 0 8px 32px rgba(0, 0, 0, 0.3);
 
   /* Header */
-  --header-bg: rgba(9, 9, 11, 0.8);
+  --header-bg: rgba(5, 5, 5, 0.7);
 }
 
 /* Light Mode */
@@ -73,8 +79,9 @@
   --bg-subtle: #fafafa;
   --surface: #f4f4f5;
   --surface-hover: #e4e4e7;
-  --border: #e4e4e7;
-  --border-hover: #d4d4d8;
+  --surface-elevated: #f8f8fa;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.12);
   --grid-color: rgba(0, 0, 0, 0.04);
 
   --text: #09090b;
@@ -85,22 +92,23 @@
   --accent: #059669;
   --accent-hover: #047857;
   --accent-muted: rgba(5, 150, 105, 0.12);
+  --accent-rgb: 5, 150, 105;
+  --accent-glow: rgba(5, 150, 105, 0.1);
   --cyan: #0891b2;
   --cyan-muted: rgba(8, 145, 178, 0.12);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(5, 150, 105, 0.1);
+  --shadow-glow: 0 0 20px rgba(5, 150, 105, 0.08);
 
-  /* Cards */
   --card-bg: rgba(255, 255, 255, 0.7);
   --card-bg-hover: rgba(255, 255, 255, 0.9);
   --card-border: rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: 0 0 40px rgba(5, 150, 105, 0.08), 0 8px 32px rgba(0, 0, 0, 0.1);
+  --card-border-hover: rgba(5, 150, 105, 0.3);
+  --card-shadow-hover: 0 0 30px rgba(5, 150, 105, 0.06), 0 8px 32px rgba(0, 0, 0, 0.08);
 
-  /* Header */
-  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-bg: rgba(255, 255, 255, 0.7);
 
   color-scheme: light;
 }
@@ -130,6 +138,19 @@ body {
   letter-spacing: -0.011em;
   transition: background-color var(--duration-normal) var(--ease-out),
               color var(--duration-normal) var(--ease-out);
+}
+
+/* Noise grain overlay — atmospheric texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
 /* Theme transition for all elements */
@@ -260,7 +281,7 @@ tr:hover td {
 a {
   color: var(--text);
   text-decoration: none;
-  transition: color 150ms ease;
+  transition: color var(--duration-normal) var(--ease-out);
 }
 
 a:hover {
@@ -318,12 +339,12 @@ button:active:not(:disabled) {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--border);
+  background-color: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--border-hover);
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Utility classes */
@@ -343,6 +364,14 @@ button:active:not(:disabled) {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* Gradient section divider — replaces flat border-top */
+.sectionDivider::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
 }
 
 /* View Transitions */
@@ -366,4 +395,17 @@ button:active:not(:disabled) {
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Conic gradient rotation for photo ring */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-gradient {
+  to {
+    --angle: 360deg;
+  }
 }

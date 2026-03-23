@@ -7,8 +7,8 @@ interface Entry {
   createdAt: string;
 }
 
-// In-memory storage for development
-// Replace with Vercel KV in production
+// DEV ONLY: in-memory storage, data resets on every deploy/restart.
+// To persist, replace with Upstash Redis (@upstash/redis).
 let entries: Entry[] = [
   {
     id: "1",
@@ -19,11 +19,9 @@ let entries: Entry[] = [
 ];
 
 export async function GET() {
-  // If using Vercel KV:
-  // import { kv } from "@vercel/kv";
-  // const entries = await kv.lrange("guestbook", 0, 100);
-
-  return NextResponse.json(entries);
+  return NextResponse.json(entries, {
+    headers: { "X-Storage-Mode": "memory" },
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -51,13 +49,12 @@ export async function POST(request: NextRequest) {
       createdAt: new Date().toISOString(),
     };
 
-    // If using Vercel KV:
-    // import { kv } from "@vercel/kv";
-    // await kv.lpush("guestbook", JSON.stringify(entry));
-
     entries = [entry, ...entries];
 
-    return NextResponse.json(entry, { status: 201 });
+    return NextResponse.json(entry, {
+      status: 201,
+      headers: { "X-Storage-Mode": "memory" },
+    });
   } catch {
     return NextResponse.json(
       { error: "Internal server error" },

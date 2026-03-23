@@ -96,7 +96,7 @@
 }
 
 .techBadge[data-category="backend"] {
-  border-color: rgba(16, 185, 129, 0.3);
+  border-color: rgba(52, 211, 153, 0.3);
 }
 
 .techBadge[data-category="backend"]:hover {

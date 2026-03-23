@@ -12,6 +12,7 @@ const projectSchema = z.object({
   complexity: z.enum(["foundational", "intermediate", "advanced"]),
   image: z.string().optional(),
   featured: z.boolean().optional().default(false),
+  content: z.string(),
 });
 
 const postSchema = z.object({
@@ -22,6 +23,7 @@ const postSchema = z.object({
   image: z.string().optional(),
   tags: z.array(z.string()).default([]),
   published: z.boolean().default(true),
+  content: z.string(),
 });
 
 const decisionSchema = z.object({
@@ -36,6 +38,7 @@ const decisionSchema = z.object({
   context: z.string(),
   decision: z.string(),
   projectSlug: z.string().optional(),
+  content: z.string(),
 });
 
 const adrSchema = z.object({
@@ -47,6 +50,7 @@ const adrSchema = z.object({
   decision: z.string(),
   consequences: z.array(z.string()).default([]),
   tags: z.array(z.string()).default([]),
+  content: z.string(),
 });
 
 const projects = defineCollection({
