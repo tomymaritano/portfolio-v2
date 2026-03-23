@@ -26,70 +26,11 @@ const postSchema = z.object({
   content: z.string(),
 });
 
-const decisionSchema = z.object({
-  id: z.string(),
-  constraint: z.enum([
-    "ambiguity",
-    "time_pressure",
-    "bad_data",
-    "legacy",
-    "stakeholder_conflict",
-  ]),
-  context: z.string(),
-  decision: z.string(),
-  projectSlug: z.string().optional(),
-  content: z.string(),
-});
-
-const adrSchema = z.object({
-  slug: z.string(),
-  title: z.string(),
-  date: z.string(),
-  status: z.enum(["accepted", "superseded", "deprecated", "proposed"]),
-  context: z.string(),
-  decision: z.string(),
-  consequences: z.array(z.string()).default([]),
-  tags: z.array(z.string()).default([]),
-  content: z.string(),
-});
-
 const projects = defineCollection({
   name: "projects",
   directory: "src/content/projects",
   include: "**/*.mdx",
   schema: projectSchema,
-  transform: async (document, context) => {
-    const mdx = await compileMDX(context, document, {
-      remarkPlugins: [remarkGfm],
-    });
-    return {
-      ...document,
-      mdx,
-    };
-  },
-});
-
-const decisions = defineCollection({
-  name: "decisions",
-  directory: "src/content/decisions",
-  include: "**/*.mdx",
-  schema: decisionSchema,
-  transform: async (document, context) => {
-    const mdx = await compileMDX(context, document, {
-      remarkPlugins: [remarkGfm],
-    });
-    return {
-      ...document,
-      mdx,
-    };
-  },
-});
-
-const adrs = defineCollection({
-  name: "adrs",
-  directory: "src/content/adrs",
-  include: "**/*.mdx",
-  schema: adrSchema,
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [remarkGfm],
@@ -136,5 +77,5 @@ const posts = defineCollection({
 });
 
 export default defineConfig({
-  collections: [projects, decisions, adrs, posts],
+  collections: [projects, posts],
 });

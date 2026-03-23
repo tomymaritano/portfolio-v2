@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { allProjects, allDecisions, allPosts } from "content-collections";
+import { allProjects, allPosts } from "content-collections";
 import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -26,52 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/hire`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/now`,
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/case-study`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/think`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/uses`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/guestbook`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/decisions`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/terminal`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
     },
   ];
 
@@ -93,13 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Decision/constraint pages
-  const constraintPages = allDecisions.map((decision) => ({
-    url: `${baseUrl}/think/${decision.constraint}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
-
-  return [...staticPages, ...blogPages, ...projectPages, ...constraintPages];
+  return [...staticPages, ...blogPages, ...projectPages];
 }
