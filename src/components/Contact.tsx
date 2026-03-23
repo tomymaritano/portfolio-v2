@@ -12,7 +12,7 @@ export function Contact() {
           className={styles.label}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           Contact
@@ -22,7 +22,7 @@ export function Contact() {
           className={styles.title}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         >
           {siteConfig.contact.title}
@@ -32,7 +32,7 @@ export function Contact() {
           className={styles.description}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
         >
           {siteConfig.contact.description}

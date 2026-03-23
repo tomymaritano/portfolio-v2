@@ -70,7 +70,7 @@ export function About() {
           className={styles.label}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           About
@@ -100,7 +100,7 @@ export function About() {
           className={styles.stack}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className={styles.stackLabel}>Tech I use</span>
@@ -112,7 +112,7 @@ export function About() {
                 data-category={tech.category}
                 initial={{ opacity: 0, y: -30, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{
                   delay: index * 0.08,
                   duration: 0.4,

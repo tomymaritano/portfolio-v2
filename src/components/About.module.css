@@ -1,6 +1,15 @@
 .about {
   padding: var(--space-24) var(--space-6);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* Gradient divider */
+.about::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  margin-bottom: var(--space-24);
 }
 
 /* Word-by-word reveal */
@@ -17,11 +26,11 @@
 .label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   color: var(--text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   margin-bottom: var(--space-6);
 }
 
@@ -50,16 +59,24 @@
 /* Tech Stack */
 .stack {
   padding-top: var(--space-6);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.stack::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  margin-bottom: var(--space-6);
 }
 
 .stackLabel {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   color: var(--text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   margin-bottom: var(--space-4);
 }
 
@@ -77,26 +94,28 @@
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  transition: all 150ms ease;
+  transition: all var(--duration-normal) var(--ease-out);
   cursor: default;
 }
 
 .techBadge:hover {
   border-color: var(--border-hover);
   color: var(--text-secondary);
+  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 .techBadge[data-category="frontend"] {
-  border-color: rgba(6, 182, 212, 0.3);
+  border-color: rgba(6, 182, 212, 0.2);
 }
 
 .techBadge[data-category="frontend"]:hover {
   background: var(--cyan-muted);
   color: var(--cyan);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.12);
 }
 
 .techBadge[data-category="backend"] {
-  border-color: rgba(52, 211, 153, 0.3);
+  border-color: rgba(52, 211, 153, 0.2);
 }
 
 .techBadge[data-category="backend"]:hover {
@@ -105,18 +124,23 @@
 }
 
 .techBadge[data-category="design"] {
-  border-color: rgba(168, 85, 247, 0.3);
+  border-color: rgba(168, 85, 247, 0.2);
 }
 
 .techBadge[data-category="design"]:hover {
-  background: rgba(168, 85, 247, 0.15);
+  background: rgba(168, 85, 247, 0.1);
   color: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.1);
 }
 
 /* Responsive */
 @media (max-width: 640px) {
   .about {
     padding: var(--space-16) var(--space-4);
+  }
+
+  .about::before {
+    margin-bottom: var(--space-16);
   }
 
   .bio {

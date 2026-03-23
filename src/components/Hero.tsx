@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { siteConfig } from "@/config/site";
-import { TextReveal } from "./TextReveal";
 import styles from "./Hero.module.css";
 
 const floatingMessages = [
@@ -58,12 +57,11 @@ export function Hero() {
           <motion.div
             key={index}
             className={`${styles.messageBubble} ${styles[msg.type]} ${styles[msg.position]}`}
-            initial={{ opacity: 0, scale: 0.8, y: 10, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
             animate={{
-              opacity: [0, msg.type === "sent" ? 0.85 : 0.65, msg.type === "sent" ? 0.85 : 0.65, 0],
+              opacity: [0, msg.type === "sent" ? 0.4 : 0.25, msg.type === "sent" ? 0.4 : 0.25, 0],
               scale: [0.8, 1, 1, 0.95],
               y: [10, 0, -5, -10],
-              rotate: [0, msg.rotate, msg.rotate, 0],
             }}
             transition={{
               duration: msg.duration,

@@ -9,7 +9,21 @@
   overflow: hidden;
 }
 
-/* Floating Messages Background */
+/* Atmospheric glow orb behind content */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating Messages Background — atmospheric, not in-your-face */
 .floatingMessages {
   position: absolute;
   inset: 0;
@@ -17,88 +31,50 @@
   z-index: 0;
 }
 
-/* Message Bubbles - iMessage Style */
+/* Message Bubbles */
 .messageBubble {
   position: absolute;
   padding: 8px 14px;
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 450;
   white-space: nowrap;
   border-radius: 18px;
   z-index: 1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  filter: blur(0.5px);
 }
 
-/* Sent messages - Blue (right aligned in real iMessage) */
+/* Sent messages — accent tinted */
 .sent {
-  background: #007AFF;
-  color: white;
-  box-shadow: 0 2px 12px rgba(0, 122, 255, 0.25);
+  background: rgba(52, 211, 153, 0.08);
+  color: rgba(52, 211, 153, 0.5);
+  border: 1px solid rgba(52, 211, 153, 0.1);
 }
 
-/* Bubble tail for sent */
-.sent::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: -6px;
-  width: 12px;
-  height: 12px;
-  background: #007AFF;
-  border-bottom-left-radius: 16px;
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-}
-
-/* Received messages - Gray */
+/* Received messages — surface */
 .received {
-  background: var(--surface);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-}
-
-/* Bubble tail for received */
-.received::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: -6px;
-  width: 12px;
-  height: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: none;
-  border-right: none;
-  border-bottom-right-radius: 16px;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 /* Message positions - 20 positions spread around hero */
-/* Top row */
 .pos1 { top: 8%; left: 3%; }
 .pos2 { top: 5%; left: 18%; }
 .pos3 { top: 10%; right: 22%; }
 .pos4 { top: 6%; right: 4%; }
-
-/* Upper middle */
 .pos5 { top: 22%; left: 5%; }
 .pos6 { top: 25%; right: 6%; }
 .pos7 { top: 32%; left: 2%; }
 .pos8 { top: 35%; right: 3%; }
-
-/* Middle */
 .pos9 { top: 45%; left: 4%; }
 .pos10 { top: 48%; right: 5%; }
 .pos11 { top: 55%; left: 6%; }
 .pos12 { top: 52%; right: 4%; }
-
-/* Lower middle */
 .pos13 { top: 65%; left: 3%; }
 .pos14 { top: 68%; right: 6%; }
 .pos15 { top: 75%; left: 5%; }
 .pos16 { top: 72%; right: 3%; }
-
-/* Bottom row */
 .pos17 { bottom: 18%; left: 4%; }
 .pos18 { bottom: 15%; right: 5%; }
 .pos19 { bottom: 8%; left: 6%; }
@@ -115,30 +91,43 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 600px;
+  max-width: 640px;
   position: relative;
   z-index: 1;
 }
 
-/* Photo */
+/* Photo with animated conic gradient ring */
 .photoWrapper {
   position: relative;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .photoRing {
   position: absolute;
-  inset: -4px;
+  inset: -5px;
   border-radius: var(--radius-full);
-  border: 2px dashed var(--accent);
-  opacity: 0.4;
-  animation: spin 20s linear infinite;
+  background: conic-gradient(from var(--angle, 0deg), #34D399, #06b6d4, transparent 50%, #34D399);
+  animation: rotate-gradient 8s linear infinite;
+  opacity: 0.5;
+  /* Mask to show only the ring, not fill */
+  -webkit-mask: radial-gradient(circle, transparent 56px, black 57px);
+  mask: radial-gradient(circle, transparent 56px, black 57px);
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+/* Fallback for browsers without @property */
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .photoRing {
+    border: 2px solid var(--accent);
+    background: none;
+    -webkit-mask: none;
+    mask: none;
+    animation: spin-fallback 8s linear infinite;
+    opacity: 0.4;
   }
+}
+
+@keyframes spin-fallback {
+  to { transform: rotate(360deg); }
 }
 
 .photo {
@@ -149,7 +138,7 @@
   object-fit: cover;
   border: 1px solid var(--border);
   z-index: 1;
-  transition: border-color 200ms ease;
+  transition: border-color var(--duration-normal) var(--ease-out);
 }
 
 .photoWrapper:hover .photo {
@@ -157,8 +146,8 @@
 }
 
 .photoWrapper:hover .photoRing {
-  opacity: 0.8;
-  animation-duration: 8s;
+  opacity: 0.9;
+  animation-duration: 3s;
 }
 
 /* Intro */
@@ -167,11 +156,11 @@
 }
 
 .name {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
   line-height: 1;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
   color: var(--text);
 }
 
@@ -182,9 +171,13 @@
 .role {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: var(--accent);
+  background: linear-gradient(135deg, #34D399, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  font-weight: 600;
   margin-bottom: var(--space-6);
 }
 
@@ -213,39 +206,30 @@
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   letter-spacing: 0.02em;
-  padding: var(--space-2) 0;
-  background: transparent;
   border: none;
   position: relative;
-  transition: color 200ms ease;
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .ctaPrimary {
   color: var(--accent);
-}
-
-.ctaPrimary::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(1);
-  transition: transform 200ms ease;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.15);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
 }
 
 .ctaPrimary:hover {
   color: var(--accent-hover);
-}
-
-.ctaPrimary:hover::after {
-  transform: scaleX(0);
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.3);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .ctaSecondary {
   color: var(--text-muted);
+  padding: var(--space-2) 0;
+  background: transparent;
 }
 
 .ctaSecondary::after {
@@ -256,7 +240,7 @@
   width: 0;
   height: 1px;
   background: var(--text);
-  transition: width 200ms ease;
+  transition: width var(--duration-normal) var(--ease-out);
 }
 
 .ctaSecondary:hover {
@@ -274,7 +258,7 @@
   }
 
   .name {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
   }
 
   .tagline {
@@ -288,6 +272,11 @@
   .photo {
     width: 100px;
     height: 100px;
+  }
+
+  .photoRing {
+    -webkit-mask: radial-gradient(circle, transparent 46px, black 47px);
+    mask: radial-gradient(circle, transparent 46px, black 47px);
   }
 
   .ctas {

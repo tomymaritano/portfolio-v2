@@ -67,7 +67,7 @@ export function Experience() {
           className={styles.label}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={headerVariants}
         >
           Experience
@@ -80,7 +80,7 @@ export function Experience() {
               className={styles.job}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               variants={jobVariants}
               transition={{ delay: index * 0.1 }}
             >

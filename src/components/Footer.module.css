@@ -1,8 +1,19 @@
 .footer {
   margin-top: var(--space-24);
   padding: var(--space-16) var(--space-6);
-  border-top: 1px solid var(--border);
-  background: var(--bg-subtle);
+  background: linear-gradient(180deg, var(--bg), var(--bg-subtle));
+  position: relative;
+}
+
+/* Gradient top border */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
 }
 
 .container {
@@ -50,7 +61,7 @@
   text-decoration: none;
   color: var(--text);
   margin-bottom: var(--space-4);
-  transition: opacity 0.2s;
+  transition: opacity var(--duration-normal) var(--ease-out);
 }
 
 .logo:hover {
@@ -68,7 +79,6 @@
   color: var(--accent);
 }
 
-/* Typing cursor effect - always visible */
 .logoDot::after {
   content: "|";
   margin-left: 1px;
@@ -95,10 +105,11 @@
 }
 
 .columnTitle {
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   color: var(--text-secondary);
   margin-bottom: var(--space-2);
 }
@@ -117,7 +128,7 @@
   font-size: 0.875rem;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--duration-normal) var(--ease-out);
 }
 
 .link:hover {
@@ -125,7 +136,7 @@
 }
 
 .externalIcon {
-  opacity: 0.5;
+  opacity: 0.4;
   margin-left: 2px;
 }
 
@@ -135,7 +146,17 @@
   justify-content: space-between;
   align-items: center;
   padding-top: var(--space-8);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
 }
 
 @media (max-width: 640px) {
@@ -159,7 +180,7 @@
 .techLink {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--duration-normal) var(--ease-out);
 }
 
 .techLink:hover {

@@ -26,7 +26,7 @@ export function BlogSection({ posts }: BlogSectionProps) {
           className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <span className={styles.label}>Blog</span>
@@ -49,7 +49,7 @@ export function BlogSection({ posts }: BlogSectionProps) {
                 filter: "blur(0px)"
               }}
               whileHover={{ x: 8, scale: 1.02 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{
                 delay: index * 0.12,
                 duration: 0.5,

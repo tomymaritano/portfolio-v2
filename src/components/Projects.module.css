@@ -1,6 +1,14 @@
 .projects {
   padding: var(--space-24) var(--space-6);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.projects::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  margin-bottom: var(--space-24);
 }
 
 .container {
@@ -15,11 +23,11 @@
 .label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   color: var(--text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   margin-bottom: var(--space-2);
 }
 
@@ -51,7 +59,7 @@
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--text-muted);
-  transition: color 150ms ease;
+  transition: color var(--duration-normal) var(--ease-out);
 }
 
 .viewAllLink:hover {
@@ -61,5 +69,9 @@
 @media (max-width: 640px) {
   .projects {
     padding: var(--space-16) var(--space-4);
+  }
+
+  .projects::before {
+    margin-bottom: var(--space-16);
   }
 }

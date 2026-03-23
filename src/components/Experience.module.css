@@ -1,6 +1,14 @@
 .experience {
   padding: var(--space-24) var(--space-6);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.experience::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  margin-bottom: var(--space-24);
 }
 
 .container {
@@ -11,11 +19,11 @@
 .label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   color: var(--text-subtle);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   margin-bottom: var(--space-8);
 }
 
@@ -52,32 +60,23 @@
   box-shadow: 0 0 8px var(--accent);
   flex-shrink: 0;
   margin-top: 6px;
-  animation: pulse 2s ease-in-out infinite;
+  animation: dot-pulse 3s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes dot-pulse {
   0%, 100% {
-    box-shadow: 0 0 8px var(--accent);
+    box-shadow: 0 0 6px rgba(52, 211, 153, 0.3);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 16px var(--accent), 0 0 24px var(--accent);
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
     transform: scale(1.1);
   }
 }
 
-/* First dot pulses slightly different */
-.job:first-child .dot {
-  animation-delay: 0s;
-}
-
-.job:nth-child(2) .dot {
-  animation-delay: 0.3s;
-}
-
-.job:nth-child(3) .dot {
-  animation-delay: 0.6s;
-}
+.job:first-child .dot { animation-delay: 0s; }
+.job:nth-child(2) .dot { animation-delay: 0.3s; }
+.job:nth-child(3) .dot { animation-delay: 0.6s; }
 
 .line {
   width: 1px;
@@ -182,6 +181,10 @@
 @media (max-width: 640px) {
   .experience {
     padding: var(--space-16) var(--space-4);
+  }
+
+  .experience::before {
+    margin-bottom: var(--space-16);
   }
 
   .jobHeader {

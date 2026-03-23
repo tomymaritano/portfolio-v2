@@ -27,17 +27,15 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
     <motion.div
       initial={{
         opacity: 0,
-        scale: 0.8,
-        rotate: index % 2 === 0 ? -5 : 5,
+        scale: 0.95,
         filter: "blur(8px)"
       }}
       whileInView={{
         opacity: 1,
         scale: 1,
-        rotate: 0,
         filter: "blur(0px)"
       }}
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{
         duration: 0.6,
         delay: index * 0.15,
