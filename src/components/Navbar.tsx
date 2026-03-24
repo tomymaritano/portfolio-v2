@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Caveat } from "next/font/google";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import styles from "./Navbar.module.css";
+
+const handwriting = Caveat({ subsets: ["latin"], weight: ["700"] });
 
 const navLinks = [
   { href: "/projects", label: "Projects" },
@@ -14,11 +17,21 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.logo}>TM</Link>
+        <Link href="/" className={`${styles.logo} ${handwriting.className}`}>
+          Tomy Maritano
+        </Link>
 
         <div className={styles.links}>
           {navLinks.map(({ href, label }) => (

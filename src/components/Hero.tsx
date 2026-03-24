@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { ModelViewer } from "./ModelViewer";
 import styles from "./Hero.module.css";
 
 const bio = [
@@ -13,6 +14,8 @@ const bio = [
 export function Hero() {
   return (
     <section className={styles.hero}>
+      <ModelViewer />
+
       <div className={styles.identity}>
         <img
           src={siteConfig.hero.photo}

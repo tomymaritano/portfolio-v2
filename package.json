@@ -16,6 +16,9 @@
     "@content-collections/core": "^0.12.0",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.9",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@types/three": "^0.183.1",
     "@vanilla-extract/recipes": "^0.5.7",
     "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^1.3.1",
@@ -30,6 +33,7 @@
     "remark-gfm": "^4.0.1",
     "shiki": "^3.19.0",
     "sonner": "^2.0.7",
+    "three": "^0.183.2",
     "zod": "^4.1.13"
   },
   "devDependencies": {

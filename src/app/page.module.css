@@ -1,5 +1,5 @@
 .main {
-  max-width: 960px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -19,6 +19,10 @@
   margin: 0 0 24px;
   letter-spacing: -0.01em;
   color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--text-subtle);
+  text-decoration-thickness: 3px;
 }
 
 @media (max-width: 768px) {

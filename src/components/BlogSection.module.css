@@ -13,6 +13,10 @@
   margin: 0;
   letter-spacing: -0.01em;
   color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--text-subtle);
+  text-decoration-thickness: 3px;
 }
 
 .viewAll {
@@ -25,7 +29,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 

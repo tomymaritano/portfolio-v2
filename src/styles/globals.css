@@ -139,10 +139,10 @@ body {
               color var(--duration-normal) var(--ease-out);
 }
 
-/* Theme transition for all elements */
-*,
-*::before,
-*::after {
+/* Theme transition — scoped to avoid scrollbar flicker */
+body *,
+body *::before,
+body *::after {
   transition: background-color var(--duration-normal) var(--ease-out),
               border-color var(--duration-normal) var(--ease-out),
               box-shadow var(--duration-normal) var(--ease-out);
@@ -314,7 +314,19 @@ button:active:not(:disabled) {
   transform: scale(0.98);
 }
 
-/* Scrollbar */
+/* Scrollbar — use CSS variables so theme switch is instant */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.08);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="light"] {
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -325,12 +337,12 @@ button:active:not(:disabled) {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--scrollbar-thumb);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: var(--scrollbar-thumb-hover);
 }
 
 /* Utility classes */
