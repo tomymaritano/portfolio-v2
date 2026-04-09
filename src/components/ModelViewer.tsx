@@ -1,26 +1,67 @@
 "use client";
 
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
+import ModelScene from "./ModelScene";
 import styles from "./ModelViewer.module.css";
 
-const Scene = lazy(() => import("./ModelScene"));
+const MODEL_PATH = "/3dmodel-optimized.glb";
+
+function LoadingState({ visible }: { visible: boolean }) {
+  return (
+    <div
+      className={`${styles.overlay} ${visible ? "" : styles.overlayHidden}`}
+      aria-hidden={!visible}
+    >
+      <div className={styles.fallback}>
+        <span className={styles.ring} />
+        <span className={styles.spark} />
+      </div>
+    </div>
+  );
+}
 
 export function ModelViewer() {
-  const [ready, setReady] = useState(false);
+  const [shouldRenderScene, setShouldRenderScene] = useState(false);
+  const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
-    // Defer 3D load until after the main content has painted
-    requestIdleCallback?.(() => setReady(true)) ??
-      setTimeout(() => setReady(true), 100);
+    const preloadSelector = `link[data-model-preload="${MODEL_PATH}"]`;
+    let preloadLink = document.head.querySelector(preloadSelector) as HTMLLinkElement | null;
+
+    if (!preloadLink) {
+      preloadLink = document.createElement("link");
+      preloadLink.rel = "preload";
+      preloadLink.as = "fetch";
+      preloadLink.href = MODEL_PATH;
+      preloadLink.type = "model/gltf-binary";
+      preloadLink.crossOrigin = "anonymous";
+      preloadLink.dataset.modelPreload = MODEL_PATH;
+      document.head.appendChild(preloadLink);
+    }
+
+    void fetch(MODEL_PATH, {
+      cache: "force-cache",
+      credentials: "same-origin",
+    }).catch(() => undefined);
+
+    const frameId = window.requestAnimationFrame(() => {
+      setShouldRenderScene(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
-  if (!ready) return null;
-
   return (
-    <div className={styles.container}>
-      <Suspense fallback={null}>
-        <Scene />
-      </Suspense>
+    <div
+      className={`${styles.container} ${sceneReady ? styles.containerLoaded : ""}`}
+      aria-busy={!sceneReady}
+    >
+      <LoadingState visible={!sceneReady} />
+      {shouldRenderScene ? (
+        <Suspense fallback={null}>
+          <ModelScene onReady={() => setSceneReady(true)} />
+        </Suspense>
+      ) : null}
     </div>
   );
 }

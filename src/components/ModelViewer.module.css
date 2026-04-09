@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: 12px;
@@ -6,26 +7,82 @@
   margin-bottom: 32px;
 }
 
-.fallback {
-  width: 100%;
-  height: 100%;
+.container :global(canvas) {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(18px) scale(0.97);
+  transition:
+    opacity 300ms ease,
+    filter 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.containerLoaded :global(canvas) {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 180ms ease, visibility 180ms ease;
 }
 
-.spinner {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--border);
-  border-top-color: var(--text-subtle);
+.overlayHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.fallback {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.ring,
+.spark {
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+}
+
+.ring {
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  background:
+    radial-gradient(circle, transparent 56%, color-mix(in srgb, var(--border) 55%, transparent) 57%, transparent 67%);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.spark {
+  inset: 8px;
+  border: 1px solid transparent;
+  border-top-color: color-mix(in srgb, var(--text) 76%, transparent);
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
