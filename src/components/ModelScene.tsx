@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
-const MODEL_PATH = "/3dmodel-optimized.glb";
+const MODEL_PATH = "/batman2.glb";
 const INTRO_DURATION = 1.05;
 
 type ModelSceneProps = {

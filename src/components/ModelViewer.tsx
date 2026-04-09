@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import ModelScene from "./ModelScene";
 import styles from "./ModelViewer.module.css";
 
-const MODEL_PATH = "/3dmodel-optimized.glb";
+const MODEL_PATH = "/batman2.glb";
 
 function LoadingState({ visible }: { visible: boolean }) {
   return (
