@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { ModelViewer } from "./ModelViewer";
 import styles from "./Hero.module.css";
@@ -17,9 +18,12 @@ export function Hero() {
       <ModelViewer />
 
       <div className={styles.identity}>
-        <img
+        <Image
           src={siteConfig.hero.photo}
           alt={siteConfig.name}
+          width={72}
+          height={72}
+          priority
           className={styles.avatar}
         />
         <div>
