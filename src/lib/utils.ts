@@ -1,7 +1,6 @@
-/**
- * Combines class names, filtering out falsy values
- * Similar to clsx/classnames but zero-dependency
- */
-export function cn(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(" ");
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

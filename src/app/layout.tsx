@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -9,9 +9,22 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/config/site";
 import { Toaster } from "sonner";
+import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
-// Dynamic imports for non-critical components (code splitting)
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["opsz", "SOFT"],
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
 const CommandPalette = dynamic(() => import("@/components/CommandPalette").then(mod => mod.CommandPalette));
 
 export const metadata: Metadata = {
@@ -87,14 +100,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={cn(jakarta.variable, GeistMono.variable, fraunces.variable, "font-sans antialiased")}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider>
           <Navbar />
           <CommandPalette />
-          <main style={{ paddingTop: "80px" }}>{children}</main>
+          {children}
           <Footer />
           <Toaster
             theme="dark"
@@ -102,7 +115,7 @@ export default function RootLayout({
             toastOptions={{
               style: {
                 background: "var(--surface-elevated)",
-                border: "1px solid var(--border)",
+                border: "1px solid var(--rule)",
                 color: "var(--text)",
                 fontFamily: "var(--font-sans)",
               },

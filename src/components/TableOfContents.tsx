@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "./TableOfContents.module.css";
+import { cn } from "@/lib/utils";
 
 interface Heading {
   level: number;
@@ -39,24 +39,26 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   if (headings.length < 2) return null;
 
   return (
-    <nav className={styles.toc} aria-label="Table of contents">
-      <p className={styles.title}>On this page</p>
-      <ul className={styles.list}>
+    <nav className="sticky top-20" aria-label="Table of contents">
+      <p className="m-0 mb-3 font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-muted-foreground">
+        On this page
+      </p>
+      <ul className="m-0 list-none border-l border-border p-0">
         {headings.map(({ level, text, slug }) => (
-          <li
-            key={slug}
-            className={`${styles.item} ${level === 3 ? styles.nested : ""}`}
-          >
+          <li key={slug} className={cn(level === 3 ? "pl-4" : "")}>
             <a
               href={`#${slug}`}
-              className={`${styles.link} ${activeSlug === slug ? styles.active : ""}`}
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById(slug)?.scrollIntoView({
-                  behavior: "smooth",
-                });
+                document.getElementById(slug)?.scrollIntoView({ behavior: "smooth" });
                 setActiveSlug(slug);
               }}
+              className={cn(
+                "-ml-px block border-l-2 py-1 pl-4 font-sans text-[0.8125rem] leading-[1.4] transition-colors",
+                activeSlug === slug
+                  ? "border-foreground text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              )}
             >
               {text}
             </a>

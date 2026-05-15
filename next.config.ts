@@ -1,14 +1,13 @@
 import type { NextConfig } from "next";
-import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
 import { withContentCollections } from "@content-collections/next";
 
-const withVanillaExtract = createVanillaExtractPlugin();
-
 const nextConfig: NextConfig = {
-  // Enable View Transitions API
-  experimental: {
-    viewTransition: true,
+  async redirects() {
+    return [
+      { source: "/blog", destination: "/writing", permanent: true },
+      { source: "/blog/:slug", destination: "/writing/:slug", permanent: true },
+    ];
   },
 };
 
-export default withContentCollections(withVanillaExtract(nextConfig));
+export default withContentCollections(nextConfig);

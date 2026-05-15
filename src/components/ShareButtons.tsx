@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./ShareButtons.module.css";
 
 interface ShareButtonsProps {
   title: string;
   url: string;
 }
+
+const linkClass =
+  "font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:text-foreground";
 
 export function ShareButtons({ title, url }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
@@ -21,26 +23,18 @@ export function ShareButtons({ title, url }: ShareButtonsProps) {
   };
 
   return (
-    <div className={styles.container}>
-      <span className={styles.label}>Share:</span>
-      <a
-        href={twitterUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.link}
-      >
+    <div className="flex items-center gap-4">
+      <span className="font-mono text-[0.6875rem] uppercase tracking-[0.08em] text-[var(--text-subtle)]">
+        Share
+      </span>
+      <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
         X
       </a>
-      <a
-        href={linkedInUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.link}
-      >
+      <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
         LinkedIn
       </a>
-      <button onClick={copyLink} className={styles.link}>
-        {copied ? "Copied!" : "Copy link"}
+      <button type="button" onClick={copyLink} className={linkClass}>
+        {copied ? "Copied" : "Copy link"}
       </button>
     </div>
   );

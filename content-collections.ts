@@ -26,6 +26,16 @@ const postSchema = z.object({
   content: z.string(),
 });
 
+const logSchema = z.object({
+  date: z.string(),
+  summary: z.string(),
+  repos: z.array(z.string()).default([]),
+  commits: z.number().optional(),
+  tags: z.array(z.string()).default([]),
+  generated: z.boolean().default(true),
+  content: z.string(),
+});
+
 const projects = defineCollection({
   name: "projects",
   directory: "src/content/projects",
@@ -76,6 +86,23 @@ const posts = defineCollection({
   },
 });
 
+const logs = defineCollection({
+  name: "logs",
+  directory: "src/content/logs",
+  include: "**/*.mdx",
+  schema: logSchema,
+  transform: async (document, context) => {
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+    });
+    return {
+      ...document,
+      mdx,
+      slug: document.date,
+    };
+  },
+});
+
 export default defineConfig({
-  collections: [projects, posts],
+  collections: [projects, posts, logs],
 });

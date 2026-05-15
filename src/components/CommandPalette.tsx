@@ -12,7 +12,6 @@ import {
   findCommand,
 } from "@/lib/commands";
 import type { Command as Cmd, CommandCategory } from "@/lib/commands";
-import styles from "./CommandPalette.module.css";
 
 const categoryLabels: Record<CommandCategory, string> = {
   navigation: "Navigate",
@@ -40,6 +39,15 @@ function groupByCategory(commands: Cmd[]): Map<CommandCategory, Cmd[]> {
   }
   return grouped;
 }
+
+const sectionClass =
+  "mb-1 [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:pt-2 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-[0.1em] [&_[cmdk-group-heading]]:text-[var(--text-subtle)]";
+
+const itemClass =
+  "flex w-full cursor-pointer items-center gap-2.5 rounded-[var(--radius-md)] px-3 py-2 text-sm text-muted-foreground transition-colors data-[selected=true]:bg-[var(--surface-hover)] data-[selected=true]:text-foreground hover:bg-[var(--surface-hover)] hover:text-foreground";
+
+const kbdClass =
+  "font-mono text-[9px] rounded border border-border bg-background px-1 py-0.5 text-[var(--text-subtle)]";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -81,7 +89,6 @@ export function CommandPalette() {
     [router]
   );
 
-  // Global ⌘K shortcut
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -99,14 +106,14 @@ export function CommandPalette() {
       {open && (
         <>
           <motion.div
-            className={styles.backdrop}
+            className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
           />
           <motion.div
-            className={styles.container}
+            className="fixed left-1/2 top-[18%] z-[101] w-[90%] max-w-[560px] -translate-x-1/2 overflow-hidden rounded-[var(--radius-xl)] border border-border bg-[var(--surface)] shadow-2xl"
             initial={{ opacity: 0, scale: 0.96, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
@@ -121,52 +128,51 @@ export function CommandPalette() {
                 }
               }}
             >
-              {/* Search input */}
-              <div className={styles.inputWrapper}>
+              <div className="flex items-center gap-3 border-b border-border px-4 py-3.5">
                 <svg
-                  className={styles.searchIcon}
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  className="shrink-0 text-[var(--text-subtle)]"
+                  aria-hidden="true"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
                 <Command.Input
-                  className={styles.input}
+                  className="flex-1 border-none bg-transparent text-sm text-foreground outline-none placeholder:text-[var(--text-subtle)]"
                   placeholder="Type a command or search..."
                   value={search}
                   onValueChange={setSearch}
                   autoFocus
                 />
-                <kbd className={styles.kbd}>ESC</kbd>
+                <kbd className="rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] text-[var(--text-subtle)]">
+                  ESC
+                </kbd>
               </div>
 
-              {/* Results */}
-              <Command.List className={styles.list}>
-                <Command.Empty className={styles.empty}>
+              <Command.List className="max-h-80 overflow-y-auto p-2">
+                <Command.Empty className="p-8 text-center text-sm text-[var(--text-subtle)]">
                   No results found
                 </Command.Empty>
 
-                {/* Recent section */}
                 {!search && recentCommands.length > 0 && (
-                  <Command.Group
-                    heading="Recent"
-                    className={styles.section}
-                  >
+                  <Command.Group heading="Recent" className={sectionClass}>
                     {recentCommands.map((cmd) => (
                       <Command.Item
                         key={`recent-${cmd.id}`}
                         value={`recent ${cmd.name} ${cmd.description}`}
                         onSelect={() => handleSelect(cmd.id)}
-                        className={styles.item}
+                        className={itemClass}
                       >
-                        <span className={styles.icon}>{cmd.icon}</span>
-                        <span className={styles.label}>{cmd.name}</span>
-                        <span className={styles.description}>
+                        <span className="flex w-[18px] shrink-0 items-center justify-center text-sm">
+                          {cmd.icon}
+                        </span>
+                        <span className="whitespace-nowrap font-medium">{cmd.name}</span>
+                        <span className="flex-1 truncate text-right text-[11px] text-[var(--text-subtle)]">
                           {cmd.description}
                         </span>
                       </Command.Item>
@@ -174,7 +180,6 @@ export function CommandPalette() {
                   </Command.Group>
                 )}
 
-                {/* Category sections */}
                 {categoryOrder.map((cat) => {
                   const items = grouped.get(cat);
                   if (!items || items.length === 0) return null;
@@ -182,18 +187,20 @@ export function CommandPalette() {
                     <Command.Group
                       key={cat}
                       heading={categoryLabels[cat]}
-                      className={styles.section}
+                      className={sectionClass}
                     >
                       {items.map((cmd) => (
                         <Command.Item
                           key={cmd.id}
                           value={`${cmd.name} ${cmd.description} ${cmd.keywords?.join(" ") ?? ""}`}
                           onSelect={() => handleSelect(cmd.id)}
-                          className={styles.item}
+                          className={itemClass}
                         >
-                          <span className={styles.icon}>{cmd.icon}</span>
-                          <span className={styles.label}>{cmd.name}</span>
-                          <span className={styles.description}>
+                          <span className="flex w-[18px] shrink-0 items-center justify-center text-sm">
+                            {cmd.icon}
+                          </span>
+                          <span className="whitespace-nowrap font-medium">{cmd.name}</span>
+                          <span className="flex-1 truncate text-right text-[11px] text-[var(--text-subtle)]">
                             {cmd.description}
                           </span>
                         </Command.Item>
@@ -203,16 +210,15 @@ export function CommandPalette() {
                 })}
               </Command.List>
 
-              {/* Footer */}
-              <div className={styles.footer}>
-                <span>
-                  <kbd>↑↓</kbd> navigate
+              <div className="flex gap-4 border-t border-border px-4 py-2.5">
+                <span className="flex items-center gap-1.5 text-[11px] text-[var(--text-subtle)]">
+                  <kbd className={kbdClass}>↑↓</kbd> navigate
                 </span>
-                <span>
-                  <kbd>↵</kbd> select
+                <span className="flex items-center gap-1.5 text-[11px] text-[var(--text-subtle)]">
+                  <kbd className={kbdClass}>↵</kbd> select
                 </span>
-                <span>
-                  <kbd>esc</kbd> close
+                <span className="flex items-center gap-1.5 text-[11px] text-[var(--text-subtle)]">
+                  <kbd className={kbdClass}>esc</kbd> close
                 </span>
               </div>
             </Command>

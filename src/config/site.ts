@@ -11,8 +11,7 @@ export const siteConfig = {
   firstName: "Tomás",
   lastName: "Maritano",
   role: "Product Engineer",
-  tagline: "Software should feel inevitable.",
-  taglineAccent: "",
+  tagline: "Product engineer and writer. I build software and write about the decisions behind it.",
   location: "Buenos Aires, Argentina",
 
   // Contact
@@ -28,8 +27,8 @@ export const siteConfig = {
 
   // Site Meta
   meta: {
-    title: "Tomás Maritano - Product Engineer",
-    description: "Product Engineer. Fintech, developer tools, and interfaces that get out of the way.",
+    title: "Tomás Maritano",
+    description: "Product engineer and writer. Fintech, developer tools, and interfaces that get out of the way.",
     domain: "https://tomasmaritano.com",
     image: "/og-image.png",
     locale: "en_US",
@@ -38,39 +37,11 @@ export const siteConfig = {
   // Navigation
   nav: {
     links: [
-      { label: "Work", href: "#projects" },
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" },
+      { label: "Writing", href: "/writing" },
+      { label: "Log", href: "/log" },
+      { label: "Projects", href: "/projects" },
+      { label: "About", href: "/about" },
     ],
-    cta: {
-      label: "Let's talk",
-      href: "#contact",
-    },
-  },
-
-  // Hero Section
-  hero: {
-    photo: "/images/profile.jpg",
-    badge: "Available for work",
-    ctas: {
-      primary: {
-        label: "View projects",
-        href: "#projects",
-      },
-      secondary: {
-        label: "Let's talk",
-        href: "#contact",
-      },
-    },
-  },
-
-  // Contact Section
-  contact: {
-    title: "Let's work together",
-    description: "I'm currently open to new opportunities. Whether you have a project in mind or just want to chat, I'd love to hear from you.",
-    calendlyText: "Schedule a call",
-    calendlyMicro: "15 min to get to know each other",
-    emailText: "Or send me an email",
   },
 
   // Footer

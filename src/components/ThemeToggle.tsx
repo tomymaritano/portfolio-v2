@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import styles from "./ThemeToggle.module.css";
+
+const buttonClass =
+  "flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-border bg-transparent text-foreground transition-colors hover:border-[var(--text-subtle)] hover:text-[var(--accent)]";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -15,14 +17,14 @@ export function ThemeToggle() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  // Avoid hydration mismatch — render nothing until mounted
   if (!mounted) {
-    return <div className={styles.toggle} style={{ width: 36, height: 36 }} />;
+    return <div className="h-9 w-9" aria-hidden="true" />;
   }
 
   return (
     <motion.button
-      className={styles.toggle}
+      type="button"
+      className={buttonClass}
       onClick={toggleTheme}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
@@ -34,6 +36,7 @@ export function ThemeToggle() {
         animate={{ rotate: 0, opacity: 1 }}
         exit={{ rotate: 90, opacity: 0 }}
         transition={{ duration: 0.2 }}
+        className="text-sm leading-none"
       >
         {theme === "dark" ? "☀" : "☾"}
       </motion.span>
